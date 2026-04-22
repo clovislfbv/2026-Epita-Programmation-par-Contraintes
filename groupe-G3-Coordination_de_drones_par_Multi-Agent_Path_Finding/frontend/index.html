@@ -13,7 +13,8 @@
   #hud .val { color:#7dd3fc; font-weight:600; }
   #controls {
     position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
-    z-index:10; display:flex; gap:8px; align-items:center;
+    z-index:10; display:flex; gap:8px; align-items:center; flex-wrap:wrap;
+    justify-content:center;
   }
   button {
     padding:9px 18px; background:#0f172a; border:1px solid #334155;
@@ -25,7 +26,7 @@
   #btn-random:hover { background:#6d28d9; border-color:#a855f7; color:#fff; }
   label { font-size:13px; color:#64748b; }
   input[type=range] { accent-color:#3b82f6; width:70px; vertical-align:middle; }
-  #n-label { color:#7dd3fc; font-size:13px; min-width:14px; display:inline-block; }
+  #n-label { color:#7dd3fc; font-size:13px; min-width:18px; display:inline-block; }
 </style>
 </head>
 <body>
@@ -39,8 +40,8 @@
 </div>
 
 <div id="controls">
-  <label>Drones&nbsp;<input type="range" id="n-drones" min="2" max="8" value="5"></label>
-  <span id="n-label">5</span>
+  <label>Drones&nbsp;<input type="range" id="n-drones" min="2" max="8" value="6"></label>
+  <span id="n-label">6</span>
   <button id="btn-random">&#x1F3B2; Randomize &amp; Solve</button>
   <button id="btn-play">&#9654; Play</button>
   <button id="btn-pause">&#9646;&#9646; Pause</button>
@@ -55,33 +56,67 @@ import { CityScene } from './scene.js';
 import { DroneManager } from './drones.js';
 import { fetchSolve } from './api.js';
 
-const GRID = { rows: 10, cols: 10, alts: 1 };
+// ── Grid config ──────────────────────────────────────────────────────────────
+const ROWS = 8, COLS = 8, ALTS = 2;
 
-// Random drones: Fisher-Yates shuffle, pick non-overlapping starts & goals
+// Buildings: height=1 → only blocks alt 0 (fly over at alt 1)
+//            height=2 → blocks both layers (must route around)
+const BUILDINGS = [
+  { row:1, col:1, height:2 }, { row:1, col:2, height:2 },
+  { row:1, col:6, height:1 },
+  { row:3, col:3, height:2 }, { row:3, col:4, height:1 },
+  { row:4, col:3, height:1 },
+  { row:6, col:1, height:1 }, { row:6, col:5, height:2 },
+  { row:6, col:6, height:2 },
+  { row:2, col:6, height:2 },
+];
+
+// Cells blocked at ALL altitudes (can't use as start/goal)
+const blocked = new Set(
+  BUILDINGS.filter(b => b.height >= ALTS)
+           .map(b => `${b.row},${b.col}`)
+);
+
+// Random drones: even drones start alt=0→goal alt=1, odd drones start alt=1→goal alt=0
+// This forces 3D routing and creates natural altitude separation
 function randomDrones(n) {
-  const cells = [];
-  for (let r = 0; r < GRID.rows; r++)
-    for (let c = 0; c < GRID.cols; c++)
-      cells.push([r, c]);
-  for (let i = cells.length - 1; i > 0; i--) {
+  const free = [];
+  for (let r = 0; r < ROWS; r++)
+    for (let c = 0; c < COLS; c++)
+      if (!blocked.has(`${r},${c}`)) free.push([r, c]);
+
+  // Fisher-Yates shuffle
+  for (let i = free.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [cells[i], cells[j]] = [cells[j], cells[i]];
+    [free[i], free[j]] = [free[j], free[i]];
   }
-  return cells.slice(0, n).map((s, i) => ({
-    id: i, start: s, goal: cells[n + i],
-  }));
+
+  return free.slice(0, n).map((cell, i) => {
+    const startAlt = i % 2;
+    const goalAlt  = (i + 1) % 2;
+    const goal     = free[n + i];
+    return {
+      id: i,
+      start: [cell[0], cell[1], startAlt],
+      goal:  [goal[0], goal[1], goalAlt],
+    };
+  });
 }
 
+// ── Three.js setup ────────────────────────────────────────────────────────────
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 const cityScene = new CityScene(renderer);
+cityScene.addBuildings(BUILDINGS);
+
 let droneManager = null, solution = null, currentDrones = [];
 let playing = false, frame = 0, lastTick = 0;
 const SPEED_MS = 380;
 
+// ── Controls ──────────────────────────────────────────────────────────────────
 const slider = document.getElementById('n-drones');
 const nLabel = document.getElementById('n-label');
 slider.oninput = () => { nLabel.textContent = slider.value; };
@@ -99,13 +134,19 @@ async function solve(drones) {
   if (droneManager) { droneManager.dispose(cityScene.scene); droneManager = null; }
 
   solution = await fetchSolve({
-    grid: GRID, drones, nofly: [], buildings: [], time_limit_s: 25,
+    grid: { rows: ROWS, cols: COLS, alts: ALTS },
+    drones,
+    buildings: BUILDINGS,
+    nofly: [],
+    time_limit_s: 30,
   });
 
   document.getElementById('h-status').textContent    = solution.status;
   document.getElementById('h-makespan').textContent  = solution.makespan;
   document.getElementById('h-time').textContent      = solution.solve_time_ms + 'ms';
   document.getElementById('h-conflicts').textContent = solution.conflicts_avoided;
+
+  if (solution.status === 'infeasible') return;
 
   droneManager = new DroneManager(drones, cityScene.scene);
   droneManager.updateFrame(solution.paths, 0);
@@ -114,12 +155,9 @@ async function solve(drones) {
 
 document.getElementById('btn-random').onclick = () =>
   solve(randomDrones(parseInt(slider.value)));
-
-document.getElementById('btn-play').onclick = () => {
-  if (solution && solution.status !== 'infeasible') playing = true;
-};
-document.getElementById('btn-pause').onclick = () => { playing = false; };
-document.getElementById('btn-reset').onclick = () => {
+document.getElementById('btn-play').onclick   = () => { if (solution) playing = true; };
+document.getElementById('btn-pause').onclick  = () => { playing = false; };
+document.getElementById('btn-reset').onclick  = () => {
   playing = false; frame = 0;
   if (droneManager && solution) {
     droneManager.updateFrame(solution.paths, 0);
@@ -134,6 +172,7 @@ document.getElementById('btn-step').onclick = () => {
   }
 };
 
+// ── Render loop ───────────────────────────────────────────────────────────────
 function loop(ts) {
   requestAnimationFrame(loop);
   if (playing && solution && droneManager && ts - lastTick > SPEED_MS) {
@@ -149,7 +188,6 @@ function loop(ts) {
   cityScene.render();
 }
 requestAnimationFrame(loop);
-
 window.addEventListener('resize', () => cityScene.onResize());
 
 // Auto-solve on load

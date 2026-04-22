@@ -39,10 +39,11 @@ class MAPFSolver:
         astar_paths: List[Optional[List[Pos]]] = [
             astar(self.grid, d.start, d.goal) for d in self.drones
         ]
-        # Horizon: max individual A* path length + slack for conflict resolution
+        # Horizon: max individual A* path + slack (agents need to wait for each other)
+        # Slack = N-1 covers the worst case where all agents block one agent sequentially
         astar_lens = [len(p) - 1 for p in astar_paths if p is not None]
         if astar_lens:
-            T = max(astar_lens) + N + 4
+            T = max(astar_lens) + max(N - 1, 3)
         else:
             T = 2 * (self.grid.rows + self.grid.cols) + N
 
