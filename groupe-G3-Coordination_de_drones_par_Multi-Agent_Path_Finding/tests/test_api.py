@@ -1,0 +1,62 @@
+import json
+import pytest
+from api.server import create_app
+
+@pytest.fixture
+def client():
+    app = create_app()
+    app.config["TESTING"] = True
+    with app.test_client() as c:
+        yield c
+
+def test_get_scenarios(client):
+    r = client.get("/scenarios")
+    assert r.status_code == 200
+    data = json.loads(r.data)
+    assert isinstance(data, list)
+    assert any(s["name"] == "city_2d" for s in data)
+
+def test_solve_small(client):
+    payload = {
+        "grid": {"rows": 4, "cols": 4, "alts": 1},
+        "drones": [
+            {"id": 0, "start": [0, 0], "goal": [3, 3]},
+            {"id": 1, "start": [3, 0], "goal": [0, 3]},
+        ],
+        "nofly": [],
+        "buildings": [],
+        "time_limit_s": 15,
+    }
+    r = client.post("/solve", json=payload)
+    assert r.status_code == 200
+    data = json.loads(r.data)
+    assert data["status"] in ("optimal", "feasible")
+    assert "paths" in data
+    assert "0" in data["paths"] and "1" in data["paths"]
+
+def test_solve_with_nofly(client):
+    payload = {
+        "grid": {"rows": 4, "cols": 4, "alts": 1},
+        "drones": [{"id": 0, "start": [0, 0], "goal": [3, 3]}],
+        "nofly": [{"min": [1, 1], "max": [2, 2]}],
+        "buildings": [],
+        "time_limit_s": 15,
+    }
+    r = client.post("/solve", json=payload)
+    assert r.status_code == 200
+    data = json.loads(r.data)
+    assert data["status"] in ("optimal", "feasible")
+    for step in data["paths"]["0"]:
+        assert not (1 <= step[0] <= 2 and 1 <= step[1] <= 2), \
+            f"Path went through no-fly zone: {step}"
+
+def test_solve_returns_solve_time(client):
+    payload = {
+        "grid": {"rows": 4, "cols": 4, "alts": 1},
+        "drones": [{"id": 0, "start": [0, 0], "goal": [3, 3]}],
+        "nofly": [], "buildings": [], "time_limit_s": 15,
+    }
+    r = client.post("/solve", json=payload)
+    data = json.loads(r.data)
+    assert "solve_time_ms" in data
+    assert data["solve_time_ms"] > 0
