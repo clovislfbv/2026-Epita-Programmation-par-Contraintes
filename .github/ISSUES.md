@@ -31,3 +31,15 @@ reference issue numbers in their merge messages.
 - **Discussion:**
   - @56Nights: drafting LOS
   - @Sosolalt (review): heuristic matches expected ranking on toy
+
+## #3 — CATS parser + 18 official seeds
+- **Owner:** @NCH04
+- **Reviewer:** @Sosolalt
+- **Branch:** feat/cats
+- **Status:** open
+- **Acceptance:**
+  - [x] parser handles arbitrary/matching/paths/regions/scheduling
+  - [x] 18 seeds parse and solve OPTIMAL via CP-SAT
+- **Discussion:**
+  - @NCH04: dummy goods reconstruct xor_groups
+  - @Sosolalt (review): parser + dataset land together
