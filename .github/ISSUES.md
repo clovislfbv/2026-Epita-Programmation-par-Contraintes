@@ -48,7 +48,7 @@ reference issue numbers in their merge messages.
 - **Owner:** @Sosolalt
 - **Reviewer:** @56Nights
 - **Branch:** main (direct)
-- **Status:** open
+- **Status:** closed 2026-05-14, reviewed by @56Nights
 - **Acceptance:**
   - [x] welfare reoptimization handles budget
   - [x] research note documenting DSIC failure under hard budgets
