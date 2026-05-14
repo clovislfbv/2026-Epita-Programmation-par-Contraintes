@@ -71,7 +71,7 @@ reference issue numbers in their merge messages.
 - **Owner:** @56Nights
 - **Reviewer:** @Sosolalt
 - **Branch:** feat/notebook
-- **Status:** open
+- **Status:** closed 2026-05-14 by merge of PR #3, reviewed by @Sosolalt
 - **Acceptance:**
   - [x] theory + WDP modeling sections
   - [x] CP-SAT vs MILP benchmarks + figures
