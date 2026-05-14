@@ -60,9 +60,23 @@ reference issue numbers in their merge messages.
 - **Owner:** @NCH04
 - **Reviewer:** @56Nights
 - **Branch:** main (direct)
-- **Status:** open
+- **Status:** closed 2026-05-11, reviewed by @56Nights
 - **Acceptance:**
   - [x] coverage / scaling / gaps documented
 - **Discussion:**
   - @NCH04: scope (5 economic distributions vs L1-L8 out-of-scope)
   - @56Nights (review): limitations clearly stated
+
+## #6 — Notebook full rebuild
+- **Owner:** @56Nights
+- **Reviewer:** @Sosolalt
+- **Branch:** feat/notebook
+- **Status:** open
+- **Acceptance:**
+  - [x] theory + WDP modeling sections
+  - [x] CP-SAT vs MILP benchmarks + figures
+  - [x] CATS, greedy, VCG-budget, audit sections
+  - [x] reproducible via build_notebook.py
+- **Discussion:**
+  - @56Nights: 55 cells, 4 figures
+  - @Sosolalt (review): runs end-to-end on fresh venv
