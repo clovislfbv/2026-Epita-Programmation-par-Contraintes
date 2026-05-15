@@ -62,6 +62,8 @@ def find_first_conflict(paths: Dict[int, List[Pos]]):
     Vertex conflict: ('vertex', agent_a, agent_b, pos, t)
     Edge conflict:   ('edge',   agent_a, agent_b, pos_a, pos_b, t)
     """
+    if not paths:
+        return None
     ids = list(paths.keys())
     max_t = max(len(p) for p in paths.values())
 
@@ -72,9 +74,9 @@ def find_first_conflict(paths: Dict[int, List[Pos]]):
                 pb = paths[b][min(t, len(paths[b]) - 1)]
                 if pa == pb:
                     return ('vertex', a, b, pa, t)
-                if t + 1 < max_t:
-                    pa1 = paths[a][min(t + 1, len(paths[a]) - 1)]
-                    pb1 = paths[b][min(t + 1, len(paths[b]) - 1)]
+                if t + 1 < len(paths[a]) and t + 1 < len(paths[b]):
+                    pa1 = paths[a][t + 1]
+                    pb1 = paths[b][t + 1]
                     if pa == pb1 and pb == pa1:
                         return ('edge', a, b, pa, pb, t)
     return None
