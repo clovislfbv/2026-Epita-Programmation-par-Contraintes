@@ -5,7 +5,7 @@ export class UIManager {
     this._placingNoFly = false;
     this._btnNF = document.getElementById('btn-nofly');
 
-    document.getElementById('btn-random').onclick   = () => onSolve(this._nofly);
+    document.getElementById('btn-solve').onclick  = () => onSolve(this._nofly);
     document.getElementById('btn-play').onclick     = onPlay;
     document.getElementById('btn-pause').onclick    = onPause;
     document.getElementById('btn-reset').onclick    = onReset;

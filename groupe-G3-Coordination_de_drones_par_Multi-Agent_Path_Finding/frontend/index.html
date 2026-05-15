@@ -146,7 +146,6 @@
     color: var(--text-strong);
   }
 
-  /* Solving pulse */
   .solving {
     animation: solving-pulse 1.1s ease-in-out infinite;
     color: var(--accent) !important;
@@ -180,83 +179,6 @@
     background: var(--border-base);
     margin: 0 12px;
     flex-shrink: 0;
-  }
-
-  /* ── Slider group ────────────────────────────────────────────── */
-  #slider-wrap {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    padding: 0 4px;
-  }
-
-  .ctrl-label {
-    font-family: 'Barlow', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    user-select: none;
-  }
-
-  #n-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--accent);
-    min-width: 14px;
-    text-align: right;
-  }
-
-  input[type=range] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 76px;
-    height: 4px;
-    border-radius: 2px;
-    background: linear-gradient(
-      to right,
-      var(--accent) 0%,
-      var(--accent) var(--val, 66.7%),
-      #dde6f0 var(--val, 66.7%),
-      #dde6f0 100%
-    );
-    outline: none;
-    cursor: pointer;
-  }
-
-  input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
-    background: white;
-    border: 2px solid var(--accent);
-    border-radius: 50%;
-    box-shadow: 0 1px 4px rgba(37, 99, 235, 0.3);
-    cursor: pointer;
-    transition: box-shadow 0.15s, transform 0.1s;
-  }
-
-  input[type=range]:hover::-webkit-slider-thumb {
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.14), 0 1px 4px rgba(37, 99, 235, 0.3);
-    transform: scale(1.12);
-  }
-
-  input[type=range]::-moz-range-thumb {
-    width: 15px;
-    height: 15px;
-    background: white;
-    border: 2px solid var(--accent);
-    border-radius: 50%;
-    box-shadow: 0 1px 4px rgba(37, 99, 235, 0.3);
-    cursor: pointer;
-  }
-
-  input[type=range]::-moz-range-track {
-    height: 4px;
-    background: #dde6f0;
-    border-radius: 2px;
   }
 
   /* ── Playback group — segmented ──────────────────────────────── */
@@ -337,22 +259,20 @@
 
   button:active { transform: scale(0.96); }
 
-  /* Randomize / Solve — filled primary CTA */
-  #btn-random {
+  #btn-solve {
     background: var(--accent);
     border-color: var(--accent);
     color: white;
     box-shadow: 0 1px 6px rgba(37, 99, 235, 0.28);
   }
 
-  #btn-random:hover {
+  #btn-solve:hover {
     background: #1d4ed8;
     border-color: #1d4ed8;
     color: white;
     box-shadow: 0 2px 10px rgba(37, 99, 235, 0.38);
   }
 
-  /* No-Fly toggle */
   #btn-nofly {
     border-color: rgba(234, 88, 12, 0.32);
     color: var(--warn);
@@ -373,7 +293,6 @@
     box-shadow: 0 1px 8px rgba(220, 38, 38, 0.18);
   }
 
-  /* Clear NF — minimal icon */
   #btn-clear-nofly {
     padding: 7px 10px;
     min-width: 36px;
@@ -422,21 +341,11 @@
   </div>
   <div class="hud-scenario">
     <span class="hud-scenario-lbl">Scenario</span>
-    <select id="sel-scenario">
-      <option value="random">Random (8×8×2)</option>
-      <option value="cross">Cross — 4 drones</option>
-      <option value="altitude">Altitude race — 6 drones</option>
-    </select>
+    <select id="sel-scenario"></select>
   </div>
 </div>
 
 <div id="controls">
-  <span id="slider-wrap">
-    <label class="ctrl-label">Drones</label>
-    <input type="range" id="n-drones" min="2" max="8" value="6">
-    <span id="n-label">6</span>
-  </span>
-  <div class="ctrl-divider"></div>
   <div class="ctrl-playback">
     <button id="btn-play">&#9654; Play</button>
     <button id="btn-pause">&#9646;&#9646; Pause</button>
@@ -445,7 +354,7 @@
   </div>
   <div class="ctrl-divider"></div>
   <div class="ctrl-actions">
-    <button id="btn-random">&#x1F3B2; Randomize &amp; Solve</button>
+    <button id="btn-solve">&#x26A1; Solve</button>
     <button id="btn-nofly">&#x1F6AB; No-Fly</button>
     <button id="btn-clear-nofly" title="Clear no-fly zones">&#x2715;</button>
   </div>
@@ -454,96 +363,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script type="module">
-import { CityScene } from './scene.js';
+import { CityScene }    from './scene.js';
 import { DroneManager } from './drones.js';
-import { UIManager } from './ui.js';
-import { fetchSolve } from './api.js';
+import { UIManager }    from './ui.js';
+import { fetchScenarios, fetchSolve } from './api.js';
 
-// ── Grid config ──────────────────────────────────────────────────────────────
-const ROWS = 8, COLS = 8, ALTS = 2;
-
-const BUILDINGS = [
-  { row:1, col:1, height:2 }, { row:1, col:2, height:2 },
-  { row:1, col:6, height:1 },
-  { row:3, col:3, height:2 }, { row:3, col:4, height:1 },
-  { row:4, col:3, height:1 },
-  { row:6, col:1, height:1 }, { row:6, col:5, height:2 },
-  { row:6, col:6, height:2 },
-  { row:2, col:6, height:2 },
-];
-
-const blocked = new Set(
-  BUILDINGS.filter(b => b.height >= ALTS).map(b => `${b.row},${b.col}`)
-);
-
-// ── Preset drone configs (8×8×2 grid) ────────────────────────────────────────
-const PRESETS = {
-  cross: [
-    { id:0, start:[0,0,0], goal:[7,7,1] },
-    { id:1, start:[7,0,0], goal:[0,7,1] },
-    { id:2, start:[0,7,1], goal:[7,0,0] },
-    { id:3, start:[7,7,1], goal:[0,0,0] },
-  ],
-  altitude: [
-    { id:0, start:[0,0,0], goal:[7,7,1] },
-    { id:1, start:[7,0,0], goal:[0,7,0] },
-    { id:2, start:[0,7,1], goal:[7,0,1] },
-    { id:3, start:[7,7,0], goal:[0,0,1] },
-    { id:4, start:[0,3,0], goal:[7,5,1] },
-    { id:5, start:[7,4,1], goal:[0,2,0] },
-  ],
-};
-
-function randomDrones(n) {
-  const free = [];
-  for (let r = 0; r < ROWS; r++)
-    for (let c = 0; c < COLS; c++)
-      if (!blocked.has(`${r},${c}`)) free.push([r, c]);
-
-  for (let i = free.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [free[i], free[j]] = [free[j], free[i]];
-  }
-
-  return free.slice(0, n).map((cell, i) => ({
-    id: i,
-    start: [cell[0], cell[1], i % 2],
-    goal:  [free[n + i][0], free[n + i][1], (i + 1) % 2],
-  }));
-}
-
-// ── Three.js setup ────────────────────────────────────────────────────────────
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 const cityScene = new CityScene(renderer);
-cityScene.addBuildings(BUILDINGS);
-
-let droneManager = null, solution = null, currentDrones = [];
+let droneManager = null, solution = null, currentScenario = null;
 let playing = false, frame = 0, lastTick = 0;
 const SPEED_MS = 380;
 
 // ── UIManager ─────────────────────────────────────────────────────────────────
 const ui = new UIManager({
-  onSolve: (nofly) => {
-    const sc = document.getElementById('sel-scenario').value;
-    const drones = sc === 'random'
-      ? randomDrones(parseInt(document.getElementById('n-drones').value))
-      : PRESETS[sc];
-    solve(drones, nofly);
-  },
-  onPlay:  () => { if (solution) playing = true; },
-  onPause: () => { playing = false; },
-  onReset: () => {
+  onSolve:      (nofly) => { if (currentScenario) solve(currentScenario, nofly); },
+  onPlay:       () => { if (solution) playing = true; },
+  onPause:      () => { playing = false; },
+  onReset:      () => {
     playing = false; frame = 0;
     if (droneManager && solution) {
       droneManager.resetForReplay(solution.paths);
       ui.updateFrame(0, solution.makespan);
     }
   },
-  onStep: () => {
+  onStep:       () => {
     if (solution && droneManager && frame < solution.makespan) {
       frame++;
       droneManager.updateFrame(solution.paths, frame);
@@ -554,46 +401,49 @@ const ui = new UIManager({
   onClearNoFly: ()   => cityScene.clearNoFly(),
 });
 
-// ── Scenario selector ─────────────────────────────────────────────────────────
-document.getElementById('sel-scenario').onchange = () => {
-  const isRandom = document.getElementById('sel-scenario').value === 'random';
-  document.getElementById('slider-wrap').style.display = isRandom ? '' : 'none';
-  document.getElementById('btn-random').innerHTML = isRandom
-    ? '&#x1F3B2; Randomize &amp; Solve'
-    : '&#x26A1; Solve Scenario';
-};
-
-// ── Drone slider ──────────────────────────────────────────────────────────────
-function refreshSlider(el) {
-  const pct = ((el.value - el.min) / (el.max - el.min)) * 100;
-  el.style.setProperty('--val', pct.toFixed(1) + '%');
+// ── Scenario loading ──────────────────────────────────────────────────────────
+async function init() {
+  const scenarios = await fetchScenarios();
+  const select = document.getElementById('sel-scenario');
+  for (const s of scenarios) {
+    const opt = document.createElement('option');
+    opt.value = s.name;
+    opt.textContent = s.description;
+    select.appendChild(opt);
+  }
+  select.onchange = () => {
+    const s = scenarios.find(s => s.name === select.value);
+    if (s) loadScenario(s);
+  };
+  if (scenarios.length > 0) loadScenario(scenarios[0]);
 }
-const sliderEl = document.getElementById('n-drones');
-refreshSlider(sliderEl);
-document.getElementById('n-drones').oninput = () => {
-  document.getElementById('n-label').textContent = document.getElementById('n-drones').value;
-  refreshSlider(sliderEl);
-};
+
+function loadScenario(scenario) {
+  currentScenario = scenario;
+  const { rows, cols, alts } = scenario.grid;
+  cityScene.resetGrid(rows, cols, alts);
+  cityScene.clearBuildings();
+  cityScene.addBuildings(scenario.buildings || []);
+  solve(scenario);
+}
 
 // ── Solve ─────────────────────────────────────────────────────────────────────
-async function solve(drones, nofly = []) {
+async function solve(scenario, nofly = []) {
   playing = false; frame = 0; solution = null;
-  currentDrones = drones;
 
   const statusEl = document.getElementById('h-status');
   statusEl.textContent = 'Solving…';
   statusEl.classList.add('solving');
-  document.getElementById('h-makespan').textContent  = '—';
-  document.getElementById('h-time').textContent      = '—';
-  document.getElementById('h-conflicts').textContent = '—';
-  document.getElementById('h-frame').textContent     = '—';
+  ['h-makespan', 'h-time', 'h-conflicts', 'h-frame'].forEach(id => {
+    document.getElementById(id).textContent = '—';
+  });
 
   if (droneManager) { droneManager.dispose(cityScene.scene); droneManager = null; }
 
   solution = await fetchSolve({
-    grid: { rows: ROWS, cols: COLS, alts: ALTS },
-    drones,
-    buildings: BUILDINGS,
+    grid:      scenario.grid,
+    drones:    scenario.drones,
+    buildings: scenario.buildings || [],
     nofly,
     time_limit_s: 30,
   });
@@ -606,17 +456,18 @@ async function solve(drones, nofly = []) {
 
   if (solution.status === 'infeasible') return;
 
-  droneManager = new DroneManager(drones, cityScene.scene);
+  droneManager = new DroneManager(scenario.drones, cityScene.scene);
   droneManager.updateFrame(solution.paths, 0, true);
   ui.updateFrame(0, solution.makespan);
 }
 
-// ── No-fly zone Raycaster ─────────────────────────────────────────────────────
-const raycaster = new THREE.Raycaster();
+// ── No-fly Raycaster ──────────────────────────────────────────────────────────
+const raycaster   = new THREE.Raycaster();
 const groundPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
 
 renderer.domElement.addEventListener('click', (e) => {
-  if (!ui.isPlacingNoFly()) return;
+  if (!ui.isPlacingNoFly() || !currentScenario) return;
+  const { rows, cols } = currentScenario.grid;
   const mouse = new THREE.Vector2(
     (e.clientX / window.innerWidth) * 2 - 1,
     -(e.clientY / window.innerHeight) * 2 + 1
@@ -625,7 +476,7 @@ renderer.domElement.addEventListener('click', (e) => {
   const pt = new THREE.Vector3();
   if (raycaster.ray.intersectPlane(groundPlane, pt)) {
     const row = Math.floor(pt.z), col = Math.floor(pt.x);
-    if (row >= 0 && col >= 0 && row < ROWS && col < COLS)
+    if (row >= 0 && col >= 0 && row < rows && col < cols)
       ui.addNoFlyFromClick(row, col);
   }
 });
@@ -648,8 +499,7 @@ function loop(ts) {
 requestAnimationFrame(loop);
 window.addEventListener('resize', () => cityScene.onResize());
 
-// Auto-solve on load
-solve(randomDrones(parseInt(document.getElementById('n-drones').value)));
+init();
 </script>
 </body>
 </html>
