@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from solver.grid import Grid
 from solver.mapf import Drone, MAPFSolver
-from solver.scenarios import list_scenarios
+from api.scenario_loader import load_all
 
 
 def create_app() -> Flask:
@@ -11,7 +11,7 @@ def create_app() -> Flask:
 
     @app.route("/scenarios", methods=["GET"])
     def scenarios():
-        return jsonify(list_scenarios())
+        return jsonify(load_all())
 
     @app.route("/solve", methods=["POST"])
     def solve():

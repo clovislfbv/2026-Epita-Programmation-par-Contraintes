@@ -15,7 +15,8 @@ def test_get_scenarios(client):
     assert r.status_code == 200
     data = json.loads(r.data)
     assert isinstance(data, list)
-    assert any(s["name"] == "city_2d" for s in data)
+    assert any(s["name"] == "micro_flat" for s in data)
+    assert len(data) == 5
 
 def test_solve_small(client):
     payload = {
