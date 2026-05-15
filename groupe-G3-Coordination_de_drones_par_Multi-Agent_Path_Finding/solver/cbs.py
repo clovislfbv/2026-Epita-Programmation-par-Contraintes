@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from typing import Dict, List, Optional, Set, Tuple
 from .grid import Grid, Pos
 from .mapf import Drone, Solution
-from .astar import heuristic
+from .astar import astar, heuristic
 
 # A vertex constraint: agent must not be at pos at time t
 Constraint = Tuple[Pos, int]
@@ -83,7 +83,10 @@ def find_first_conflict(paths: Dict[int, List[Pos]]):
 
 
 def _near_passes(paths: Dict[int, List[Pos]]) -> int:
+    """Count (agent-pair, timestep) instances where two agents are in adjacent cells."""
     ids = list(paths.keys())
+    if not ids:
+        return 0
     max_t = max(len(p) for p in paths.values())
     count = 0
     for t in range(max_t):
@@ -126,7 +129,6 @@ class _CTNode:
 
 
 def _compute_max_t(grid: Grid, drones: List[Drone]) -> int:
-    from .astar import astar
     lens = [len(astar(grid, d.start, d.goal) or [(None,)]) - 1 for d in drones]
     valid = [l for l in lens if l >= 0]
     return (max(valid) if valid else 0) + len(drones) + 5

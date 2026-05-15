@@ -1,6 +1,7 @@
 import pytest
 from solver.grid import Grid
-from solver.cbs import astar_spacetime, find_first_conflict
+from solver.mapf import Drone
+from solver.cbs import astar_spacetime, find_first_conflict, CBSSolver
 
 
 def test_spacetime_no_constraints():
@@ -41,10 +42,6 @@ def test_find_edge_conflict():
 def test_no_conflict():
     paths = {0: [(0, 0), (1, 0), (2, 0)], 1: [(3, 3), (3, 2), (3, 1)]}
     assert find_first_conflict(paths) is None
-
-
-from solver.mapf import Drone
-from solver.cbs import CBSSolver
 
 
 def test_cbs_single_drone():
