@@ -272,6 +272,64 @@
           </fieldset>
 
           <fieldset class="block">
+            <legend>Diversité et équité</legend>
+            <p class="hint">
+              Les catégories ci-dessous sont des repères pour documenter un parcours. Elles ne sont ni obligatoires ni exhaustives.
+              Exemple : `Première génération` signifie premier accès aux études supérieures ou à un métier qualifié dans la famille proche.
+            </p>
+            <div class="grid">
+              <label>
+                Genre déclaré
+                <select name="diversity_gender">
+                  <option value="undisclosed">Non renseigné</option>
+                  <option value="female">Femme</option>
+                  <option value="male">Homme</option>
+                  <option value="non_binary">Non-binaire</option>
+                  <option value="other">Autre</option>
+                </select>
+              </label>
+              <div class="full-width field-group">
+                <span>Catégories de parcours</span>
+                <span class="hint">Sélection multiple possible. Ces libellés sont utilisés ensuite dans le scoring et les quotas.</span>
+                <div class="checkbox-group" data-group="diversity_self_declared_tags">
+                  <label class="choice-chip">
+                    <input type="checkbox" name="diversity_self_declared_tags" value="first_generation" />
+                    <span>Première génération</span>
+                  </label>
+                  <label class="choice-chip">
+                    <input type="checkbox" name="diversity_self_declared_tags" value="reconversion" />
+                    <span>Reconversion</span>
+                  </label>
+                  <label class="choice-chip">
+                    <input type="checkbox" name="diversity_self_declared_tags" value="rqth" />
+                    <span>RQTH / handicap déclaré</span>
+                  </label>
+                  <label class="choice-chip">
+                    <input type="checkbox" name="diversity_self_declared_tags" value="international" />
+                    <span>Parcours international</span>
+                  </label>
+                  <label class="choice-chip">
+                    <input type="checkbox" name="diversity_self_declared_tags" value="caregiver" />
+                    <span>Aidance / proche aidant</span>
+                  </label>
+                  <label class="choice-chip">
+                    <input type="checkbox" name="diversity_self_declared_tags" value="rural_background" />
+                    <span>Origine rurale</span>
+                  </label>
+                </div>
+              </div>
+              <label class="full-width">
+                Autres tags personnalisés
+                <input name="diversity_custom_tags" placeholder="exemple : veteran, parent_isole, neuroatypie" />
+              </label>
+              <label class="full-width">
+                Notes d'équité
+                <textarea name="diversity_equity_notes" rows="3" placeholder="Contraintes, contexte ou éléments déclarés utiles pour une lecture équitable."></textarea>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="block">
             <legend>Disponibilités</legend>
             <div class="grid">
               <label>
@@ -465,7 +523,67 @@
                 Potentiel d'évolution
                 <textarea name="target_profile_growth_potential" rows="4"></textarea>
               </label>
+              <label class="full-width">
+                Représentation de genre
+                <select name="target_profile_gender_goal">
+                  <option value="">Aucun objectif explicite</option>
+                  <option value="female">Favoriser au moins une femme</option>
+                  <option value="male">Favoriser au moins un homme</option>
+                  <option value="non_binary">Favoriser au moins une personne non-binaire</option>
+                </select>
+              </label>
+              <label>
+                Importance de l'objectif de genre
+                <select name="target_profile_gender_goal_priority">
+                  <option value="preferred">Souhaitable</option>
+                  <option value="required">Requis</option>
+                </select>
+              </label>
+              <div class="full-width field-group">
+                <span>Parcours à valoriser</span>
+                <span class="hint">Sélectionnez les profils que vous voulez davantage ouvrir ou encourager sur ce poste.</span>
+                <div class="checkbox-group" data-group="target_profile_diversity_tags">
+                  <label class="choice-chip">
+                    <input type="checkbox" name="target_profile_diversity_tags" value="first_generation" />
+                    <span>Première génération</span>
+                  </label>
+                  <label class="choice-chip">
+                    <input type="checkbox" name="target_profile_diversity_tags" value="reconversion" />
+                    <span>Reconversion</span>
+                  </label>
+                  <label class="choice-chip">
+                    <input type="checkbox" name="target_profile_diversity_tags" value="rqth" />
+                    <span>RQTH / handicap déclaré</span>
+                  </label>
+                  <label class="choice-chip">
+                    <input type="checkbox" name="target_profile_diversity_tags" value="international" />
+                    <span>Parcours international</span>
+                  </label>
+                  <label class="choice-chip">
+                    <input type="checkbox" name="target_profile_diversity_tags" value="caregiver" />
+                    <span>Aidance / proche aidant</span>
+                  </label>
+                  <label class="choice-chip">
+                    <input type="checkbox" name="target_profile_diversity_tags" value="rural_background" />
+                    <span>Origine rurale</span>
+                  </label>
+                </div>
+              </div>
+              <label>
+                Importance des parcours sélectionnés
+                <select name="target_profile_diversity_tags_priority">
+                  <option value="preferred">Souhaitable</option>
+                  <option value="required">Requis</option>
+                </select>
+              </label>
+              <label class="full-width">
+                Autres parcours à valoriser
+                <input name="target_profile_diversity_custom_tags" placeholder="exemple : veteran, parent_isole, neuroatypie" />
+              </label>
             </div>
+            <p class="hint">
+              L'application transforme automatiquement ces choix en objectifs de diversité / inclusion utilisés par le scoring et l'affectation optimale.
+            </p>
           </fieldset>
 
           <div class="actions">
@@ -535,7 +653,7 @@
                   <span>Contraintes pratiques</span>
                   <strong data-slider-value-for="practical_fit">100%</strong>
                 </span>
-                <span class="weight-slider-meta">Localisation, contrat, salaire</span>
+                <span class="weight-slider-meta">Localisation, disponibilité, contrat, salaire</span>
                 <input
                   class="weight-slider"
                   data-weight-group="practical_fit"
@@ -583,10 +701,26 @@
                   <span>Compétences</span>
                   <strong data-slider-value-for="skills_match">100%</strong>
                 </span>
-                <span class="weight-slider-meta">Compétences obligatoires et souhaitées</span>
+                <span class="weight-slider-meta">Langues, compétences obligatoires et souhaitées</span>
                 <input
                   class="weight-slider"
                   data-weight-group="skills_match"
+                  type="range"
+                  min="0"
+                  max="200"
+                  step="5"
+                  value="100"
+                />
+              </label>
+              <label class="weight-slider-card">
+                <span class="weight-slider-head">
+                  <span>Diversité et équité</span>
+                  <strong data-slider-value-for="diversity_equity">100%</strong>
+                </span>
+                <span class="weight-slider-meta">Contribution aux objectifs de diversité et d'équité du poste</span>
+                <input
+                  class="weight-slider"
+                  data-weight-group="diversity_equity"
                   type="range"
                   min="0"
                   max="200"
@@ -615,11 +749,18 @@
 
           <div class="actions">
             <button type="button" id="run-compatibility" class="primary-action">Calculer les compatibilités</button>
+            <button type="button" id="run-assignment" class="secondary">Affectation optimale</button>
             <p id="compatibility-status" class="status" aria-live="polite"></p>
+            <p id="assignment-status" class="status" aria-live="polite"></p>
+          </div>
+
+          <div class="results-nav" aria-label="Navigation des résultats">
+            <button type="button" id="jump-to-compatibility-results" class="secondary">Voir les scores</button>
+            <button type="button" id="jump-to-assignment-results" class="secondary">Voir l'affectation</button>
           </div>
         </section>
 
-        <section class="card list-card">
+        <section class="card list-card" id="compatibility-results-section">
           <div class="panel-banner panel-banner-compact">
             <p class="section-kicker panel-banner-kicker">Lecture des scores</p>
             <h2>Résultats détaillés</h2>
@@ -629,6 +770,18 @@
             <p id="compatibility-meta" class="status"></p>
           </div>
           <div id="compatibility-results" class="record-list"></div>
+        </section>
+
+        <section class="card list-card" id="assignment-results-section">
+          <div class="panel-banner panel-banner-compact">
+            <p class="section-kicker panel-banner-kicker">Décision CP-SAT</p>
+            <h2>Affectation optimale</h2>
+            <p class="panel-banner-note">Le solveur retient les couples éligibles qui maximisent le score total sous contraintes de capacité.</p>
+          </div>
+          <div class="section-header">
+            <p id="assignment-meta" class="status"></p>
+          </div>
+          <div id="assignment-results" class="record-list"></div>
         </section>
       </section>
     </main>

@@ -334,6 +334,9 @@ h3 {
     rgba(255, 253, 249, 0.72);
   box-shadow: var(--shadow-md);
   animation: reveal-up 720ms ease both;
+  position: sticky;
+  top: 0.75rem;
+  z-index: 5;
 }
 
 .tabs-caption {
@@ -486,6 +489,10 @@ button.secondary:hover {
   align-self: start;
 }
 
+#compatibility-panel .list-card {
+  position: static;
+}
+
 .section-header {
   display: flex;
   align-items: flex-start;
@@ -517,7 +524,13 @@ button.secondary:hover {
   max-width: none;
   color: var(--muted);
   line-height: 1.5;
-  white-space: nowrap;
+  white-space: normal;
+}
+
+.results-nav {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .block {
@@ -1076,6 +1089,12 @@ textarea {
   font-weight: 800;
 }
 
+.overall-score-value.score-loading,
+.criterion-score-value.score-loading {
+  opacity: 0.55;
+  animation: score-loading-pulse 820ms ease-in-out infinite;
+}
+
 .overall-score-label {
   position: relative;
   z-index: 1;
@@ -1106,6 +1125,18 @@ textarea {
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 0.75rem;
   margin-top: 1rem;
+}
+
+.assignment-block + .assignment-block {
+  margin-top: 1rem;
+}
+
+.assignment-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .criterion-pill {
@@ -1350,6 +1381,16 @@ textarea {
 
 .score-animated {
   animation: score-pop 420ms ease;
+}
+
+@keyframes score-loading-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.8;
+  }
 }
 
 @media (max-width: 1120px) {

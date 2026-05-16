@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from typing import Iterable, List, Sequence, Tuple
 
 from app.embedding_client import EmbeddingClient, fuzzy_token_overlap, lexical_similarity, normalize_text, tokenize
@@ -11,6 +11,7 @@ from app.models import (
     CompatibilityResponse,
     CriterionDetail,
     CriterionScore,
+    JobDiversityConstraint,
     JobProfile,
     PairCompatibility,
     SkillEntry,
@@ -19,12 +20,15 @@ from app.models import (
 
 DEFAULT_CRITERION_WEIGHTS = {
     "location": 0.1,
+    "availability": 0.05,
     "contract": 0.08,
     "salary": 0.08,
     "education": 0.08,
     "experience": 0.12,
+    "languages": 0.06,
     "required_skills": 0.2,
     "desired_skills": 0.1,
+    "diversity_equity": 0.07,
     "role_alignment": 0.12,
     "motivation": 0.1,
     "culture": 0.05,
@@ -63,6 +67,23 @@ IGNORED_SHARED_TOKENS = {
 }
 
 SHORT_TOKEN_WHITELIST = {"ai", "bi", "crm", "erp", "pmo", "qa", "rh", "sql", "ux", "ui"}
+
+GENDER_LABELS = {
+    "female": "Femme",
+    "male": "Homme",
+    "non_binary": "Non-binaire",
+    "other": "Autre",
+    "undisclosed": "Non renseigné",
+}
+
+DIVERSITY_TAG_LABELS = {
+    "first_generation": "Première génération",
+    "reconversion": "Reconversion",
+    "rqth": "RQTH / handicap déclaré",
+    "international": "Parcours international",
+    "caregiver": "Aidance / proche aidant",
+    "rural_background": "Origine rurale",
+}
 
 DEGREE_HINTS = [
     (5, ("doctorat", "phd", "doctorate", "thèse", "these")),
@@ -153,12 +174,15 @@ class CompatibilityScorer:
         resolved_weights = self._resolve_criterion_weights(criterion_weights)
         criteria = [
             self._score_location(candidate, job, resolved_weights),
+            self._score_availability(candidate, job, resolved_weights),
             self._score_contract(candidate, job, resolved_weights),
             self._score_salary(candidate, job, resolved_weights),
             self._score_education(candidate, job, resolved_weights),
             self._score_experience(candidate, job, resolved_weights),
+            self._score_languages(candidate, job, resolved_weights),
             self._score_required_skills(candidate, job, resolved_weights),
             self._score_desired_skills(candidate, job, resolved_weights),
+            self._score_diversity_equity(candidate, job, resolved_weights),
             self._score_role_alignment(candidate, job, resolved_weights),
             self._score_motivation(candidate, job, resolved_weights),
             self._score_culture(candidate, job, resolved_weights),
@@ -292,6 +316,60 @@ class CompatibilityScorer:
             ("Correspondance", "Oui" if score == 100 else "Non"),
         ]
         return self._criterion("contract", "Compatibilité contrat", score, "structured", explanation, criterion_weights, details)
+
+    def _score_availability(
+        self,
+        candidate: CandidateProfile,
+        job: JobProfile,
+        criterion_weights: dict[str, float],
+    ) -> CriterionScore:
+        candidate_start = self._parse_iso_date(candidate.availability.start_date)
+        job_start = self._parse_iso_date(job.conditions.start_date)
+
+        if not candidate_start or not job_start:
+            explanation = "La date de début du candidat ou du poste n'est pas suffisamment renseignée; le critère reste neutre."
+            return self._criterion(
+                "availability",
+                "Disponibilité",
+                70,
+                "structured",
+                explanation,
+                criterion_weights,
+                [
+                    ("Début candidat", candidate.availability.start_date or "Non renseigné"),
+                    ("Début poste", job.conditions.start_date or "Non renseigné"),
+                    ("Rythme candidat", candidate.availability.schedule),
+                ],
+            )
+
+        day_gap = (candidate_start - job_start).days
+        if day_gap <= 0:
+            score = 100
+            explanation = "Le candidat peut démarrer à la date attendue ou plus tôt."
+        elif day_gap <= 14:
+            score = 80
+            explanation = "Le candidat démarre légèrement après la date cible, mais le décalage reste modéré."
+        elif day_gap <= 45:
+            score = 55
+            explanation = "Le décalage de disponibilité existe et peut nécessiter un arbitrage côté poste."
+        else:
+            score = 20
+            explanation = "La disponibilité du candidat est nettement plus tardive que la date visée par le poste."
+
+        return self._criterion(
+            "availability",
+            "Disponibilité",
+            score,
+            "structured",
+            explanation,
+            criterion_weights,
+            [
+                ("Début candidat", candidate.availability.start_date or "Non renseigné"),
+                ("Début poste", job.conditions.start_date or "Non renseigné"),
+                ("Décalage", f"{day_gap:+d} jour(s)"),
+                ("Rythme candidat", candidate.availability.schedule),
+            ],
+        )
 
     def _score_salary(
         self,
@@ -427,6 +505,47 @@ class CompatibilityScorer:
         ]
         return self._criterion("experience", "Compatibilité expérience", score, "structured", explanation, criterion_weights, details)
 
+    def _score_languages(
+        self,
+        candidate: CandidateProfile,
+        job: JobProfile,
+        criterion_weights: dict[str, float],
+    ) -> CriterionScore:
+        required_languages = [language for language in job.requirements.languages if language.strip()]
+        if not required_languages:
+            explanation = "Le poste ne précise pas d'exigence linguistique explicite."
+            return self._criterion(
+                "languages",
+                "Langues",
+                100,
+                "structured",
+                explanation,
+                criterion_weights,
+                [("Langues requises", "Aucune")],
+            )
+
+        candidate_languages = [skill.name for skill in candidate.skills if skill.category == "language"]
+        matched_languages, missing_languages = self._split_skill_matches(candidate_languages, required_languages)
+        coverage_ratio = len(matched_languages) / len(required_languages) if required_languages else 1.0
+        score = 100 * coverage_ratio
+        explanation = (
+            "Le score mesure la couverture explicite des langues demandées par le poste parmi les langues déclarées par le candidat."
+        )
+        return self._criterion(
+            "languages",
+            "Langues",
+            score,
+            "structured",
+            explanation,
+            criterion_weights,
+            [
+                ("Langues requises", list_to_text(required_languages)),
+                ("Langues retrouvées", list_to_text(matched_languages) or "Aucune"),
+                ("Langues manquantes", list_to_text(missing_languages) or "Aucune"),
+                ("Couverture", format_ratio(coverage_ratio)),
+            ],
+        )
+
     def _score_required_skills(
         self,
         candidate: CandidateProfile,
@@ -524,6 +643,79 @@ class CompatibilityScorer:
             "Compétences souhaitées",
             score,
             self._hybrid_source(insight.source),
+            explanation,
+            criterion_weights,
+            details,
+        )
+
+    def _score_diversity_equity(
+        self,
+        candidate: CandidateProfile,
+        job: JobProfile,
+        criterion_weights: dict[str, float],
+    ) -> CriterionScore:
+        rules = [rule for rule in job.target_profile.diversity_constraints if rule.value.strip()]
+        if not rules:
+            explanation = "Le poste ne déclare aucun objectif explicite de diversité ou d'équité; ce critère n'est donc pas discriminant."
+            return self._criterion(
+                "diversity_equity",
+                "Diversité et équité",
+                100,
+                "structured",
+                explanation,
+                criterion_weights,
+                [
+                    ("Objectifs du poste", "Aucun objectif explicite"),
+                    ("Profil déclaré candidat", self._candidate_diversity_snapshot(candidate)),
+                ],
+            )
+
+        required_rules = [rule for rule in rules if rule.priority == "required"]
+        preferred_rules = [rule for rule in rules if rule.priority != "required"]
+        matched_required = [rule for rule in required_rules if self._candidate_matches_diversity_rule(candidate, rule)]
+        matched_preferred = [rule for rule in preferred_rules if self._candidate_matches_diversity_rule(candidate, rule)]
+
+        required_component = (
+            len(matched_required) / len(required_rules)
+            if required_rules
+            else None
+        )
+        preferred_component = (
+            len(matched_preferred) / len(preferred_rules)
+            if preferred_rules
+            else None
+        )
+
+        if required_component is not None and preferred_component is not None:
+            score = 100 * ((0.8 * required_component) + (0.2 * preferred_component))
+            formula = "80 % couverture requise + 20 % couverture préférée"
+        elif required_component is not None:
+            score = 100 * required_component
+            formula = "100 % couverture requise"
+        elif preferred_component is not None:
+            score = 100 * preferred_component
+            formula = "100 % couverture préférée"
+        else:
+            score = 0
+            formula = "Aucune règle exploitable"
+
+        explanation = (
+            "Le score mesure la contribution potentielle du candidat aux objectifs de diversité et d'équité déclarés par le poste. "
+            "Les objectifs requis pèsent beaucoup plus que les objectifs préférés, et aucun point n'est donné gratuitement quand aucune règle n'est satisfaite."
+        )
+        details = [
+            ("Profil déclaré candidat", self._candidate_diversity_snapshot(candidate)),
+            ("Règles requises compatibles", f"{len(matched_required)}/{len(required_rules)}" if required_rules else "Aucune"),
+            ("Règles préférées compatibles", f"{len(matched_preferred)}/{len(preferred_rules)}" if preferred_rules else "Aucune"),
+            ("Objectifs du poste", " | ".join(self._format_diversity_rule(rule) for rule in rules)),
+            ("Compatibilités trouvées", " | ".join(self._format_diversity_rule(rule) for rule in [*matched_required, *matched_preferred]) or "Aucune"),
+            ("Formule", formula),
+        ]
+        return self._criterion(
+            "diversity_equity",
+            "Diversité et équité",
+            score,
+            "structured",
             explanation,
             criterion_weights,
             details,
@@ -738,15 +930,23 @@ class CompatibilityScorer:
         penalties: List[CompatibilityPenalty] = []
         lookup = {criterion.key: criterion for criterion in criteria}
 
-        if lookup["location"].score == 0:
+        if lookup["location"].weight > 0 and lookup["location"].score == 0:
             penalties.append(
                 CompatibilityPenalty(label="Localisation bloquante pour ce poste", factor=0.65)
             )
-        if lookup["required_skills"].score < 45:
+        if lookup["availability"].weight > 0 and lookup["availability"].score < 35:
+            penalties.append(
+                CompatibilityPenalty(label="Disponibilité trop éloignée du besoin du poste", factor=0.85)
+            )
+        if lookup["languages"].weight > 0 and lookup["languages"].score < 50:
+            penalties.append(
+                CompatibilityPenalty(label="Couverture linguistique insuffisante", factor=0.9)
+            )
+        if lookup["required_skills"].weight > 0 and lookup["required_skills"].score < 45:
             penalties.append(
                 CompatibilityPenalty(label="Couverture insuffisante des compétences obligatoires", factor=0.8)
             )
-        if lookup["contract"].score < 40:
+        if lookup["contract"].weight > 0 and lookup["contract"].score < 40:
             penalties.append(
                 CompatibilityPenalty(label="Type de contrat peu compatible", factor=0.9)
             )
@@ -757,8 +957,10 @@ class CompatibilityScorer:
         criteria: Sequence[CriterionScore],
         penalties: Sequence[CompatibilityPenalty],
     ) -> str:
-        top_criteria = sorted(criteria, key=lambda item: item.score, reverse=True)[:2]
-        low_criteria = sorted(criteria, key=lambda item: item.score)[:2]
+        active_criteria = [criterion for criterion in criteria if criterion.weight > 0]
+        summary_scope = active_criteria or list(criteria)
+        top_criteria = sorted(summary_scope, key=lambda item: item.score, reverse=True)[:2]
+        low_criteria = sorted(summary_scope, key=lambda item: item.score)[:2]
         strengths = ", ".join(f"{item.label.lower()} ({item.score}%)" for item in top_criteria)
         weaknesses = ", ".join(f"{item.label.lower()} ({item.score}%)" for item in low_criteria)
         if penalties:
@@ -782,6 +984,14 @@ class CompatibilityScorer:
             return {key: value / fallback_total for key, value in DEFAULT_CRITERION_WEIGHTS.items()}
 
         return {key: value / total_weight for key, value in weights.items()}
+
+    def _parse_iso_date(self, raw_value: str | None) -> date | None:
+        if not raw_value:
+            return None
+        try:
+            return date.fromisoformat(raw_value)
+        except ValueError:
+            return None
 
     def _desired_skill_level_ratio(
         self,
@@ -818,6 +1028,41 @@ class CompatibilityScorer:
             else:
                 missing.append(desired.name)
         return matches, missing
+
+    def _candidate_matches_diversity_rule(
+        self,
+        candidate: CandidateProfile,
+        rule: JobDiversityConstraint,
+    ) -> bool:
+        normalized_value = normalize_text(rule.value)
+        if rule.dimension == "gender":
+            return normalize_text(candidate.diversity.gender) == normalized_value
+        candidate_tags = {normalize_text(tag) for tag in candidate.diversity.self_declared_tags if tag.strip()}
+        return normalized_value in candidate_tags
+
+    def _candidate_diversity_snapshot(self, candidate: CandidateProfile) -> str:
+        gender_label = GENDER_LABELS.get(candidate.diversity.gender, candidate.diversity.gender)
+        tags = list_to_text(self._diversity_value_label("tag", tag) for tag in candidate.diversity.self_declared_tags) or "aucun tag déclaré"
+        return f"genre {gender_label} • tags {tags}"
+
+    def _format_diversity_rule(self, rule: JobDiversityConstraint) -> str:
+        thresholds: List[str] = []
+        if rule.minimum_count > 0:
+            thresholds.append(f"min {rule.minimum_count}")
+        if rule.target_count is not None:
+            thresholds.append(f"cible {rule.target_count}")
+        if rule.maximum_count is not None:
+            thresholds.append(f"max {rule.maximum_count}")
+        threshold_text = ", ".join(thresholds) if thresholds else "sans seuil chiffré"
+        priority_label = "requis" if rule.priority == "required" else "préféré"
+        value_label = self._diversity_value_label(rule.dimension, rule.value)
+        dimension_label = "genre" if rule.dimension == "gender" else "tag"
+        return f"{priority_label} {dimension_label} {value_label} ({threshold_text})"
+
+    def _diversity_value_label(self, dimension: str, value: str) -> str:
+        if dimension == "gender":
+            return GENDER_LABELS.get(value, value)
+        return DIVERSITY_TAG_LABELS.get(value, value.replace("_", " "))
 
     def _split_skill_matches(
         self,

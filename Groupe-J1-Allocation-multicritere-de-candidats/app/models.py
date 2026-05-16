@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field
 
 WorkMode = Literal["on_site", "hybrid", "remote"]
 ContractType = Literal["cdi", "cdd", "internship", "freelance", "apprenticeship", "other"]
+GenderIdentity = Literal["female", "male", "non_binary", "other", "undisclosed"]
 
 
 class SkillEntry(BaseModel):
@@ -54,6 +55,12 @@ class CandidateAvailability(BaseModel):
     constraints: str = Field(default="", max_length=1000)
 
 
+class CandidateDiversityProfile(BaseModel):
+    gender: GenderIdentity = "undisclosed"
+    self_declared_tags: List[str] = Field(default_factory=list)
+    equity_notes: str = Field(default="", max_length=1000)
+
+
 class CandidateProfileCreate(BaseModel):
     full_name: str = Field(..., min_length=1, max_length=120)
     email: Optional[str] = Field(default=None, max_length=200)
@@ -66,6 +73,7 @@ class CandidateProfileCreate(BaseModel):
     motivation: CandidateMotivation
     potential: CandidatePotential = Field(default_factory=CandidatePotential)
     availability: CandidateAvailability = Field(default_factory=CandidateAvailability)
+    diversity: CandidateDiversityProfile = Field(default_factory=CandidateDiversityProfile)
 
 
 class CandidateProfile(CandidateProfileCreate):
@@ -100,10 +108,21 @@ class JobConditions(BaseModel):
     capacity: int = Field(default=1, ge=1, le=1000)
 
 
+class JobDiversityConstraint(BaseModel):
+    dimension: Literal["gender", "tag"]
+    value: str = Field(..., min_length=1, max_length=120)
+    minimum_count: int = Field(default=0, ge=0, le=1000)
+    maximum_count: Optional[int] = Field(default=None, ge=0, le=1000)
+    target_count: Optional[int] = Field(default=None, ge=0, le=1000)
+    priority: Literal["required", "preferred"] = "preferred"
+    rationale: str = Field(default="", max_length=500)
+
+
 class JobTargetProfile(BaseModel):
     expected_traits: List[str] = Field(default_factory=list)
     growth_potential: str = Field(default="", max_length=1000)
     learning_expectations: List[str] = Field(default_factory=list)
+    diversity_constraints: List[JobDiversityConstraint] = Field(default_factory=list)
 
 
 class JobProfileCreate(BaseModel):
@@ -171,3 +190,44 @@ class CompatibilityResponse(BaseModel):
     embedding_mode: Literal["remote", "fallback"]
     embedding_model: str
     results: List[PairCompatibility]
+
+
+class AssignmentRequest(BaseModel):
+    candidate_ids: List[str] = Field(default_factory=list)
+    job_ids: List[str] = Field(default_factory=list)
+    criterion_weights: dict[str, float] = Field(default_factory=dict)
+    minimum_score: int = Field(default=35, ge=0, le=100)
+    enforce_location: bool = True
+    enforce_required_skills: bool = True
+    enforce_contract: bool = True
+    enforce_languages: bool = True
+    enforce_availability: bool = False
+    enforce_diversity_requirements: bool = True
+    max_solver_time_seconds: float = Field(default=10.0, gt=0, le=120)
+
+
+class UnassignedCandidate(BaseModel):
+    candidate_id: str
+    candidate_name: str
+    reason: str
+
+
+class JobAssignmentLoad(BaseModel):
+    job_id: str
+    job_title: str
+    capacity: int = Field(..., ge=1)
+    assigned_count: int = Field(..., ge=0)
+    remaining_capacity: int = Field(..., ge=0)
+
+
+class AssignmentResponse(BaseModel):
+    generated_at: str
+    solver_status: str
+    total_score: int = Field(..., ge=0)
+    assigned_count: int = Field(..., ge=0)
+    unassigned_count: int = Field(..., ge=0)
+    considered_pairs: int = Field(..., ge=0)
+    eligible_pairs: int = Field(..., ge=0)
+    assignments: List[PairCompatibility] = Field(default_factory=list)
+    unassigned_candidates: List[UnassignedCandidate] = Field(default_factory=list)
+    job_loads: List[JobAssignmentLoad] = Field(default_factory=list)

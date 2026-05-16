@@ -10,6 +10,13 @@ const jobStatus = document.getElementById("job-status");
 const compatibilityStatus = document.getElementById("compatibility-status");
 const compatibilityMeta = document.getElementById("compatibility-meta");
 const compatibilityResults = document.getElementById("compatibility-results");
+const compatibilityResultsSection = document.getElementById("compatibility-results-section");
+const assignmentStatus = document.getElementById("assignment-status");
+const assignmentMeta = document.getElementById("assignment-meta");
+const assignmentResults = document.getElementById("assignment-results");
+const assignmentResultsSection = document.getElementById("assignment-results-section");
+const jumpToCompatibilityResultsButton = document.getElementById("jump-to-compatibility-results");
+const jumpToAssignmentResultsButton = document.getElementById("jump-to-assignment-results");
 const compatibilityCandidateFilter = document.getElementById("compatibility-candidate-filter");
 const compatibilityJobFilter = document.getElementById("compatibility-job-filter");
 const compatibilityTopK = document.getElementById("compatibility-top-k");
@@ -18,10 +25,66 @@ const weightGroupInputs = document.querySelectorAll("[data-weight-group]");
 const sliderValueOutputs = document.querySelectorAll("[data-slider-value-for]");
 const resetCriterionWeightsButton = document.getElementById("reset-criterion-weights");
 const runCompatibilityButton = document.getElementById("run-compatibility");
+const runAssignmentButton = document.getElementById("run-assignment");
 const heroCandidateCount = document.getElementById("hero-candidate-count");
 const heroJobCount = document.getElementById("hero-job-count");
 const heroMatchCount = document.getElementById("hero-match-count");
 const validationTargets = document.querySelectorAll("input, textarea, select");
+const knownDiversityTags = [
+  {
+    key: "first_generation",
+    label: "Première génération",
+    description: "Premier parcours d'études supérieures ou de carrière qualifiée dans la famille proche.",
+    aliases: ["first_generation", "premiere_generation", "premiere generation", "first gen"],
+  },
+  {
+    key: "reconversion",
+    label: "Reconversion",
+    description: "Changement de métier ou d'industrie avec transfert de compétences.",
+    aliases: ["reconversion", "career_change", "transition"],
+  },
+  {
+    key: "rqth",
+    label: "RQTH / handicap déclaré",
+    description: "Situation de handicap déclarée ou besoin d'aménagement reconnu.",
+    aliases: ["rqth", "handicap", "disability"],
+  },
+  {
+    key: "international",
+    label: "Parcours international",
+    description: "Expérience de vie, d'études ou de travail dans plusieurs pays ou cultures.",
+    aliases: ["international", "intl", "global"],
+  },
+  {
+    key: "caregiver",
+    label: "Aidance / proche aidant",
+    description: "Responsabilités durables d'aidance ou de charge familiale significative.",
+    aliases: ["caregiver", "aidant", "aidance", "carer"],
+  },
+  {
+    key: "rural_background",
+    label: "Origine rurale",
+    description: "Parcours construit en dehors des grands centres urbains ou des grands bassins d'emploi.",
+    aliases: ["rural_background", "rural", "origine_rurale"],
+  },
+];
+const diversityTagAliasMap = knownDiversityTags.reduce((lookup, tag) => {
+  tag.aliases.forEach((alias) => {
+    lookup[alias] = tag.key;
+  });
+  return lookup;
+}, {});
+const diversityTagLabelMap = knownDiversityTags.reduce((lookup, tag) => {
+  lookup[tag.key] = tag.label;
+  return lookup;
+}, {});
+const genderLabelMap = {
+  female: "Femme",
+  male: "Homme",
+  non_binary: "Non-binaire",
+  other: "Autre",
+  undisclosed: "Non renseigné",
+};
 
 let cachedCandidates = [];
 let cachedJobs = [];
@@ -31,6 +94,7 @@ const defaultGroupSliders = {
   education_focus: 100,
   experience_growth: 100,
   skills_match: 100,
+  diversity_equity: 100,
   role_and_culture: 100,
 };
 const criterionWeightGroups = {
@@ -38,6 +102,7 @@ const criterionWeightGroups = {
     label: "Contraintes pratiques",
     criteria: {
       location: 0.10,
+      availability: 0.05,
       contract: 0.08,
       salary: 0.08,
     },
@@ -58,8 +123,15 @@ const criterionWeightGroups = {
   skills_match: {
     label: "Compétences",
     criteria: {
+      languages: 0.06,
       required_skills: 0.20,
       desired_skills: 0.10,
+    },
+  },
+  diversity_equity: {
+    label: "Diversité et équité",
+    criteria: {
+      diversity_equity: 0.07,
     },
   },
   role_and_culture: {
@@ -76,6 +148,7 @@ let compatibilityRequestSequence = 0;
 let latestCompatibilityResponseSequence = 0;
 let hasComputedCompatibility = false;
 let latestCompatibilityResponse = null;
+let latestAssignmentResponse = null;
 
 tabButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -83,14 +156,41 @@ tabButtons.forEach((button) => {
 
     tabButtons.forEach((item) => item.classList.toggle("active", item === button));
     tabPanels.forEach((panel) => panel.classList.toggle("active", panel.id === `${target}-panel`));
+    document.getElementById(`${target}-panel`)?.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
+
+function scrollToSection(target) {
+  target?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
 function splitList(value) {
   return value
     .split(",")
     .map((item) => item.trim())
     .filter(Boolean);
+}
+
+function normalizeDiversityTag(value) {
+  const normalized = (value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[()]/g, "")
+    .replace(/[\s-]+/g, "_");
+  return diversityTagAliasMap[normalized] || normalized;
+}
+
+function humanizeDiversityTag(value) {
+  const normalized = normalizeDiversityTag(value);
+  return diversityTagLabelMap[normalized] || value;
+}
+
+function humanizeGender(value) {
+  return genderLabelMap[value] || value;
+}
+
+function uniqueValues(values) {
+  return Array.from(new Set(values.filter(Boolean)));
 }
 
 function parseSkillBlock(value, category) {
@@ -107,6 +207,42 @@ function parseSkillBlock(value, category) {
         category,
       };
     });
+}
+
+function buildDiversityConstraintsFromForm(form) {
+  const constraints = [];
+  const genderGoal = form.target_profile_gender_goal.value;
+  const genderPriority = form.target_profile_gender_goal_priority.value || "preferred";
+  if (genderGoal) {
+    constraints.push({
+      dimension: "gender",
+      value: genderGoal.toLowerCase(),
+      minimum_count: genderPriority === "required" ? 1 : 0,
+      maximum_count: null,
+      target_count: 1,
+      priority: genderPriority,
+      rationale: "Objectif de représentation défini dans le formulaire poste.",
+    });
+  }
+
+  const selectedTagGoals = selectedValuesByName(form, "target_profile_diversity_tags").map(normalizeDiversityTag);
+  const customTagGoals = splitList(form.target_profile_diversity_custom_tags.value).map(normalizeDiversityTag);
+  const allTagGoals = uniqueValues([...selectedTagGoals, ...customTagGoals]);
+  const tagPriority = form.target_profile_diversity_tags_priority.value || "preferred";
+
+  allTagGoals.forEach((tag) => {
+    constraints.push({
+      dimension: "tag",
+      value: tag,
+      minimum_count: tagPriority === "required" ? 1 : 0,
+      maximum_count: null,
+      target_count: 1,
+      priority: tagPriority,
+      rationale: "Parcours valorisé dans le formulaire poste.",
+    });
+  });
+
+  return constraints;
 }
 
 function selectedValuesByName(form, name) {
@@ -194,6 +330,24 @@ function deriveCriterionWeights() {
   }, {});
 }
 
+function normalizeCriterionWeights(weights) {
+  const sanitizedWeights = Object.entries(weights).reduce((normalized, [criterionKey, rawValue]) => {
+    const numericValue = Number.parseFloat(rawValue || "0");
+    normalized[criterionKey] = Number.isNaN(numericValue) || numericValue < 0 ? 0 : numericValue;
+    return normalized;
+  }, {});
+
+  const totalWeight = Object.values(sanitizedWeights).reduce((sum, value) => sum + value, 0);
+  if (totalWeight <= 0) {
+    return sanitizedWeights;
+  }
+
+  return Object.entries(sanitizedWeights).reduce((normalized, [criterionKey, value]) => {
+    normalized[criterionKey] = value / totalWeight;
+    return normalized;
+  }, {});
+}
+
 function updateSliderValueOutputs() {
   sliderValueOutputs.forEach((output) => {
     const targetGroup = output.dataset.sliderValueFor;
@@ -210,7 +364,7 @@ function updateCriterionWeightSummary() {
   }
 
   updateSliderValueOutputs();
-  const weights = deriveCriterionWeights();
+  const weights = normalizeCriterionWeights(deriveCriterionWeights());
   const total = Object.values(weights).reduce((sum, value) => sum + value, 0);
   if (total <= 0) {
     compatibilityWeightSummary.textContent = "Tous les blocs sont à 0. Le calcul ne peut pas être lancé.";
@@ -245,7 +399,23 @@ function compatibilityPayload() {
     candidate_ids: compatibilityCandidateFilter.value ? [compatibilityCandidateFilter.value] : [],
     job_ids: compatibilityJobFilter.value ? [compatibilityJobFilter.value] : [],
     top_k_per_candidate: Number.parseInt(compatibilityTopK.value || "5", 10),
-    criterion_weights: deriveCriterionWeights(),
+    criterion_weights: normalizeCriterionWeights(deriveCriterionWeights()),
+  };
+}
+
+function assignmentPayload() {
+  return {
+    candidate_ids: compatibilityCandidateFilter.value ? [compatibilityCandidateFilter.value] : [],
+    job_ids: compatibilityJobFilter.value ? [compatibilityJobFilter.value] : [],
+    criterion_weights: normalizeCriterionWeights(deriveCriterionWeights()),
+    minimum_score: 35,
+    enforce_location: true,
+    enforce_required_skills: true,
+    enforce_contract: true,
+    enforce_languages: true,
+    enforce_availability: false,
+    enforce_diversity_requirements: true,
+    max_solver_time_seconds: 10,
   };
 }
 
@@ -253,9 +423,33 @@ function clampScore(value) {
   return Math.max(0, Math.min(100, Math.round(value)));
 }
 
+function computePenaltiesForCriteria(criteria) {
+  const penalties = [];
+  const lookup = Object.fromEntries(criteria.map((criterion) => [criterion.key, criterion]));
+
+  if (lookup.location?.weight > 0 && lookup.location.score === 0) {
+    penalties.push({ label: "Localisation bloquante pour ce poste", factor: 0.65 });
+  }
+  if (lookup.availability?.weight > 0 && lookup.availability.score < 35) {
+    penalties.push({ label: "Disponibilité trop éloignée du besoin du poste", factor: 0.85 });
+  }
+  if (lookup.languages?.weight > 0 && lookup.languages.score < 50) {
+    penalties.push({ label: "Couverture linguistique insuffisante", factor: 0.9 });
+  }
+  if (lookup.required_skills?.weight > 0 && lookup.required_skills.score < 45) {
+    penalties.push({ label: "Couverture insuffisante des compétences obligatoires", factor: 0.8 });
+  }
+  if (lookup.contract?.weight > 0 && lookup.contract.score < 40) {
+    penalties.push({ label: "Type de contrat peu compatible", factor: 0.9 });
+  }
+
+  return penalties;
+}
+
 function computeResultWithWeights(result, criterionWeights) {
+  const normalizedWeights = normalizeCriterionWeights(criterionWeights);
   const criteria = result.criteria.map((criterion) => {
-    const weight = criterionWeights[criterion.key] || 0;
+    const weight = normalizedWeights[criterion.key] || 0;
     const weightedScore = Number((criterion.score * weight).toFixed(2));
     return {
       ...criterion,
@@ -269,7 +463,7 @@ function computeResultWithWeights(result, criterionWeights) {
     Number(criteria.reduce((sum, criterion) => sum + (criterion.score * criterion.weight), 0).toFixed(2)),
   );
   let finalScore = baseScore;
-  (result.penalties || []).forEach((penalty) => {
+  computePenaltiesForCriteria(criteria).forEach((penalty) => {
     finalScore *= penalty.factor;
   });
 
@@ -286,7 +480,7 @@ function currentWeightedResults() {
     return [];
   }
 
-  const criterionWeights = deriveCriterionWeights();
+  const criterionWeights = normalizeCriterionWeights(deriveCriterionWeights());
   return latestCompatibilityResponse.results.map((result) => computeResultWithWeights(result, criterionWeights));
 }
 
@@ -403,14 +597,45 @@ function scheduleLiveCompatibilityRefresh() {
   }, 260);
 }
 
+function invalidatePendingCompatibilityResponses() {
+  if (compatibilityRefreshTimer) {
+    window.clearTimeout(compatibilityRefreshTimer);
+    compatibilityRefreshTimer = null;
+  }
+  latestCompatibilityResponseSequence = compatibilityRequestSequence + 1;
+}
+
 function applySliderChangesLocally() {
+  invalidatePendingCompatibilityResponses();
   updateCriterionWeightSummary();
+  const normalizedWeights = normalizeCriterionWeights(deriveCriterionWeights());
+  const totalWeight = Object.values(normalizedWeights).reduce((sum, value) => sum + value, 0);
+  if (totalWeight <= 0) {
+    setStatus(compatibilityStatus, "Laissez au moins un bloc au-dessus de 0 % pour recalculer les scores.");
+    if (latestAssignmentResponse) {
+      setStatus(assignmentStatus, "Les poids ont changé. Relancez l'affectation optimale pour recalculer CP-SAT.");
+    }
+    return;
+  }
   if (!hasComputedCompatibility) {
     return;
   }
 
-  updateCompatibilityScoresInPlace();
+  const weightedResults = latestCompatibilityResponse.results.map((result) => computeResultWithWeights(result, normalizedWeights));
+  renderCompatibilityResults(
+    {
+      ...latestCompatibilityResponse,
+      results: weightedResults,
+    },
+    {
+      storePayload: false,
+      scroll: false,
+    },
+  );
   setStatus(compatibilityStatus, "Compatibilités mises à jour localement.");
+  if (latestAssignmentResponse) {
+    setStatus(assignmentStatus, "Les poids ont changé. Relancez l'affectation optimale pour recalculer CP-SAT.");
+  }
 }
 
 function frenchValidationMessage(field) {
@@ -457,6 +682,8 @@ function attachFrenchValidation() {
 }
 
 function candidatePayload(form) {
+  const selectedKnownDiversityTags = selectedValuesByName(form, "diversity_self_declared_tags");
+  const customDiversityTags = splitList(form.diversity_custom_tags.value).map(normalizeDiversityTag);
   return {
     full_name: form.full_name.value.trim(),
     email: form.email.value.trim() || null,
@@ -500,6 +727,14 @@ function candidatePayload(form) {
       schedule: form.availability_schedule.value,
       constraints: form.availability_constraints.value.trim(),
     },
+    diversity: {
+      gender: form.diversity_gender.value,
+      self_declared_tags: uniqueValues([
+        ...selectedKnownDiversityTags,
+        ...customDiversityTags,
+      ]),
+      equity_notes: form.diversity_equity_notes.value.trim(),
+    },
   };
 }
 
@@ -539,6 +774,7 @@ function jobPayload(form) {
       expected_traits: splitList(form.target_profile_expected_traits.value),
       growth_potential: form.target_profile_growth_potential.value.trim(),
       learning_expectations: splitList(form.target_profile_learning_expectations.value),
+      diversity_constraints: buildDiversityConstraintsFromForm(form),
     },
   };
 }
@@ -593,6 +829,15 @@ function animateScoreElements(root = document) {
     const safeTarget = Math.max(0, Math.min(100, Number.isNaN(targetScore) ? 0 : targetScore));
     const startTime = performance.now() + (index * 45);
     const duration = 720;
+    const meter = element.closest(".criterion-pill, .overall-score-card")?.querySelector("[data-score-fill]");
+
+    element.classList.remove("score-animated");
+    element.classList.add("score-loading");
+    element.textContent = "…";
+    if (meter) {
+      meter.style.setProperty("--score-fill", "0%");
+      meter.classList.remove("score-fill-active");
+    }
 
     const step = (timestamp) => {
       if (timestamp < startTime) {
@@ -611,16 +856,15 @@ function animateScoreElements(root = document) {
       }
 
       element.textContent = `${safeTarget}%`;
+      element.classList.remove("score-loading");
       element.classList.add("score-animated");
 
-      const meter = element.closest(".criterion-pill, .overall-score-card")?.querySelector("[data-score-fill]");
       if (meter) {
         meter.style.setProperty("--score-fill", `${safeTarget}%`);
         meter.classList.add("score-fill-active");
       }
     };
 
-    element.textContent = "0%";
     window.requestAnimationFrame(step);
   });
 }
@@ -757,9 +1001,23 @@ function renderCandidateList(items) {
                   ${renderTags(item.potential.growth_domains)}
                 </div>
               </div>
+              <div class="detail-card">
+                <strong>Diversité et équité</strong>
+                ${renderDetailRows([
+                  { label: "Genre", value: humanizeGender(item.diversity?.gender || "undisclosed") },
+                ])}
+                <div class="detail-subsection">
+                  <span class="detail-subtitle">Tags déclarés</span>
+                  ${renderTags((item.diversity?.self_declared_tags || []).map(humanizeDiversityTag), "Aucun tag déclaré")}
+                </div>
+              </div>
               <div class="detail-card detail-card-wide">
                 <strong>Expériences transférables</strong>
                 <p class="detail-paragraph">${item.potential.transferable_experiences || "Non renseigné"}</p>
+              </div>
+              <div class="detail-card detail-card-wide">
+                <strong>Notes d'équité</strong>
+                <p class="detail-paragraph">${item.diversity?.equity_notes || "Non renseigné"}</p>
               </div>
             </div>
           </div>
@@ -855,6 +1113,15 @@ function renderJobList(items) {
                   <p class="detail-paragraph">${item.target_profile.growth_potential || "Non renseigné"}</p>
                 </div>
               </div>
+              <div class="detail-card detail-card-wide">
+                <strong>Objectifs diversité / équité</strong>
+                ${renderTags(
+                  (item.target_profile.diversity_constraints || []).map(
+                    (constraint) => `${constraint.priority === "required" ? "requis" : "préféré"} • ${constraint.dimension === "gender" ? `genre ${humanizeGender(constraint.value)}` : humanizeDiversityTag(constraint.value)}${constraint.minimum_count ? ` • min ${constraint.minimum_count}` : ""}${constraint.target_count != null ? ` • cible ${constraint.target_count}` : ""}${constraint.maximum_count != null ? ` • max ${constraint.maximum_count}` : ""}`,
+                  ),
+                  "Aucun objectif explicite",
+                )}
+              </div>
             </div>
           </div>
         </article>
@@ -889,9 +1156,12 @@ async function loadJobs() {
   );
 }
 
-function renderCompatibilityResults(payload) {
+function renderCompatibilityResults(payload, options = {}) {
+  const { storePayload = true, scroll = true } = options;
   const results = payload.results || [];
-  latestCompatibilityResponse = JSON.parse(JSON.stringify(payload));
+  if (storePayload) {
+    latestCompatibilityResponse = JSON.parse(JSON.stringify(payload));
+  }
   setMetricValue(heroMatchCount, results.length);
   compatibilityMeta.textContent = `Mode embeddings: ${payload.embedding_mode} • Modèle: ${payload.embedding_model} • Résultats: ${results.length}`;
 
@@ -1037,6 +1307,132 @@ function renderCompatibilityResults(payload) {
     .join("");
 
   animateScoreElements(compatibilityResults);
+  if (scroll) {
+    scrollToSection(compatibilityResultsSection);
+  }
+}
+
+function renderAssignmentResults(payload) {
+  latestAssignmentResponse = JSON.parse(JSON.stringify(payload));
+  assignmentMeta.textContent = [
+    `Solveur: ${payload.solver_status}`,
+    `Score total: ${payload.total_score}`,
+    `Affectations: ${payload.assigned_count}`,
+    `Paires éligibles: ${payload.eligible_pairs}/${payload.considered_pairs}`,
+  ].join(" • ");
+
+  if (!payload.assignments?.length) {
+    let emptyStateMessage = "Aucune paire n'a satisfait les contraintes d'éligibilité ou la capacité disponible.";
+    if (payload.solver_status === "infeasible") {
+      emptyStateMessage = "Le modèle CP-SAT est infaisable avec les contraintes actives. Vérifiez surtout les contraintes d'éligibilité et de diversité.";
+    } else if (payload.eligible_pairs > 0) {
+      emptyStateMessage = "Des paires étaient éligibles, mais aucune n'a pu être retenue par l'optimisation sous contraintes.";
+    }
+
+    assignmentResults.innerHTML = `
+      <article class="record-item">
+        <h3>Aucune affectation retenue</h3>
+        <p class="record-meta">${emptyStateMessage}</p>
+      </article>
+    `;
+    return;
+  }
+
+  const loadsHtml = (payload.job_loads || [])
+    .map(
+      (jobLoad) => `
+        <div class="detail-card">
+          <strong>${jobLoad.job_title}</strong>
+          ${renderDetailRows([
+            { label: "Capacité", value: `${jobLoad.capacity} place(s)` },
+            { label: "Affectés", value: `${jobLoad.assigned_count}` },
+            { label: "Restant", value: `${jobLoad.remaining_capacity}` },
+          ])}
+        </div>
+      `,
+    )
+    .join("");
+
+  const assignmentsHtml = payload.assignments
+    .map(
+      (item) => `
+        <article class="record-item">
+          <div class="assignment-card-head">
+            <div>
+              <p class="compatibility-kicker">Affectation retenue</p>
+              <h3>${item.candidate_name} -> ${item.job_title}</h3>
+              <p class="record-meta">Score brut ${Math.round(item.base_score)}% • Score final ${item.overall_score}%</p>
+            </div>
+            <div class="badge-row">
+              <span class="badge">Score ${item.overall_score}%</span>
+              ${(item.penalties || []).map((penalty) => `<span class="badge">${penalty.label}</span>`).join("")}
+            </div>
+          </div>
+          <p class="summary">${item.summary}</p>
+          <div class="criteria-grid">
+            ${item.criteria
+              .map(
+                (criterion) => `
+                  <div class="criterion-pill">
+                    <strong class="criterion-score-value" data-target-score="${criterion.score}">0%</strong>
+                    <span>${criterion.label}</span>
+                    <span class="criterion-meter" aria-hidden="true">
+                      <span class="criterion-meter-fill" data-score-fill></span>
+                    </span>
+                    <span>Poids ${formatWeightPercent(criterion.weight)}</span>
+                  </div>
+                `,
+              )
+              .join("")}
+          </div>
+        </article>
+      `,
+    )
+    .join("");
+
+  const unassignedHtml = payload.unassigned_candidates?.length
+    ? `
+      <section class="assignment-block">
+        <div class="panel-banner panel-banner-compact">
+          <p class="section-kicker panel-banner-kicker">Candidats non affectés</p>
+          <h3>${payload.unassigned_count} profil(s)</h3>
+        </div>
+        <div class="record-list">
+          ${payload.unassigned_candidates
+            .map(
+              (candidate) => `
+                <article class="record-item">
+                  <h3>${candidate.candidate_name}</h3>
+                  <p class="record-meta">${candidate.reason}</p>
+                </article>
+              `,
+            )
+            .join("")}
+        </div>
+      </section>
+    `
+    : "";
+
+  assignmentResults.innerHTML = `
+    <section class="assignment-block">
+      <div class="panel-banner panel-banner-compact">
+        <p class="section-kicker panel-banner-kicker">Charge par poste</p>
+        <h3>Capacités consommées</h3>
+      </div>
+      <div class="detail-grid">${loadsHtml}</div>
+    </section>
+    <section class="assignment-block">
+      <div class="panel-banner panel-banner-compact">
+        <p class="section-kicker panel-banner-kicker">Affectations optimales</p>
+        <h3>${payload.assigned_count} affectation(s) retenue(s)</h3>
+      </div>
+      <div class="record-list">${assignmentsHtml}</div>
+    </section>
+    ${unassignedHtml}
+  `;
+
+  animateScoreElements(assignmentResults);
+  scrollToSection(assignmentResultsSection);
 }
 
 candidateForm.addEventListener("submit", async (event) => {
@@ -1086,10 +1482,22 @@ runCompatibilityButton.addEventListener("click", async () => {
   try {
     await runCompatibilityCalculation();
   } catch (error) {
-    setMetricValue(heroMatchCount, 0);
-    compatibilityMeta.textContent = "";
-    compatibilityResults.innerHTML = "";
     setStatus(compatibilityStatus, `Erreur: ${error.message}`, true);
+  }
+});
+
+runAssignmentButton.addEventListener("click", async () => {
+  setStatus(assignmentStatus, "Optimisation CP-SAT en cours...");
+
+  try {
+    const response = await saveRecord("/api/assignment", assignmentPayload());
+    renderAssignmentResults(response);
+    setStatus(assignmentStatus, "Affectation optimale calculée.");
+  } catch (error) {
+    latestAssignmentResponse = null;
+    assignmentMeta.textContent = "";
+    assignmentResults.innerHTML = "";
+    setStatus(assignmentStatus, `Erreur: ${error.message}`, true);
   }
 });
 
@@ -1161,7 +1569,7 @@ weightGroupInputs.forEach((input) => {
 resetCriterionWeightsButton.addEventListener("click", () => {
   resetCriterionWeights();
   if (hasComputedCompatibility) {
-    updateCompatibilityScoresInPlace();
+    applySliderChangesLocally();
     setStatus(compatibilityStatus, "Compatibilités remises à jour avec les sliders par défaut.");
   }
 });
@@ -1171,6 +1579,14 @@ resetCriterionWeightsButton.addEventListener("click", () => {
 });
 
 compatibilityTopK.addEventListener("input", scheduleLiveCompatibilityRefresh);
+
+jumpToCompatibilityResultsButton.addEventListener("click", () => {
+  scrollToSection(compatibilityResultsSection);
+});
+
+jumpToAssignmentResultsButton.addEventListener("click", () => {
+  scrollToSection(assignmentResultsSection);
+});
 
 loadCandidates().catch(() => renderCandidateList([]));
 loadJobs().catch(() => renderJobList([]));
