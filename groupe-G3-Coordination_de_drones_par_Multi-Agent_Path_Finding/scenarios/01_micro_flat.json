@@ -7,6 +7,5 @@
     { "id": 1, "start": [3, 0], "goal": [0, 3] },
     { "id": 2, "start": [0, 3], "goal": [3, 0] }
   ],
-  "buildings": [],
-  "nofly": []
+  "buildings": []
 }

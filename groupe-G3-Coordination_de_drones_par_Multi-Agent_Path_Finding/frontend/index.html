@@ -273,44 +273,6 @@
     box-shadow: 0 2px 10px rgba(37, 99, 235, 0.38);
   }
 
-  #btn-nofly {
-    border-color: rgba(234, 88, 12, 0.32);
-    color: var(--warn);
-    background: var(--warn-dim);
-  }
-
-  #btn-nofly:hover {
-    background: rgba(234, 88, 12, 0.13);
-    border-color: var(--warn);
-    color: #c2410c;
-    box-shadow: 0 1px 6px rgba(234, 88, 12, 0.15);
-  }
-
-  #btn-nofly.is-active {
-    background: var(--danger-dim);
-    border-color: var(--danger);
-    color: var(--danger);
-    box-shadow: 0 1px 8px rgba(220, 38, 38, 0.18);
-  }
-
-  #btn-clear-nofly {
-    padding: 7px 10px;
-    min-width: 36px;
-    justify-content: center;
-    background: #f8fafc;
-    border-color: var(--border-base);
-    color: var(--text-muted);
-    font-size: 15px;
-    font-weight: 400;
-  }
-
-  #btn-clear-nofly:hover {
-    border-color: rgba(220, 38, 38, 0.4);
-    color: var(--danger);
-    background: var(--danger-dim);
-    box-shadow: 0 1px 4px rgba(220, 38, 38, 0.1);
-  }
-
   select {
     padding: 8px 12px;
     background: #0f172a;
@@ -418,8 +380,6 @@
     <label class="ctrl-label" for="inp-timeout" title="Timeout solver (secondes)">⏱</label>
     <input type="number" id="inp-timeout" min="1" max="300" step="1" value="30" title="Timeout (s)">
     <button id="btn-solve">&#x26A1; Solve</button>
-    <button id="btn-nofly">&#x1F6AB; No-Fly</button>
-    <button id="btn-clear-nofly" title="Clear no-fly zones">&#x2715;</button>
   </div>
 </div>
 
@@ -444,25 +404,23 @@ const sldSpeed = document.getElementById('sld-speed');
 
 // ── UIManager ─────────────────────────────────────────────────────────────────
 const ui = new UIManager({
-  onSolve:      (nofly) => { if (currentScenario) solve(currentScenario, nofly); },
-  onPlay:       () => { if (solution) { playing = true; lastFrameTime = performance.now(); lastTick = performance.now(); } },
-  onPause:      () => { playing = false; },
-  onReset:      () => {
+  onSolve:  () => { if (currentScenario) solve(currentScenario); },
+  onPlay:   () => { if (solution) { playing = true; lastFrameTime = performance.now(); lastTick = performance.now(); } },
+  onPause:  () => { playing = false; },
+  onReset:  () => {
     playing = false; frame = 0; lastTick = 0; lastFrameTime = 0;
     if (droneManager && solution) {
       droneManager.resetForReplay(solution.paths);
       ui.updateFrame(0, solution.makespan);
     }
   },
-  onStep:       () => {
+  onStep:   () => {
     if (solution && droneManager && frame < solution.makespan) {
       frame++;
       droneManager.updateFrame(solution.paths, frame);
       ui.updateFrame(frame, solution.makespan);
     }
   },
-  onAddNoFly:   (nf) => cityScene.addNoFlyBox(nf.min, nf.max),
-  onClearNoFly: ()   => cityScene.clearNoFly(),
 });
 
 document.getElementById('btn-smooth').onclick = () => {
@@ -499,7 +457,7 @@ function loadScenario(scenario) {
 }
 
 // ── Solve ─────────────────────────────────────────────────────────────────────
-async function solve(scenario, nofly = []) {
+async function solve(scenario) {
   playing = false; frame = 0; solution = null;
 
   const statusEl = document.getElementById('h-status');
@@ -517,7 +475,6 @@ async function solve(scenario, nofly = []) {
     grid:      scenario.grid,
     drones:    scenario.drones,
     buildings: scenario.buildings || [],
-    nofly,
     method,
     time_limit_s: (() => { const v = Number(document.getElementById('inp-timeout').value); return Number.isFinite(v) && v >= 1 ? v : 30; })(),
   });
@@ -536,26 +493,6 @@ async function solve(scenario, nofly = []) {
   droneManager.updateFrame(solution.paths, 0, true);
   ui.updateFrame(0, solution.makespan);
 }
-
-// ── No-fly Raycaster ──────────────────────────────────────────────────────────
-const raycaster   = new THREE.Raycaster();
-const groundPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
-
-renderer.domElement.addEventListener('click', (e) => {
-  if (!ui.isPlacingNoFly() || !currentScenario) return;
-  const { rows, cols, alts = 1 } = currentScenario.grid;
-  const mouse = new THREE.Vector2(
-    (e.clientX / window.innerWidth) * 2 - 1,
-    -(e.clientY / window.innerHeight) * 2 + 1
-  );
-  raycaster.setFromCamera(mouse, cityScene.camera);
-  const pt = new THREE.Vector3();
-  if (raycaster.ray.intersectPlane(groundPlane, pt)) {
-    const row = Math.floor(pt.z), col = Math.floor(pt.x);
-    if (row >= 0 && col >= 0 && row < rows && col < cols)
-      ui.addNoFlyFromClick(row, col, alts);
-  }
-});
 
 // ── Render loop ───────────────────────────────────────────────────────────────
 function loop(ts) {

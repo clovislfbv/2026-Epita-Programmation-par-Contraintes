@@ -11,6 +11,5 @@
   "buildings": [
     { "row": 1, "col": 1, "height": 2 },
     { "row": 2, "col": 2, "height": 2 }
-  ],
-  "nofly": []
+  ]
 }

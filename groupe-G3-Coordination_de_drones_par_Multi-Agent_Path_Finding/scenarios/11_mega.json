@@ -115,6 +115,5 @@
     { "row": 21, "col": 14, "height": 2 },
     { "row": 23, "col": 6,  "height": 2 },
     { "row": 23, "col": 20, "height": 2 }
-  ],
-  "nofly": []
+  ]
 }

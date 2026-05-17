@@ -44,6 +44,5 @@
     { "row": 5, "col": 3, "height": 1 },
     { "row": 6, "col": 4, "height": 1 },
     { "row": 8, "col": 8, "height": 1 }
-  ],
-  "nofly": []
+  ]
 }

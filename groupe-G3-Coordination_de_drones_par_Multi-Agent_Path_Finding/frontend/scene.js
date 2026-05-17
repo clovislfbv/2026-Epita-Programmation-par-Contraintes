@@ -16,7 +16,6 @@ export class CityScene {
     this._groundMesh    = null;
     this._gridLines     = null;
     this._buildingObjects = [];
-    this._noFlyMeshes   = [];
 
     this._addLights();
   }
@@ -100,32 +99,6 @@ export class CityScene {
         this._buildingObjects.push(light);
       }
     }
-  }
-
-  addNoFlyBox(minPos, maxPos, cellSize = 1.0) {
-    const [r0, c0] = minPos, [r1, c1] = maxPos;
-    const w = (c1 - c0 + 1) * cellSize;
-    const d = (r1 - r0 + 1) * cellSize;
-    const h = 8;
-    const geo = new THREE.BoxGeometry(w, h, d);
-
-    const mesh = new THREE.Mesh(geo,
-      new THREE.MeshBasicMaterial({ color: 0xef4444, transparent: true, opacity: 0.15 }));
-    mesh.position.set((c0 + c1) / 2 * cellSize, h / 2, (r0 + r1) / 2 * cellSize);
-    this.scene.add(mesh);
-
-    const edges = new THREE.LineSegments(new THREE.EdgesGeometry(geo),
-      new THREE.LineBasicMaterial({ color: 0xef4444, transparent: true, opacity: 0.8 }));
-    edges.position.copy(mesh.position);
-    this.scene.add(edges);
-
-    this._noFlyMeshes.push(mesh, edges);
-    return mesh;
-  }
-
-  clearNoFly() {
-    for (const m of this._noFlyMeshes) this.scene.remove(m);
-    this._noFlyMeshes = [];
   }
 
   update()  { this.controls.update(); }
