@@ -226,20 +226,28 @@ class ECBSSolver:
             root_paths[drone.id] = path
 
         root = _CTNode(root_constraints, root_paths, sum(len(p) for p in root_paths.values()))
-        # open_list entries: (cost, node_id, node)
         open_list: List[Tuple[int, int, _CTNode]] = [(root.cost, counter, root)]
         counter += 1
+        deleted_ids: set = set()
 
         while open_list:
             if time.time() - t0 > self.time_limit_s:
                 return Solution("timeout", 0, 0, (time.time() - t0) * 1000, {}, 0)
 
-            f_min = min(item[0] for item in open_list)
-            focal = [(c, nid, n) for c, nid, n in open_list if c <= self.w * f_min]
-            # Pick node with fewest conflicts from focal
+            # Suppression paresseuse — retire les entrées supprimées du sommet
+            while open_list and open_list[0][1] in deleted_ids:
+                heapq.heappop(open_list)
+            if not open_list:
+                break
+
+            f_min = open_list[0][0]  # O(1) — le heap garantit le minimum en tête
+            focal = [
+                (c, nid, n) for c, nid, n in open_list
+                if nid not in deleted_ids and c <= self.w * f_min
+            ]
+
             _, chosen_id, node = min(focal, key=lambda x: _count_conflicts(x[2].paths))
-            open_list = [(c, nid, n) for c, nid, n in open_list if nid != chosen_id]
-            heapq.heapify(open_list)
+            deleted_ids.add(chosen_id)
 
             conflict = find_first_conflict(node.paths)
             if conflict is None:

@@ -96,3 +96,16 @@ def test_ecbs_no_vertex_conflict():
     for t in range(max_t):
         positions = [sol.paths[d.id][min(t, len(sol.paths[d.id]) - 1)] for d in drones]
         assert len(positions) == len(set(positions))
+
+
+def test_ecbs_goals_with_obstacle():
+    """ECBS doit trouver des chemins valides avec un obstacle."""
+    g = Grid(rows=5, cols=5)
+    g.add_building(2, 2, 1)
+    drones = [Drone(0, (0, 0), (4, 4)), Drone(1, (4, 0), (0, 4))]
+    sol = ECBSSolver(g, drones, w=1.3).solve()
+    assert sol.status == "feasible"
+    for d in drones:
+        assert sol.paths[d.id][-1] == d.goal
+    for path in sol.paths.values():
+        assert (2, 2) not in path
