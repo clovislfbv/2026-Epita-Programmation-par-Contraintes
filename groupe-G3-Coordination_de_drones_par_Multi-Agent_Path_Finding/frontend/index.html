@@ -440,14 +440,15 @@ const cityScene = new CityScene(renderer);
 let droneManager = null, solution = null, currentScenario = null;
 let playing = false, frame = 0, lastTick = 0, lastFrameTime = 0;
 let smoothing = false;
+const sldSpeed = document.getElementById('sld-speed');
 
 // ── UIManager ─────────────────────────────────────────────────────────────────
 const ui = new UIManager({
   onSolve:      (nofly) => { if (currentScenario) solve(currentScenario, nofly); },
-  onPlay:       () => { if (solution) playing = true; },
+  onPlay:       () => { if (solution) { playing = true; lastFrameTime = performance.now(); lastTick = performance.now(); } },
   onPause:      () => { playing = false; },
   onReset:      () => {
-    playing = false; frame = 0;
+    playing = false; frame = 0; lastTick = 0; lastFrameTime = 0;
     if (droneManager && solution) {
       droneManager.resetForReplay(solution.paths);
       ui.updateFrame(0, solution.makespan);
@@ -559,7 +560,7 @@ renderer.domElement.addEventListener('click', (e) => {
 function loop(ts) {
   requestAnimationFrame(loop);
   if (playing && solution && droneManager) {
-    const speedMs = Number(document.getElementById('sld-speed').value);
+    const speedMs = Math.max(1, Number(sldSpeed.value));
     if (!smoothing) {
       if (ts - lastTick > speedMs) {
         lastTick = ts;
@@ -576,6 +577,7 @@ function loop(ts) {
         lastFrameTime = ts;
         if (frame < solution.makespan) {
           frame++;
+          droneManager.updateFrame(solution.paths, frame);
           ui.updateFrame(frame, solution.makespan);
         } else { playing = false; }
       }
