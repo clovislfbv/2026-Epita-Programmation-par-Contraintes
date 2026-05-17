@@ -1,0 +1,10 @@
+numpy==2.4.5
+pandas==2.2.3
+scipy==1.17.1
+matplotlib==3.10.9
+ortools==9.15.6755
+pyscipopt==6.2.1
+deap==1.4.4
+yfinance>=0.2
+kagglehub>=0.3
+jupyter>=1.0

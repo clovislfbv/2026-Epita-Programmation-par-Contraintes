@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+_cache_*.csv
+.venv/
+.DS_Store
+.env
+node_modules/
+*.egg-info/
+build/
+dist/
+
+# PDFs generes localement, sauf le rendu de soutenance versionne
+*.pdf
+!slides/soutenance.pdf
+

@@ -1,0 +1,4 @@
+-r requirements.txt
+pytest>=7.0
+pytest-timeout>=2.1
+# marp-cli est optionnel et s'installe via npm: npm install -g @marp-team/marp-cli

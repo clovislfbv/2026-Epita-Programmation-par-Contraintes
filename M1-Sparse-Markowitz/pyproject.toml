@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "m1_sparse_markowitz"
+version = "0.1.0"
+description = "Sparse Markowitz portfolio (cardinality-constrained MIQP) - EPITA PRCON M1."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "EPITA SCIA M1 - PRCON 2026" }]
+keywords = ["portfolio", "markowitz", "cardinality", "MIQP", "CP-SAT", "MILP"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "scipy>=1.10",
+    "matplotlib>=3.7",
+    "ortools>=9.11",
+    "pyscipopt>=5.0",
+    "deap>=1.4",
+]
+
+[project.optional-dependencies]
+data = ["yfinance>=0.2"]
+dev = ["pytest>=7.0", "pytest-timeout>=2.1"]
+
+[project.scripts]
+m1-bench = "m1_sparse_markowitz.scripts.run_benchmark:main"
+m1-pareto = "m1_sparse_markowitz.scripts.run_pareto:main"
+m1-backtest = "m1_sparse_markowitz.scripts.run_backtest:main"
+
+[tool.setuptools]
+packages = ["m1_sparse_markowitz", "m1_sparse_markowitz.scripts"]
+
+[tool.setuptools.package-dir]
+"m1_sparse_markowitz" = "src"
+"m1_sparse_markowitz.scripts" = "scripts"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

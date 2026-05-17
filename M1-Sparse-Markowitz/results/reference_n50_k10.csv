@@ -1,0 +1,5 @@
+solver,status,ret,vol,sharpe,obj,runtime_s,K_active
+MILP-SCIP,optimal,0.0643,0.1529,0.42,0.0526,0.15,10
+CP-SAT,feasible,0.0668,0.155,0.431,535547330.0,30.01,10
+Greedy,heuristic,0.0836,0.1771,0.472,0.0731,0.15,10
+GA,heuristic,0.0616,0.1614,0.382,0.0686,0.78,10
