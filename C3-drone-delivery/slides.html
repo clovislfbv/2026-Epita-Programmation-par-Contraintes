@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soutenance — C3 Drone Delivery</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --accent: #5c63d8;
+            --accent-light: #eef0fd;
+            --bg: #ffffff;
+            --bg2: #f7f8fc;
+            --bg3: #f0f1f8;
+            --text: #111827;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+            --green: #16a34a;
+            --green-bg: #f0fdf4;
+            --yellow: #d97706;
+            --yellow-bg: #fffbeb;
+            --red: #dc2626;
+            --red-bg: #fef2f2;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f0f1f8;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* --- DECK --- */
+        #deck {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 20px;
+            background: var(--bg);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 56px 72px;
+            opacity: 0;
+            transform: translateY(16px) scale(0.99);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: all;
+        }
+
+        .slide.exit {
+            opacity: 0;
+            transform: translateY(-16px) scale(0.99);
+        }
+
+        /* --- LABELS --- */
+        .label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 18px;
+        }
+
+        .label::before {
+            content: '';
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 1px;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1 {
+            font-size: 5.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--text);
+            letter-spacing: -2px;
+            margin-bottom: 16px;
+        }
+
+        h1 span {
+            color: var(--accent);
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.5px;
+            margin-bottom: 28px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.35rem;
+            color: var(--muted);
+            line-height: 1.65;
+            max-width: 520px;
+        }
+
+        .cover-chips {
+            display: flex;
+            gap: 8px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .chip-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+        }
+
+        /* --- LAYOUT --- */
+        .cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .cols-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* --- CARDS --- */
+        .card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 22px;
+        }
+
+        .card-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        /* --- LISTS --- */
+        .list {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 1.15rem;
+            color: var(--text);
+            line-height: 1.45;
+        }
+
+        .list-item::before {
+            content: '';
+            flex-shrink: 0;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--border);
+            margin-top: 6px;
+            border: 1.5px solid var(--muted);
+        }
+
+        .list-item.green::before {
+            background: var(--green);
+            border-color: var(--green);
+        }
+
+        .list-item.yellow::before {
+            background: var(--yellow);
+            border-color: var(--yellow);
+        }
+
+        .list-item.accent::before {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* --- CALLOUT --- */
+        .callout {
+            background: var(--accent-light);
+            border: 1px solid #c7caef;
+            border-left: 3px solid var(--accent);
+            border-radius: 8px;
+            padding: 13px 16px;
+            font-size: 1.1rem;
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .callout strong {
+            color: var(--accent);
+        }
+
+        /* --- CODE --- */
+        pre {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 18px;
+            font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+            font-size: 1rem;
+            color: #374151;
+            line-height: 1.75;
+            overflow-x: auto;
+        }
+
+        .kw {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .cm {
+            color: #9ca3af;
+            font-style: italic;
+        }
+
+        .val {
+            color: var(--green);
+        }
+
+        .fn {
+            color: #d97706;
+        }
+
+        /* --- CONSTRAINT GRID --- */
+        .constraint-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .c-card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 18px;
+        }
+
+        .c-card-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .c-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .c-formula {
+            font-family: 'Cascadia Code', 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            background: var(--accent-light);
+            border-radius: 6px;
+            padding: 7px 11px;
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .c-desc {
+            font-size: 1.05rem;
+            color: var(--muted);
+            line-height: 1.45;
+        }
+
+        /* --- STEPS --- */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .step {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            width: 26px;
+            height: 26px;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 800;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .step-content h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 3px;
+        }
+
+        .step-content p {
+            font-size: 1.05rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* --- LIVE DEMO SLIDE --- */
+        .slide-demo {
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .demo-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--accent-light);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 28px;
+        }
+
+        .demo-title {
+            font-size: 5.5rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: var(--text);
+        }
+
+        .demo-title span {
+            color: var(--accent);
+        }
+
+        /* --- NAV --- */
+        #nav {
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            padding: 10px 28px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        #nav button {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 7px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: all 0.15s;
+        }
+
+        #nav button:hover:not(:disabled) {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        #nav button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        #dots {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .dot-nav {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--border);
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            border: 1.5px solid #d1d5db;
+        }
+
+        .dot-nav.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.3);
+        }
+
+        #progress-bar-wrap {
+            flex: 1;
+            height: 3px;
+            background: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        #progress-bar {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        #slide-counter {
+            font-size: 0.78rem;
+            color: var(--muted);
+            min-width: 48px;
+            text-align: right;
+            font-weight: 500;
+        }
+
+        /* --- BILAN PILLS --- */
+        .pill {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+
+        .pill-accent {
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .pill-green {
+            background: var(--green-bg);
+            color: var(--green);
+        }
+
+        .pill-yellow {
+            background: var(--yellow-bg);
+            color: var(--yellow);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="deck">
+
+        <!-- 1. COVER -->
+        <div class="slide active" data-index="0">
+            <div class="label">EPITA SCIA 2026 — Programmation par Contraintes</div>
+            <h1>Drone Delivery<br><span>Routing</span></h1>
+            <p class="subtitle">Optimisation de tournees de drones par programmation par contraintes avec Google
+                OR-Tools CP-SAT.</p>
+            <div class="cover-chips">
+                <span class="chip"><span class="chip-dot" style="background:var(--accent)"></span>Projet C3</span>
+                <span class="chip"><span class="chip-dot" style="background:var(--green)"></span>VRP — Vehicle Routing
+                    Problem</span>
+                <span class="chip"><span class="chip-dot" style="background:var(--yellow)"></span>10 min</span>
+            </div>
+        </div>
+
+        <!-- 2. PROBLEME -->
+        <div class="slide" data-index="1">
+            <div class="label">01 — Introduction</div>
+            <h2>Le Probleme</h2>
+            <div class="cols">
+                <div style="display:flex;flex-direction:column;gap:16px;">
+                    <div class="callout">
+                        Planifier les tournees de <strong>drones de livraison</strong> depuis un depot central vers des
+                        clients, en <strong>minimisant la distance totale</strong>.<br><br>
+                        Variante du <strong>VRP (Vehicle Routing Problem)</strong> — probleme NP-difficile classique.
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Contraintes reelles</div>
+                        <div class="list">
+                            <div class="list-item">Autonomie batterie limitee</div>
+                            <div class="list-item">Capacite de charge : poids ET volume</div>
+                            <div class="list-item yellow">Zones NOTAM (vol interdit) a contourner</div>
+                            <div class="list-item">Chaque client visite exactement une fois</div>
+                            <div class="list-item">Retour au depot garanti</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card"
+                    style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;min-height:260px;">
+                    <div style="font-size:2.8rem;">&#128738;</div>
+                    <div style="text-align:center;font-size:0.82rem;color:var(--muted);">Depot &rarr; routes optimisees
+                        &rarr; clients</div>
+                    <div style="display:flex;gap:18px;flex-wrap:wrap;justify-content:center;">
+                        <div style="text-align:center;font-size:0.78rem;color:var(--muted);">
+                            <div style="font-size:1.4rem;margin-bottom:4px;">&#128205;</div>Client A
+                        </div>
+                        <div style="text-align:center;font-size:0.78rem;color:var(--muted);">
+                            <div style="font-size:1.4rem;margin-bottom:4px;">&#128205;</div>Client B
+                        </div>
+                        <div style="text-align:center;font-size:0.78rem;color:var(--muted);">
+                            <div style="font-size:1.4rem;margin-bottom:4px;">&#128205;</div>Client C
+                        </div>
+                    </div>
+                    <div
+                        style="background:var(--yellow-bg);border:1px dashed #d97706;border-radius:8px;padding:7px 16px;font-size:0.76rem;color:var(--yellow);font-weight:600;">
+                        Zone NOTAM interdite
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. POURQUOI CP-SAT -->
+        <div class="slide" data-index="2">
+            <div class="label">02 — Approche</div>
+            <h2>Pourquoi CP-SAT ?</h2>
+            <div class="cols">
+                <div style="display:flex;flex-direction:column;gap:16px;">
+                    <div class="card">
+                        <div class="card-title">Alternatives considerees</div>
+                        <div class="list">
+                            <div class="list-item yellow">Greedy — rapide mais sous-optimal</div>
+                            <div class="list-item yellow">Meta-heuristiques (genetique, recuit simule)</div>
+                            <div class="list-item yellow">Branch &amp; Bound custom</div>
+                            <div class="list-item accent">CP-SAT — notre choix</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Avantages CP-SAT</div>
+                        <div class="list">
+                            <div class="list-item green">Contraintes exprimees naturellement</div>
+                            <div class="list-item green">Variables booleennes natives (arc actif/non)</div>
+                            <div class="list-item green">Garantie OPTIMAL ou FEASIBLE</div>
+                            <div class="list-item green">Time limit configurable — toujours une reponse</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                    <div class="card-title"
+                        style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);">
+                        Modele</div>
+                    <pre><span class="cm"># Variables de decision</span>
+<span class="kw">arc</span>[i,j,k] : <span class="val">BoolVar</span>
+  <span class="cm"># drone k emprunte arc i→j ?</span>
+
+<span class="kw">battery</span>[i,k] : <span class="val">IntVar</span> [0, max_bat]
+<span class="kw">load</span>[i,k]    : <span class="val">IntVar</span> [0, max_w]
+<span class="kw">vol</span>[i,k]     : <span class="val">IntVar</span> [0, max_v]
+
+<span class="cm"># Objectif</span>
+<span class="fn">Minimize</span>( Σ arc[i,j,k] × dist[i,j] )</pre>
+                    <div class="callout" style="margin-bottom:0;">
+                        MILP + propagation de contraintes — bien plus efficace qu'une recherche exhaustive.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. CONTRAINTES -->
+        <div class="slide" data-index="3">
+            <div class="label">03 — Modelisation</div>
+            <h2>Contraintes CP-SAT</h2>
+            <div class="constraint-grid" style="margin-bottom:14px;">
+                <div class="c-card">
+                    <div class="c-card-label">
+                        <span class="c-dot" style="background:var(--accent)"></span>Couverture clients
+                    </div>
+                    <div class="c-formula">∀i client : Σ<sub>j,k</sub> arc[i,j,k] = 1</div>
+                    <div class="c-desc">Chaque client est visite exactement une fois par un seul drone.</div>
+                </div>
+                <div class="c-card">
+                    <div class="c-card-label">
+                        <span class="c-dot" style="background:var(--green)"></span>Conservation du flux
+                    </div>
+                    <div class="c-formula">∀k, ∀j : Σ entrants = Σ sortants</div>
+                    <div class="c-desc">Garantit des routes coherentes — pas de drone qui disparait.</div>
+                </div>
+                <div class="c-card">
+                    <div class="c-card-label">
+                        <span class="c-dot" style="background:var(--yellow)"></span>Batterie (style MTZ)
+                    </div>
+                    <div class="c-formula">battery[j] = battery[i] − dist(i,j)<br>battery[i] ≥ dist(i, depot)</div>
+                    <div class="c-desc">Propagation arc par arc. Retour au depot toujours garanti.</div>
+                </div>
+                <div class="c-card">
+                    <div class="c-card-label">
+                        <span class="c-dot" style="background:var(--red)"></span>Capacite poids + volume
+                    </div>
+                    <div class="c-formula">load[j] = load[i] + demand[j]<br>vol[j] = vol[i] + volume[j]</div>
+                    <div class="c-desc">Accumulation le long de la route, bornee par max_load et max_volume.</div>
+                </div>
+            </div>
+            <div class="callout" style="margin-bottom:0;">
+                Les contraintes de batterie et capacite utilisent <strong>OnlyEnforceIf(arc[i,j,k])</strong> pour n'etre
+                actives que si l'arc est emprunte.
+            </div>
+        </div>
+
+        <!-- 5. WAYPOINT NAVIGATOR -->
+        <div class="slide" data-index="4">
+            <div class="label">04 — Pathfinding</div>
+            <h2>Contournement des Zones NOTAM</h2>
+            <div class="cols">
+                <div style="display:flex;flex-direction:column;gap:16px;">
+                    <div class="callout">
+                        CP-SAT a besoin d'une <strong>matrice de distances</strong> entre tous les noeuds. On ne peut
+                        pas utiliser la distance euclidienne si une zone NOTAM est sur le chemin.
+                    </div>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <h4>Tentative directe</h4>
+                                <p>On verifie si le LineString entre deux points intersecte un polygone NOTAM. Si non,
+                                    distance euclidienne directe.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <h4>Dijkstra sur grille de waypoints</h4>
+                                <p>Grille de points surs generee hors des zones. Dijkstra trouve le chemin le plus court
+                                    evitant les obstacles.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <h4>Matrice finale</h4>
+                                <p>Les distances reelles alimentent CP-SAT. Les chemins complets sont conserves pour
+                                    l'affichage sur la carte.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <pre><span class="cm"># 1. Chemin direct ?</span>
+<span class="kw">if</span> <span class="fn">is_safe</span>(p1, p2):
+    <span class="kw">return</span> dist_euclidienne, [p1, p2]
+
+<span class="cm"># 2. Dijkstra via waypoints</span>
+<span class="kw">queue</span> = [(0, start, [p1])]
+<span class="kw">while</span> queue:
+    d, curr, path = <span class="fn">heappop</span>(queue)
+    <span class="kw">if</span> curr == end:
+        <span class="kw">return</span> d, path
+    <span class="kw">for</span> nxt, w <span class="kw">in</span> adj[curr]:
+        <span class="fn">heappush</span>(queue, (d+w, nxt, ...))</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. LIVE DEMO -->
+        <div class="slide slide-demo" data-index="5">
+            <div class="demo-icon">&#128738;</div>
+            <div class="demo-title">Live <span>Demo</span></div>
+        </div>
+
+        <!-- 7. CONCLUSION -->
+        <div class="slide" data-index="6">
+            <div class="label">06 — Conclusion</div>
+            <h2>Bilan &amp; Perspectives</h2>
+            <div class="cols-3" style="margin-bottom:20px;">
+                <div class="card">
+                    <div class="card-title">Ce qui fonctionne</div>
+                    <div class="list">
+                        <div class="list-item green">Interface interactive complete</div>
+                        <div class="list-item green">Solveur CP-SAT fonctionnel</div>
+                        <div class="list-item green">Contournement NOTAM</div>
+                        <div class="list-item green">Contraintes batterie + capacite</div>
+                        <div class="list-item green">Generation d'instances aleatoires</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Limites</div>
+                    <div class="list">
+                        <div class="list-item yellow">Grille lente sur grandes instances</div>
+                        <div class="list-item yellow">Pas de priorite dans l'objectif</div>
+                        <div class="list-item yellow">Pas de time windows</div>
+                        <div class="list-item yellow">Un seul depot</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Extensions possibles</div>
+                    <div class="list">
+                        <div class="list-item">Multi-depot</div>
+                        <div class="list-item">Recharge en vol</div>
+                        <div class="list-item">Priorites dans l'objectif</div>
+                        <div class="list-item">Time windows clients</div>
+                        <div class="list-item">Meteo dynamique</div>
+                    </div>
+                </div>
+            </div>
+            <div
+                style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;">
+                <div>
+                    <div style="font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:3px;">C3 — Drone
+                        Delivery Routing</div>
+                    <div style="font-size:0.78rem;color:var(--muted);">Programmation par Contraintes — EPITA SCIA 2026
+                    </div>
+                </div>
+                <div style="display:flex;gap:8px;">
+                    <span class="pill pill-accent">CP-SAT</span>
+                    <span class="pill pill-green">OR-Tools</span>
+                    <span class="pill pill-yellow">VRP</span>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /deck -->
+
+    <!-- NAV -->
+    <div id="nav">
+        <button id="btn-prev" disabled>&larr;</button>
+        <div id="dots"></div>
+        <div id="progress-bar-wrap">
+            <div id="progress-bar"></div>
+        </div>
+        <div id="slide-counter">1 / 7</div>
+        <button id="btn-next">&#8594;</button>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const total = slides.length;
+        let current = 0;
+
+        const dotsEl = document.getElementById('dots');
+        const progressBar = document.getElementById('progress-bar');
+        const counter = document.getElementById('slide-counter');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+
+        slides.forEach((_, i) => {
+            const d = document.createElement('div');
+            d.className = 'dot-nav' + (i === 0 ? ' active' : '');
+            d.addEventListener('click', () => goTo(i));
+            dotsEl.appendChild(d);
+        });
+
+        function goTo(idx) {
+            if (idx < 0 || idx >= total) return;
+            slides[current].classList.remove('active');
+            slides[current].classList.add('exit');
+            setTimeout(() => slides[current].classList.remove('exit'), 300);
+            current = idx;
+            slides[current].classList.add('active');
+            document.querySelectorAll('.dot-nav').forEach((d, i) => d.classList.toggle('active', i === current));
+            progressBar.style.width = ((current + 1) / total * 100) + '%';
+            counter.textContent = (current + 1) + ' / ' + total;
+            btnPrev.disabled = current === 0;
+            btnNext.disabled = current === total - 1;
+        }
+
+        btnPrev.addEventListener('click', () => goTo(current - 1));
+        btnNext.addEventListener('click', () => goTo(current + 1));
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {e.preventDefault(); goTo(current + 1);}
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {e.preventDefault(); goTo(current - 1);}
+        });
+
+        goTo(0);
+    </script>
+</body>
+
+</html>
