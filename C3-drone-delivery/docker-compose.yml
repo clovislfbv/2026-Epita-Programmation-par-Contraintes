@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  drone-delivery:
+    build: .
+    container_name: drone_delivery_app
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    volumes:
+      - ./backend:/app/backend
+      - ./frontend:/app/frontend

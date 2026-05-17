@@ -8,6 +8,52 @@ Ce document presente les sujets de projet pour le cours de Programmation par Con
 
 ---
 
+## Modalites du projet
+
+### Taille des groupes
+
+| Taille | Bonus/Malus |
+|--------|-------------|
+| 3 personnes | Standard |
+| 2 personnes | +1 point |
+| 1 personne (solo) | +3 points |
+| 4 personnes | -1 point |
+
+### Bonus de TP
+
+2 TPs rendus dans le semestre. Pour chaque TP :
+- 0.5 point de bonus par exercice supplementaire rendu au-dela du minimum requis
+- **1 point de bonus max par TP**, soit **2 points de bonus TP max au total**
+
+Ces points s'ajoutent a la note de projet.
+
+### Soutenance — Evaluation collegiale
+
+La soutenance finale est evaluee de maniere **collegiale** (pairs + enseignants). Chaque groupe est note sur **4 criteres** (0-10 chacun) :
+
+| Critere | Description |
+|---------|-------------|
+| **Qualite de la presentation** | Communication, clarte, pedagogie, qualite des slides, demonstrations |
+| **Qualite theorique** | Principes CP/CSP utilises, classes d'algorithmes, contexte historique, explication des performances et limitations |
+| **Qualite technique** | Livrables (code, notebook, UI), qualite du code, commits Git, demonstrations, resultats, perspectives |
+| **Organisation** | Planning, repartition des taches, collaboration, activite Git, documentation |
+
+**Note finale = somme des 4 criteres / 2 (echelle /20), ajustee du bonus/malus taille de groupe et des bonus TP.**
+
+### Livrables attendus
+
+- **Code source** documente dans un sous-dossier dedie (`groupe-XX-nom-sujet/`)
+- **Notebook Jupyter** explicatif avec analyse et visualisations **OU** **UI/demo fonctionnelle** (au choix — un notebook tres complet peut tenir lieu de demo, et inversement)
+- **Slides de soutenance** (PDF ou lien)
+- **Pull Request** soumise au plus tard **2 jours avant la soutenance**
+
+### Echeances
+
+- **Date de soutenance** : en cours de confirmation avec la scolarite
+- **Deadline PR** : 2 jours avant la soutenance
+
+---
+
 ## Ressources communes a tous les sujets
 
 ### Solveurs et outils
@@ -1088,6 +1134,8 @@ La composition musicale assistee par contraintes consiste a generer des partitio
 - Truchet, C., & Codognet, P. (2004). "Musical Constraint Satisfaction Problems Applied to Harmony." *Constraints*, 9(1), 23-44. [Springer](https://link.springer.com/article/10.1023/B:CONS.0000004893.29957.51)
 - Strasila: Constraint-Based Music Composition. [GitHub](https://github.com/tanders/strasila)
 - Ames, C. (1989). "The Markov Process as a Compositional Model." *Computer Music Journal*, 13(1), 6-13. [JSTOR](https://www.jstor.org/stable/3679856)
+- Turczan, G. (2020). "Toward an Adaptive Real-Time System for Spatialization and Processing of Live Electronic Music." *MFA Thesis, CalArts*. [PDF](https://mtiid.calarts.edu/wp-content/uploads/2020/03/Turczan_MFA_Thesis.pdf)
+- Scale Navigator — exploration interactive des gammes et modes musicaux. [dashboard.scalenavigator.com](https://dashboard.scalenavigator.com)
 
 ### Difficulte : 3/5
 

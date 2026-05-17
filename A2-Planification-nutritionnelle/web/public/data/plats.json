@@ -1,0 +1,4888 @@
+[
+  {
+    "id": "red_lentil_soup_with_chicken_and_turnips",
+    "name": "Red Lentil Soup with Chicken and Turnips",
+    "meal": "dinner",
+    "cost": 5.7,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "winter",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 477,
+      "protein_g": 26.9,
+      "fat_g": 20.3,
+      "carbs_g": 51.8,
+      "fiber_g": 23.8,
+      "calcium_mg": 103.8,
+      "iron_mg": 6.1,
+      "vitamin_c_mg": 34.0
+    }
+  },
+  {
+    "id": "asparagus_and_pea_soup_real_convenience_food",
+    "name": "Asparagus and Pea Soup: Real Convenience Food",
+    "meal": "dinner",
+    "cost": 2.0,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 217,
+      "protein_g": 10.8,
+      "fat_g": 7.8,
+      "carbs_g": 28.8,
+      "fiber_g": 11.2,
+      "calcium_mg": 75.2,
+      "iron_mg": 4.7,
+      "vitamin_c_mg": 67.3
+    }
+  },
+  {
+    "id": "garlicky_kale",
+    "name": "Garlicky Kale",
+    "meal": "dinner",
+    "cost": 3.1,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "summer",
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 169,
+      "protein_g": 2.1,
+      "fat_g": 15.0,
+      "carbs_g": 7.5,
+      "fiber_g": 2.7,
+      "calcium_mg": 174.4,
+      "iron_mg": 1.3,
+      "vitamin_c_mg": 61.2
+    }
+  },
+  {
+    "id": "slow_cooker_beef_stew",
+    "name": "Slow Cooker Beef Stew",
+    "meal": "dinner",
+    "cost": 4.0,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 433,
+      "protein_g": 44.2,
+      "fat_g": 11.6,
+      "carbs_g": 40.5,
+      "fiber_g": 11.9,
+      "calcium_mg": 386.4,
+      "iron_mg": 12.3,
+      "vitamin_c_mg": 22.7
+    }
+  },
+  {
+    "id": "red_kidney_bean_jambalaya",
+    "name": "Red Kidney Bean Jambalaya",
+    "meal": "dinner",
+    "cost": 2.8,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "winter",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 392,
+      "protein_g": 18.1,
+      "fat_g": 6.5,
+      "carbs_g": 69.4,
+      "fiber_g": 16.2,
+      "calcium_mg": 118.8,
+      "iron_mg": 6.1,
+      "vitamin_c_mg": 45.1
+    }
+  },
+  {
+    "id": "cauliflower_brown_rice_and_vegetable_fried_rice",
+    "name": "Cauliflower, Brown Rice, and Vegetable Fried Rice",
+    "meal": "dinner",
+    "cost": 5.9,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 248,
+      "protein_g": 7.1,
+      "fat_g": 13.0,
+      "carbs_g": 28.9,
+      "fiber_g": 5.8,
+      "calcium_mg": 133.2,
+      "iron_mg": 2.6,
+      "vitamin_c_mg": 65.2
+    }
+  },
+  {
+    "id": "quinoa_and_chickpea_salad_with_sun_dried_tomatoes_and_dried_cherries",
+    "name": "Quinoa and Chickpea Salad with Sun-Dried Tomatoes and Dried Cherries",
+    "meal": "lunch",
+    "cost": 5.9,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "summer",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 538,
+      "protein_g": 20.9,
+      "fat_g": 14.6,
+      "carbs_g": 84.5,
+      "fiber_g": 14.8,
+      "calcium_mg": 103.0,
+      "iron_mg": 7.5,
+      "vitamin_c_mg": 10.8
+    }
+  },
+  {
+    "id": "easy_homemade_rice_and_beans",
+    "name": "Easy Homemade Rice and Beans",
+    "meal": "dinner",
+    "cost": 2.4,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 445,
+      "protein_g": 19.1,
+      "fat_g": 4.1,
+      "carbs_g": 86.1,
+      "fiber_g": 19.4,
+      "calcium_mg": 155.6,
+      "iron_mg": 7.1,
+      "vitamin_c_mg": 20.5
+    }
+  },
+  {
+    "id": "tuscan_white_bean_soup_with_olive_oil_and_rosemary",
+    "name": "Tuscan White Bean Soup with Olive Oil and Rosemary",
+    "meal": "dinner",
+    "cost": 5.0,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 242,
+      "protein_g": 16.1,
+      "fat_g": 1.3,
+      "carbs_g": 43.4,
+      "fiber_g": 10.7,
+      "calcium_mg": 172.7,
+      "iron_mg": 7.2,
+      "vitamin_c_mg": 2.4
+    }
+  },
+  {
+    "id": "crunchy_brussels_sprouts_side_dish",
+    "name": "Crunchy Brussels Sprouts Side Dish",
+    "meal": "dinner",
+    "cost": 3.1,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "winter",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 231,
+      "protein_g": 7.9,
+      "fat_g": 15.9,
+      "carbs_g": 19.8,
+      "fiber_g": 8.2,
+      "calcium_mg": 93.1,
+      "iron_mg": 3.1,
+      "vitamin_c_mg": 170.1
+    }
+  },
+  {
+    "id": "slow_cooker_pork_and_garbanzo_beans",
+    "name": "Slow Cooker: Pork and Garbanzo Beans",
+    "meal": "dinner",
+    "cost": 4.7,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "summer",
+      "spring",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 586,
+      "protein_g": 65.8,
+      "fat_g": 14.0,
+      "carbs_g": 48.5,
+      "fiber_g": 14.1,
+      "calcium_mg": 119.6,
+      "iron_mg": 6.8,
+      "vitamin_c_mg": 4.0
+    }
+  },
+  {
+    "id": "powerhouse_almond_matcha_superfood_smoothie",
+    "name": "Powerhouse Almond Matcha Superfood Smoothie",
+    "meal": "breakfast",
+    "cost": 3.6,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 281,
+      "protein_g": 10.3,
+      "fat_g": 12.9,
+      "carbs_g": 33.8,
+      "fiber_g": 7.1,
+      "calcium_mg": 348.1,
+      "iron_mg": 2.8,
+      "vitamin_c_mg": 59.6
+    }
+  },
+  {
+    "id": "broccolini_quinoa_pilaf",
+    "name": "Broccolini Quinoa Pilaf",
+    "meal": "dinner",
+    "cost": 3.1,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 625,
+      "protein_g": 19.9,
+      "fat_g": 30.7,
+      "carbs_g": 71.7,
+      "fiber_g": 9.6,
+      "calcium_mg": 139.7,
+      "iron_mg": 5.6,
+      "vitamin_c_mg": 81.8
+    }
+  },
+  {
+    "id": "easy_to_make_spring_rolls",
+    "name": "Easy To Make Spring Rolls",
+    "meal": "dinner",
+    "cost": 2.9,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "summer",
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 161,
+      "protein_g": 13.3,
+      "fat_g": 2.0,
+      "carbs_g": 28.3,
+      "fiber_g": 5.8,
+      "calcium_mg": 432.3,
+      "iron_mg": 14.2,
+      "vitamin_c_mg": 285.5
+    }
+  },
+  {
+    "id": "farro_with_mushrooms_and_asparagus",
+    "name": "Farro With Mushrooms and Asparagus",
+    "meal": "dinner",
+    "cost": 5.0,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 365,
+      "protein_g": 12.3,
+      "fat_g": 9.4,
+      "carbs_g": 61.5,
+      "fiber_g": 12.8,
+      "calcium_mg": 64.8,
+      "iron_mg": 4.7,
+      "vitamin_c_mg": 12.2
+    }
+  },
+  {
+    "id": "butternut_squash_frittata",
+    "name": "Butternut Squash Frittata",
+    "meal": "dinner",
+    "cost": 4.9,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "winter",
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 462,
+      "protein_g": 23.9,
+      "fat_g": 4.0,
+      "carbs_g": 96.0,
+      "fiber_g": 16.6,
+      "calcium_mg": 512.3,
+      "iron_mg": 8.2,
+      "vitamin_c_mg": 253.5
+    }
+  },
+  {
+    "id": "herbivoracious_white_bean_and_kale_soup",
+    "name": "Herbivoracious' White Bean and Kale Soup",
+    "meal": "dinner",
+    "cost": 5.8,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 331,
+      "protein_g": 17.0,
+      "fat_g": 10.0,
+      "carbs_g": 46.3,
+      "fiber_g": 11.9,
+      "calcium_mg": 241.9,
+      "iron_mg": 7.6,
+      "vitamin_c_mg": 25.6
+    }
+  },
+  {
+    "id": "tomato_and_lentil_soup",
+    "name": "Tomato and lentil soup",
+    "meal": "dinner",
+    "cost": 5.1,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "winter",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 340,
+      "protein_g": 18.3,
+      "fat_g": 8.1,
+      "carbs_g": 50.7,
+      "fiber_g": 22.5,
+      "calcium_mg": 126.1,
+      "iron_mg": 7.0,
+      "vitamin_c_mg": 38.1
+    }
+  },
+  {
+    "id": "swiss_chard_wraps",
+    "name": "Swiss Chard Wraps",
+    "meal": "lunch",
+    "cost": 3.2,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "summer",
+      "winter",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 137,
+      "protein_g": 3.6,
+      "fat_g": 11.2,
+      "carbs_g": 8.6,
+      "fiber_g": 4.4,
+      "calcium_mg": 44.4,
+      "iron_mg": 1.5,
+      "vitamin_c_mg": 59.2
+    }
+  },
+  {
+    "id": "corn_avocado_salsa",
+    "name": "Corn Avocado Salsa",
+    "meal": "dinner",
+    "cost": 3.3,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 237,
+      "protein_g": 4.6,
+      "fat_g": 15.6,
+      "carbs_g": 26.3,
+      "fiber_g": 9.2,
+      "calcium_mg": 29.3,
+      "iron_mg": 1.8,
+      "vitamin_c_mg": 53.1
+    }
+  },
+  {
+    "id": "cheesy_chicken_enchilada_quinoa_casserole",
+    "name": "Cheesy Chicken Enchilada Quinoa Casserole",
+    "meal": "dinner",
+    "cost": 4.1,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "winter",
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 594,
+      "protein_g": 34.2,
+      "fat_g": 23.8,
+      "carbs_g": 68.0,
+      "fiber_g": 17.7,
+      "calcium_mg": 374.1,
+      "iron_mg": 5.6,
+      "vitamin_c_mg": 25.4
+    }
+  },
+  {
+    "id": "zesty_green_pea_and_jalape_o_pesto_pasta",
+    "name": "Zesty Green Pea and Jalape\u00f1o Pesto Pasta",
+    "meal": "dinner",
+    "cost": 4.7,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "spring",
+      "winter",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 324,
+      "protein_g": 9.6,
+      "fat_g": 11.6,
+      "carbs_g": 46.5,
+      "fiber_g": 5.7,
+      "calcium_mg": 64.1,
+      "iron_mg": 2.2,
+      "vitamin_c_mg": 32.2
+    }
+  },
+  {
+    "id": "jade_buddha_salmon_tartare",
+    "name": "Jade Buddha Salmon Tartare",
+    "meal": "dinner",
+    "cost": 5.5,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "summer",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 382,
+      "protein_g": 34.3,
+      "fat_g": 24.9,
+      "carbs_g": 5.1,
+      "fiber_g": 1.2,
+      "calcium_mg": 41.0,
+      "iron_mg": 1.8,
+      "vitamin_c_mg": 15.8
+    }
+  },
+  {
+    "id": "finger_foods_frittata_muffins",
+    "name": "Finger Foods: Frittata Muffins",
+    "meal": "dinner",
+    "cost": 5.9,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 654,
+      "protein_g": 49.5,
+      "fat_g": 44.9,
+      "carbs_g": 12.9,
+      "fiber_g": 3.5,
+      "calcium_mg": 593.6,
+      "iron_mg": 5.6,
+      "vitamin_c_mg": 132.7
+    }
+  },
+  {
+    "id": "spicy_black_eyed_pea_curry_with_swiss_chard_and_roasted_eggplant",
+    "name": "Spicy Black-Eyed Pea Curry with Swiss Chard and Roasted Eggplant",
+    "meal": "breakfast",
+    "cost": 4.2,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 128,
+      "protein_g": 6.7,
+      "fat_g": 2.2,
+      "carbs_g": 23.2,
+      "fiber_g": 8.2,
+      "calcium_mg": 59.1,
+      "iron_mg": 3.0,
+      "vitamin_c_mg": 28.1
+    }
+  },
+  {
+    "id": "moroccan_chickpea_and_lentil_stew",
+    "name": "Moroccan chickpea and lentil stew",
+    "meal": "dinner",
+    "cost": 2.5,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "summer",
+      "spring",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 465,
+      "protein_g": 20.0,
+      "fat_g": 7.3,
+      "carbs_g": 82.4,
+      "fiber_g": 15.6,
+      "calcium_mg": 129.2,
+      "iron_mg": 5.7,
+      "vitamin_c_mg": 34.2
+    }
+  },
+  {
+    "id": "strawberry_mango_quinoa_salad",
+    "name": "Strawberry-Mango Quinoa Salad",
+    "meal": "lunch",
+    "cost": 3.1,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "winter",
+      "summer",
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 353,
+      "protein_g": 7.8,
+      "fat_g": 16.8,
+      "carbs_g": 45.9,
+      "fiber_g": 6.5,
+      "calcium_mg": 56.7,
+      "iron_mg": 2.8,
+      "vitamin_c_mg": 140.5
+    }
+  },
+  {
+    "id": "caldo_verde_portuguese_kale_soup",
+    "name": "Caldo Verde - Portuguese Kale Soup",
+    "meal": "dinner",
+    "cost": 4.9,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 492,
+      "protein_g": 19.8,
+      "fat_g": 10.3,
+      "carbs_g": 82.2,
+      "fiber_g": 11.8,
+      "calcium_mg": 175.5,
+      "iron_mg": 5.0,
+      "vitamin_c_mg": 116.9
+    }
+  },
+  {
+    "id": "moroccan_couscous_and_chickpea_salad",
+    "name": "Moroccan Couscous and Chickpea Salad",
+    "meal": "lunch",
+    "cost": 3.9,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "autumn",
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 483,
+      "protein_g": 14.0,
+      "fat_g": 25.2,
+      "carbs_g": 53.5,
+      "fiber_g": 8.9,
+      "calcium_mg": 83.6,
+      "iron_mg": 3.2,
+      "vitamin_c_mg": 41.1
+    }
+  },
+  {
+    "id": "easy_vegetable_beef_soup",
+    "name": "Easy Vegetable Beef Soup",
+    "meal": "dinner",
+    "cost": 5.6,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "winter",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 565,
+      "protein_g": 45.4,
+      "fat_g": 19.1,
+      "carbs_g": 55.8,
+      "fiber_g": 11.9,
+      "calcium_mg": 131.9,
+      "iron_mg": 8.6,
+      "vitamin_c_mg": 21.8
+    }
+  },
+  {
+    "id": "mango_fried_rice",
+    "name": "Mango Fried Rice",
+    "meal": "dinner",
+    "cost": 4.0,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "winter",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 486,
+      "protein_g": 16.0,
+      "fat_g": 4.0,
+      "carbs_g": 95.4,
+      "fiber_g": 4.9,
+      "calcium_mg": 56.7,
+      "iron_mg": 2.2,
+      "vitamin_c_mg": 17.7
+    }
+  },
+  {
+    "id": "homemade_guacamole",
+    "name": "Homemade Guacamole",
+    "meal": "dinner",
+    "cost": 5.4,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 170,
+      "protein_g": 2.3,
+      "fat_g": 14.8,
+      "carbs_g": 10.9,
+      "fiber_g": 7.2,
+      "calcium_mg": 18.2,
+      "iron_mg": 0.7,
+      "vitamin_c_mg": 15.2
+    }
+  },
+  {
+    "id": "roasted_broccoli_with_lemon_and_garlic",
+    "name": "Roasted Broccoli with Lemon and Garlic",
+    "meal": "dinner",
+    "cost": 4.9,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 58,
+      "protein_g": 3.3,
+      "fat_g": 2.4,
+      "carbs_g": 8.0,
+      "fiber_g": 3.0,
+      "calcium_mg": 56.2,
+      "iron_mg": 0.9,
+      "vitamin_c_mg": 101.9
+    }
+  },
+  {
+    "id": "spicy_indian_style_hummus",
+    "name": "Spicy Indian-Style Hummus",
+    "meal": "dinner",
+    "cost": 2.3,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 133,
+      "protein_g": 5.2,
+      "fat_g": 6.4,
+      "carbs_g": 15.3,
+      "fiber_g": 4.2,
+      "calcium_mg": 38.2,
+      "iron_mg": 2.0,
+      "vitamin_c_mg": 16.9
+    }
+  },
+  {
+    "id": "stir_fried_quinoa_brown_rice_and_chicken_breast",
+    "name": "Stir Fried Quinoa, Brown Rice and Chicken Breast",
+    "meal": "dinner",
+    "cost": 2.2,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "spring",
+      "winter",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 750,
+      "protein_g": 57.8,
+      "fat_g": 19.5,
+      "carbs_g": 84.8,
+      "fiber_g": 7.2,
+      "calcium_mg": 165.3,
+      "iron_mg": 5.4,
+      "vitamin_c_mg": 46.2
+    }
+  },
+  {
+    "id": "snap_pea_and_green_bean_salad_with_arugula_pesto",
+    "name": "Snap Pea and Green Bean Salad with Arugula Pesto",
+    "meal": "lunch",
+    "cost": 2.7,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "winter",
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 314,
+      "protein_g": 12.3,
+      "fat_g": 22.0,
+      "carbs_g": 21.5,
+      "fiber_g": 7.6,
+      "calcium_mg": 187.7,
+      "iron_mg": 4.0,
+      "vitamin_c_mg": 66.6
+    }
+  },
+  {
+    "id": "skinny_kale_basil_pesto",
+    "name": "Skinny Kale Basil Pesto",
+    "meal": "dinner",
+    "cost": 5.4,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "spring",
+      "winter",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 70,
+      "protein_g": 3.0,
+      "fat_g": 5.0,
+      "carbs_g": 4.4,
+      "fiber_g": 1.3,
+      "calcium_mg": 97.0,
+      "iron_mg": 0.9,
+      "vitamin_c_mg": 18.1
+    }
+  },
+  {
+    "id": "greek_style_baked_fish_fresh_simple_and_delicious",
+    "name": "Greek-Style Baked Fish: Fresh, Simple, and Delicious",
+    "meal": "dinner",
+    "cost": 4.5,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 344,
+      "protein_g": 27.8,
+      "fat_g": 12.4,
+      "carbs_g": 28.0,
+      "fiber_g": 1.9,
+      "calcium_mg": 114.5,
+      "iron_mg": 1.7,
+      "vitamin_c_mg": 43.3
+    }
+  },
+  {
+    "id": "spinach_salad_with_strawberry_vinaigrette",
+    "name": "Spinach Salad with Strawberry Vinaigrette",
+    "meal": "lunch",
+    "cost": 5.3,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 321,
+      "protein_g": 22.0,
+      "fat_g": 12.7,
+      "carbs_g": 29.9,
+      "fiber_g": 6.5,
+      "calcium_mg": 222.3,
+      "iron_mg": 4.4,
+      "vitamin_c_mg": 105.1
+    }
+  },
+  {
+    "id": "salmon_with_roasted_vegetables",
+    "name": "Salmon with roasted vegetables",
+    "meal": "dinner",
+    "cost": 5.3,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 495,
+      "protein_g": 38.5,
+      "fat_g": 18.4,
+      "carbs_g": 44.6,
+      "fiber_g": 9.0,
+      "calcium_mg": 110.5,
+      "iron_mg": 3.8,
+      "vitamin_c_mg": 58.3
+    }
+  },
+  {
+    "id": "cod_with_tomato_olive_chorizo_sauce_and_mashed_potatoes",
+    "name": "Cod with Tomato-Olive-Chorizo Sauce and Mashed Potatoes",
+    "meal": "dinner",
+    "cost": 2.7,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 733,
+      "protein_g": 55.8,
+      "fat_g": 40.4,
+      "carbs_g": 37.1,
+      "fiber_g": 7.0,
+      "calcium_mg": 107.0,
+      "iron_mg": 4.1,
+      "vitamin_c_mg": 130.8
+    }
+  },
+  {
+    "id": "vegetable_dip",
+    "name": "Vegetable Dip",
+    "meal": "dinner",
+    "cost": 4.5,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "spring",
+      "winter",
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 209,
+      "protein_g": 15.6,
+      "fat_g": 3.6,
+      "carbs_g": 32.7,
+      "fiber_g": 7.3,
+      "calcium_mg": 455.8,
+      "iron_mg": 2.9,
+      "vitamin_c_mg": 19.9
+    }
+  },
+  {
+    "id": "balsamic_honey_glazed_salmon_with_lemony_asparagus",
+    "name": "Balsamic & Honey Glazed Salmon with Lemony Asparagus",
+    "meal": "dinner",
+    "cost": 4.3,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 301,
+      "protein_g": 25.2,
+      "fat_g": 14.4,
+      "carbs_g": 18.5,
+      "fiber_g": 2.7,
+      "calcium_mg": 65.1,
+      "iron_mg": 3.9,
+      "vitamin_c_mg": 22.6
+    }
+  },
+  {
+    "id": "curried_butternut_squash_and_apple_soup",
+    "name": "Curried Butternut Squash and Apple Soup",
+    "meal": "dinner",
+    "cost": 4.7,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "summer",
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 134,
+      "protein_g": 7.5,
+      "fat_g": 2.7,
+      "carbs_g": 23.6,
+      "fiber_g": 5.4,
+      "calcium_mg": 130.0,
+      "iron_mg": 1.8,
+      "vitamin_c_mg": 65.8
+    }
+  },
+  {
+    "id": "amaranth_and_roast_veggie_salad",
+    "name": "Amaranth and Roast Veggie Salad",
+    "meal": "breakfast",
+    "cost": 5.8,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "summer",
+      "autumn",
+      "spring",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 360,
+      "protein_g": 9.3,
+      "fat_g": 18.0,
+      "carbs_g": 44.0,
+      "fiber_g": 6.8,
+      "calcium_mg": 170.0,
+      "iron_mg": 4.9,
+      "vitamin_c_mg": 112.4
+    }
+  },
+  {
+    "id": "carrot_and_cabbage_salad_with_coriander_cumin_dry_rub",
+    "name": "Carrot and Cabbage Salad With Coriander+cumin Dry Rub",
+    "meal": "lunch",
+    "cost": 2.1,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 222,
+      "protein_g": 6.1,
+      "fat_g": 10.2,
+      "carbs_g": 32.1,
+      "fiber_g": 9.8,
+      "calcium_mg": 147.9,
+      "iron_mg": 2.9,
+      "vitamin_c_mg": 80.2
+    }
+  },
+  {
+    "id": "instant_pot_quinoa_grain_bowl",
+    "name": "Instant Pot Quinoa Grain Bowl",
+    "meal": "lunch",
+    "cost": 2.4,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "winter",
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 407,
+      "protein_g": 15.3,
+      "fat_g": 9.3,
+      "carbs_g": 68.4,
+      "fiber_g": 10.1,
+      "calcium_mg": 104.6,
+      "iron_mg": 5.5,
+      "vitamin_c_mg": 75.4
+    }
+  },
+  {
+    "id": "roasted_cauliflower_detox_bowl_with_tahini_sauce",
+    "name": "Roasted Cauliflower Detox Bowl with Tahini Sauce",
+    "meal": "lunch",
+    "cost": 2.0,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "summer",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 524,
+      "protein_g": 16.4,
+      "fat_g": 28.5,
+      "carbs_g": 60.0,
+      "fiber_g": 16.5,
+      "calcium_mg": 208.0,
+      "iron_mg": 5.3,
+      "vitamin_c_mg": 160.7
+    }
+  },
+  {
+    "id": "smoky_black_bean_soup_with_sweet_potato_kale",
+    "name": "Smoky Black Bean Soup With Sweet Potato & Kale",
+    "meal": "dinner",
+    "cost": 5.0,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "winter",
+      "summer",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 554,
+      "protein_g": 23.3,
+      "fat_g": 7.5,
+      "carbs_g": 102.5,
+      "fiber_g": 22.0,
+      "calcium_mg": 248.5,
+      "iron_mg": 7.1,
+      "vitamin_c_mg": 27.2
+    }
+  },
+  {
+    "id": "chorizo_and_beef_quinoa_stuffed_pepper",
+    "name": "Chorizo and Beef Quinoa Stuffed Pepper",
+    "meal": "dinner",
+    "cost": 5.4,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 685,
+      "protein_g": 51.1,
+      "fat_g": 37.0,
+      "carbs_g": 32.5,
+      "fiber_g": 4.8,
+      "calcium_mg": 94.5,
+      "iron_mg": 7.4,
+      "vitamin_c_mg": 96.7
+    }
+  },
+  {
+    "id": "alouette_stuffed_mushroom_caps",
+    "name": "Alouette\u00ae Stuffed Mushroom Caps",
+    "meal": "dinner",
+    "cost": 3.9,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 30,
+      "protein_g": 1.9,
+      "fat_g": 0.5,
+      "carbs_g": 5.5,
+      "fiber_g": 1.5,
+      "calcium_mg": 30.3,
+      "iron_mg": 0.9,
+      "vitamin_c_mg": 6.6
+    }
+  },
+  {
+    "id": "coffee_braised_short_ribs",
+    "name": "Coffee-braised Short Ribs",
+    "meal": "dinner",
+    "cost": 4.1,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 877,
+      "protein_g": 73.7,
+      "fat_g": 41.5,
+      "carbs_g": 59.5,
+      "fiber_g": 14.2,
+      "calcium_mg": 431.8,
+      "iron_mg": 19.8,
+      "vitamin_c_mg": 156.5
+    }
+  },
+  {
+    "id": "herb_chicken_with_sweet_potato_mash_and_saut_ed_broccoli",
+    "name": "Herb chicken with sweet potato mash and saut\u00e9ed broccoli",
+    "meal": "dinner",
+    "cost": 5.7,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "winter",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 709,
+      "protein_g": 46.5,
+      "fat_g": 24.6,
+      "carbs_g": 78.2,
+      "fiber_g": 12.9,
+      "calcium_mg": 174.2,
+      "iron_mg": 4.2,
+      "vitamin_c_mg": 149.4
+    }
+  },
+  {
+    "id": "chicken_and_mango_skewer",
+    "name": "Chicken and Mango Skewer",
+    "meal": "dinner",
+    "cost": 3.1,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "spring",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 478,
+      "protein_g": 31.2,
+      "fat_g": 8.2,
+      "carbs_g": 82.1,
+      "fiber_g": 18.8,
+      "calcium_mg": 439.3,
+      "iron_mg": 10.7,
+      "vitamin_c_mg": 152.7
+    }
+  },
+  {
+    "id": "crab_salad_stuffed_pita_pockets",
+    "name": "Crab Salad Stuffed Pita Pockets",
+    "meal": "lunch",
+    "cost": 5.5,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 417,
+      "protein_g": 38.8,
+      "fat_g": 6.4,
+      "carbs_g": 54.0,
+      "fiber_g": 5.3,
+      "calcium_mg": 559.2,
+      "iron_mg": 14.2,
+      "vitamin_c_mg": 202.0
+    }
+  },
+  {
+    "id": "easy_roasted_vegetables",
+    "name": "Easy Roasted Vegetables",
+    "meal": "dinner",
+    "cost": 2.2,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "spring",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 360,
+      "protein_g": 9.4,
+      "fat_g": 4.5,
+      "carbs_g": 75.6,
+      "fiber_g": 12.7,
+      "calcium_mg": 151.5,
+      "iron_mg": 6.4,
+      "vitamin_c_mg": 85.7
+    }
+  },
+  {
+    "id": "chilled_cucumber_avocado_soup_with_yogurt_and_kefir",
+    "name": "Chilled Cucumber Avocado Soup with Yogurt and Kefir",
+    "meal": "dinner",
+    "cost": 2.1,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "summer",
+      "winter",
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 188,
+      "protein_g": 9.0,
+      "fat_g": 7.3,
+      "carbs_g": 24.5,
+      "fiber_g": 6.6,
+      "calcium_mg": 174.8,
+      "iron_mg": 1.7,
+      "vitamin_c_mg": 28.0
+    }
+  },
+  {
+    "id": "turkish_chicken_salad_with_home_made_cacik_yogurt_sauce",
+    "name": "Turkish Chicken Salad with Home-made Cacik Yogurt Sauce",
+    "meal": "lunch",
+    "cost": 4.3,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 642,
+      "protein_g": 67.1,
+      "fat_g": 29.8,
+      "carbs_g": 27.1,
+      "fiber_g": 7.0,
+      "calcium_mg": 209.8,
+      "iron_mg": 5.2,
+      "vitamin_c_mg": 70.6
+    }
+  },
+  {
+    "id": "butternut_squash_soup_in_half_an_hour",
+    "name": "Butternut Squash Soup (In Half An Hour!)",
+    "meal": "dinner",
+    "cost": 4.3,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "winter",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 251,
+      "protein_g": 8.7,
+      "fat_g": 6.5,
+      "carbs_g": 42.4,
+      "fiber_g": 8.5,
+      "calcium_mg": 158.1,
+      "iron_mg": 3.1,
+      "vitamin_c_mg": 33.2
+    }
+  },
+  {
+    "id": "doughnuts",
+    "name": "Doughnuts",
+    "meal": "dinner",
+    "cost": 3.3,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "autumn",
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 430,
+      "protein_g": 11.4,
+      "fat_g": 2.0,
+      "carbs_g": 91.3,
+      "fiber_g": 3.0,
+      "calcium_mg": 52.6,
+      "iron_mg": 4.5,
+      "vitamin_c_mg": 0
+    }
+  },
+  {
+    "id": "shredded_roast_beef_stuffed_sweet_potatoes_whole_30_paleo",
+    "name": "Shredded Roast Beef Stuffed Sweet Potatoes (Whole 30 & PALEO)",
+    "meal": "dinner",
+    "cost": 6.0,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "winter",
+      "summer",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 485,
+      "protein_g": 44.1,
+      "fat_g": 9.3,
+      "carbs_g": 54.6,
+      "fiber_g": 8.1,
+      "calcium_mg": 108.8,
+      "iron_mg": 5.3,
+      "vitamin_c_mg": 6.5
+    }
+  },
+  {
+    "id": "lentil_mango_salad",
+    "name": "Lentil Mango Salad",
+    "meal": "lunch",
+    "cost": 2.4,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "summer",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 252,
+      "protein_g": 12.1,
+      "fat_g": 6.4,
+      "carbs_g": 39.8,
+      "fiber_g": 12.5,
+      "calcium_mg": 44.6,
+      "iron_mg": 4.5,
+      "vitamin_c_mg": 156.9
+    }
+  },
+  {
+    "id": "gujarati_dry_mung_bean_curry",
+    "name": "Gujarati Dry Mung Bean Curry",
+    "meal": "dinner",
+    "cost": 4.6,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 375,
+      "protein_g": 19.8,
+      "fat_g": 5.2,
+      "carbs_g": 66.1,
+      "fiber_g": 14.0,
+      "calcium_mg": 139.4,
+      "iron_mg": 6.5,
+      "vitamin_c_mg": 72.8
+    }
+  },
+  {
+    "id": "basil_tagliatelle_with_roasted_red_bell_pepper_salad",
+    "name": "Basil Tagliatelle with Roasted Red Bell Pepper Salad",
+    "meal": "lunch",
+    "cost": 5.8,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "summer",
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 379,
+      "protein_g": 10.6,
+      "fat_g": 13.8,
+      "carbs_g": 57.8,
+      "fiber_g": 8.8,
+      "calcium_mg": 63.7,
+      "iron_mg": 2.8,
+      "vitamin_c_mg": 397.5
+    }
+  },
+  {
+    "id": "peanut_butter_and_jelly_smoothie",
+    "name": "Peanut Butter and Jelly Smoothie",
+    "meal": "breakfast",
+    "cost": 4.4,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "winter",
+      "spring",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 779,
+      "protein_g": 19.6,
+      "fat_g": 35.8,
+      "carbs_g": 103.9,
+      "fiber_g": 7.6,
+      "calcium_mg": 219.7,
+      "iron_mg": 2.4,
+      "vitamin_c_mg": 26.2
+    }
+  },
+  {
+    "id": "moosewood_lentil_soup",
+    "name": "Moosewood Lentil Soup",
+    "meal": "dinner",
+    "cost": 4.9,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "summer",
+      "spring",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 396,
+      "protein_g": 25.6,
+      "fat_g": 3.5,
+      "carbs_g": 66.2,
+      "fiber_g": 31.1,
+      "calcium_mg": 88.8,
+      "iron_mg": 8.1,
+      "vitamin_c_mg": 13.0
+    }
+  },
+  {
+    "id": "crispy_panko_and_herb_crusted_salmon",
+    "name": "Crispy Panko and Herb Crusted Salmon",
+    "meal": "dinner",
+    "cost": 5.7,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 390,
+      "protein_g": 32.6,
+      "fat_g": 22.2,
+      "carbs_g": 13.8,
+      "fiber_g": 1.4,
+      "calcium_mg": 62.0,
+      "iron_mg": 2.6,
+      "vitamin_c_mg": 25.6
+    }
+  },
+  {
+    "id": "cilantro_lime_halibut",
+    "name": "Cilantro Lime Halibut",
+    "meal": "dinner",
+    "cost": 5.1,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "winter",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 422,
+      "protein_g": 43.6,
+      "fat_g": 22.0,
+      "carbs_g": 6.4,
+      "fiber_g": 0.6,
+      "calcium_mg": 40.7,
+      "iron_mg": 0.9,
+      "vitamin_c_mg": 13.3
+    }
+  },
+  {
+    "id": "broccoli_tartar",
+    "name": "Broccoli Tartar",
+    "meal": "dinner",
+    "cost": 5.1,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 139,
+      "protein_g": 5.9,
+      "fat_g": 5.8,
+      "carbs_g": 19.6,
+      "fiber_g": 6.3,
+      "calcium_mg": 138.1,
+      "iron_mg": 3.1,
+      "vitamin_c_mg": 52.2
+    }
+  },
+  {
+    "id": "spinach_and_gorgonzola_stuffed_flank_steak",
+    "name": "Spinach and Gorgonzola Stuffed Flank Steak",
+    "meal": "dinner",
+    "cost": 5.1,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "winter",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 523,
+      "protein_g": 47.0,
+      "fat_g": 28.4,
+      "carbs_g": 18.4,
+      "fiber_g": 2.4,
+      "calcium_mg": 281.1,
+      "iron_mg": 5.4,
+      "vitamin_c_mg": 16.4
+    }
+  },
+  {
+    "id": "vegetarian_mushroom_shepherd_s_pie",
+    "name": "Vegetarian Mushroom Shepherd's Pie",
+    "meal": "dinner",
+    "cost": 3.6,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "summer",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 113,
+      "protein_g": 4.8,
+      "fat_g": 5.0,
+      "carbs_g": 23.6,
+      "fiber_g": 5.4,
+      "calcium_mg": 27.6,
+      "iron_mg": 1.7,
+      "vitamin_c_mg": 30.6
+    }
+  },
+  {
+    "id": "slow_cooker_chicken_taco_soup",
+    "name": "Slow Cooker Chicken Taco Soup",
+    "meal": "dinner",
+    "cost": 2.7,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "winter",
+      "autumn",
+      "summer",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 311,
+      "protein_g": 24.3,
+      "fat_g": 3.8,
+      "carbs_g": 49.2,
+      "fiber_g": 12.2,
+      "calcium_mg": 109.3,
+      "iron_mg": 5.1,
+      "vitamin_c_mg": 24.4
+    }
+  },
+  {
+    "id": "broccoli_with_cheese_soup",
+    "name": "Broccoli with cheese soup",
+    "meal": "dinner",
+    "cost": 2.9,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "summer",
+      "winter",
+      "spring",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 120,
+      "protein_g": 7.2,
+      "fat_g": 5.1,
+      "carbs_g": 13.4,
+      "fiber_g": 2.9,
+      "calcium_mg": 191.3,
+      "iron_mg": 1.2,
+      "vitamin_c_mg": 93.0
+    }
+  },
+  {
+    "id": "ancient_grains_bread",
+    "name": "Ancient Grains Bread",
+    "meal": "dinner",
+    "cost": 5.1,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "spring",
+      "winter",
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 284,
+      "protein_g": 12.7,
+      "fat_g": 3.0,
+      "carbs_g": 53.9,
+      "fiber_g": 7.1,
+      "calcium_mg": 144.5,
+      "iron_mg": 3.5,
+      "vitamin_c_mg": 0
+    }
+  },
+  {
+    "id": "garlic_lemon_chili_broccoli",
+    "name": "Garlic Lemon Chili Broccoli",
+    "meal": "dinner",
+    "cost": 2.9,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "summer",
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 453,
+      "protein_g": 10.2,
+      "fat_g": 37.6,
+      "carbs_g": 26.2,
+      "fiber_g": 9.7,
+      "calcium_mg": 177.7,
+      "iron_mg": 3.1,
+      "vitamin_c_mg": 310.7
+    }
+  },
+  {
+    "id": "shrimp_and_avocado_salad",
+    "name": "Shrimp and Avocado Salad",
+    "meal": "lunch",
+    "cost": 2.7,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 639,
+      "protein_g": 34.0,
+      "fat_g": 37.0,
+      "carbs_g": 53.3,
+      "fiber_g": 17.3,
+      "calcium_mg": 143.5,
+      "iron_mg": 4.0,
+      "vitamin_c_mg": 116.0
+    }
+  },
+  {
+    "id": "vietnamese_pancakes_with_vegetables_herbs_and_a_fragrant_dipping_sauce_b_nh_x_o",
+    "name": "Vietnamese Pancakes with Vegetables, Herbs and a Fragrant Dipping Sauce (B\u00e1nh X\u00e8o)",
+    "meal": "breakfast",
+    "cost": 4.2,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "autumn",
+      "winter",
+      "summer",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 389,
+      "protein_g": 8.1,
+      "fat_g": 22.5,
+      "carbs_g": 42.9,
+      "fiber_g": 6.0,
+      "calcium_mg": 87.6,
+      "iron_mg": 5.4,
+      "vitamin_c_mg": 74.2
+    }
+  },
+  {
+    "id": "salmon_quinoa_risotto",
+    "name": "Salmon Quinoa Risotto",
+    "meal": "dinner",
+    "cost": 2.5,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "winter",
+      "spring",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 404,
+      "protein_g": 22.0,
+      "fat_g": 18.2,
+      "carbs_g": 39.5,
+      "fiber_g": 6.0,
+      "calcium_mg": 102.9,
+      "iron_mg": 3.4,
+      "vitamin_c_mg": 119.1
+    }
+  },
+  {
+    "id": "gluten_free_dairy_free_sugar_free_chinese_chicken_salad",
+    "name": "Gluten Free Dairy Free Sugar Free Chinese Chicken Salad",
+    "meal": "lunch",
+    "cost": 3.5,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 363,
+      "protein_g": 31.0,
+      "fat_g": 15.4,
+      "carbs_g": 28.7,
+      "fiber_g": 6.9,
+      "calcium_mg": 186.2,
+      "iron_mg": 3.1,
+      "vitamin_c_mg": 95.1
+    }
+  },
+  {
+    "id": "easy_instant_pot_beef_tips_and_rice",
+    "name": "Easy Instant Pot Beef Tips and Rice",
+    "meal": "dinner",
+    "cost": 3.0,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "winter",
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 370,
+      "protein_g": 52.7,
+      "fat_g": 10.6,
+      "carbs_g": 12.6,
+      "fiber_g": 0.6,
+      "calcium_mg": 54.4,
+      "iron_mg": 4.7,
+      "vitamin_c_mg": 1.1
+    }
+  },
+  {
+    "id": "venison_stew",
+    "name": "Venison Stew",
+    "meal": "dinner",
+    "cost": 5.7,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "autumn",
+      "spring",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 316,
+      "protein_g": 32.5,
+      "fat_g": 6.9,
+      "carbs_g": 29.7,
+      "fiber_g": 6.1,
+      "calcium_mg": 99.3,
+      "iron_mg": 5.1,
+      "vitamin_c_mg": 19.5
+    }
+  },
+  {
+    "id": "radish_snap_pea_quinoa_salad",
+    "name": "Radish & Snap Pea Quinoa Salad",
+    "meal": "lunch",
+    "cost": 3.9,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 262,
+      "protein_g": 11.2,
+      "fat_g": 7.3,
+      "carbs_g": 39.1,
+      "fiber_g": 6.6,
+      "calcium_mg": 114.1,
+      "iron_mg": 4.8,
+      "vitamin_c_mg": 75.2
+    }
+  },
+  {
+    "id": "salmon_watercress_fennel_and_baby_beetroot_salad_with_lemony_caviar_dressing",
+    "name": "Salmon, Watercress, Fennel and Baby Beetroot Salad With Lemony \"Caviar\" Dressing",
+    "meal": "lunch",
+    "cost": 2.8,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 440,
+      "protein_g": 27.2,
+      "fat_g": 29.1,
+      "carbs_g": 18.5,
+      "fiber_g": 5.6,
+      "calcium_mg": 109.2,
+      "iron_mg": 3.6,
+      "vitamin_c_mg": 20.9
+    }
+  },
+  {
+    "id": "ground_turkey_stuffed_peppers",
+    "name": "Ground Turkey Stuffed Peppers",
+    "meal": "dinner",
+    "cost": 4.3,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 462,
+      "protein_g": 33.8,
+      "fat_g": 17.4,
+      "carbs_g": 45.6,
+      "fiber_g": 6.7,
+      "calcium_mg": 166.6,
+      "iron_mg": 5.2,
+      "vitamin_c_mg": 170.9
+    }
+  },
+  {
+    "id": "brown_butter_twice_baked_sweet_potatoes",
+    "name": "Brown Butter Twice Baked Sweet Potatoes",
+    "meal": "dinner",
+    "cost": 3.1,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "spring",
+      "winter",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 676,
+      "protein_g": 19.2,
+      "fat_g": 44.1,
+      "carbs_g": 55.7,
+      "fiber_g": 13.6,
+      "calcium_mg": 187.0,
+      "iron_mg": 3.1,
+      "vitamin_c_mg": 20.5
+    }
+  },
+  {
+    "id": "rice_and_peas_with_coconut_curry_mackerel",
+    "name": "Rice and Peas with Coconut Curry Mackerel",
+    "meal": "dinner",
+    "cost": 5.9,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 625,
+      "protein_g": 31.0,
+      "fat_g": 33.9,
+      "carbs_g": 51.0,
+      "fiber_g": 3.6,
+      "calcium_mg": 85.3,
+      "iron_mg": 7.1,
+      "vitamin_c_mg": 16.0
+    }
+  },
+  {
+    "id": "baby_bok_choy_stir_fry",
+    "name": "Baby Bok Choy Stir Fry",
+    "meal": "dinner",
+    "cost": 3.4,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 139,
+      "protein_g": 6.3,
+      "fat_g": 9.0,
+      "carbs_g": 12.4,
+      "fiber_g": 4.4,
+      "calcium_mg": 280.1,
+      "iron_mg": 2.5,
+      "vitamin_c_mg": 105.0
+    }
+  },
+  {
+    "id": "delightful_kale_and_cabbage_slaw",
+    "name": "Delightful Kale and Cabbage Slaw",
+    "meal": "dinner",
+    "cost": 5.6,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "winter",
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 114,
+      "protein_g": 1.9,
+      "fat_g": 7.8,
+      "carbs_g": 10.5,
+      "fiber_g": 3.7,
+      "calcium_mg": 81.1,
+      "iron_mg": 0.9,
+      "vitamin_c_mg": 36.8
+    }
+  },
+  {
+    "id": "4_ingredient_chicken_pot_pie",
+    "name": "4 Ingredient Chicken Pot Pie",
+    "meal": "dinner",
+    "cost": 4.3,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 802,
+      "protein_g": 79.4,
+      "fat_g": 30.2,
+      "carbs_g": 49.2,
+      "fiber_g": 5.4,
+      "calcium_mg": 53.2,
+      "iron_mg": 4.0,
+      "vitamin_c_mg": 13.5
+    }
+  },
+  {
+    "id": "baked_penne",
+    "name": "Baked Penne",
+    "meal": "dinner",
+    "cost": 2.0,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "autumn",
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 237,
+      "protein_g": 10.2,
+      "fat_g": 1.1,
+      "carbs_g": 48.6,
+      "fiber_g": 5.6,
+      "calcium_mg": 80.0,
+      "iron_mg": 2.0,
+      "vitamin_c_mg": 29.2
+    }
+  },
+  {
+    "id": "penne_arrabiata",
+    "name": "Penne Arrabiata",
+    "meal": "dinner",
+    "cost": 2.6,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 466,
+      "protein_g": 14.5,
+      "fat_g": 8.8,
+      "carbs_g": 82.5,
+      "fiber_g": 5.6,
+      "calcium_mg": 63.8,
+      "iron_mg": 2.8,
+      "vitamin_c_mg": 90.2
+    }
+  },
+  {
+    "id": "delicious_creamy_lentils_and_chestnuts_soup",
+    "name": "Delicious Creamy Lentils and Chestnuts Soup",
+    "meal": "dinner",
+    "cost": 3.4,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "summer",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 451,
+      "protein_g": 20.3,
+      "fat_g": 15.0,
+      "carbs_g": 60.1,
+      "fiber_g": 23.8,
+      "calcium_mg": 58.6,
+      "iron_mg": 6.2,
+      "vitamin_c_mg": 23.8
+    }
+  },
+  {
+    "id": "chimichurri_skirt_steak_with_grilled_asparagus",
+    "name": "Chimichurri Skirt Steak with Grilled Asparagus",
+    "meal": "dinner",
+    "cost": 4.0,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 409,
+      "protein_g": 26.6,
+      "fat_g": 30.0,
+      "carbs_g": 11.7,
+      "fiber_g": 4.8,
+      "calcium_mg": 126.0,
+      "iron_mg": 6.9,
+      "vitamin_c_mg": 34.6
+    }
+  },
+  {
+    "id": "peppery_absorption_cooked_red_wine_capellini",
+    "name": "Peppery Absorption-Cooked Red-Wine Capellini",
+    "meal": "dinner",
+    "cost": 2.5,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "winter",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 680,
+      "protein_g": 21.3,
+      "fat_g": 13.4,
+      "carbs_g": 108.2,
+      "fiber_g": 11.0,
+      "calcium_mg": 160.2,
+      "iron_mg": 6.8,
+      "vitamin_c_mg": 55.5
+    }
+  },
+  {
+    "id": "spicy_lentil_and_black_rice_soup_with_kale_spinach_and_leek",
+    "name": "Spicy lentil and black rice soup with kale, spinach and leek",
+    "meal": "dinner",
+    "cost": 4.5,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "winter",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 202,
+      "protein_g": 10.8,
+      "fat_g": 1.2,
+      "carbs_g": 38.0,
+      "fiber_g": 12.3,
+      "calcium_mg": 92.3,
+      "iron_mg": 3.9,
+      "vitamin_c_mg": 18.7
+    }
+  },
+  {
+    "id": "cauliflower_rice",
+    "name": "Cauliflower Rice",
+    "meal": "dinner",
+    "cost": 2.1,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 455,
+      "protein_g": 14.6,
+      "fat_g": 30.3,
+      "carbs_g": 42.0,
+      "fiber_g": 15.4,
+      "calcium_mg": 218.0,
+      "iron_mg": 5.8,
+      "vitamin_c_mg": 373.2
+    }
+  },
+  {
+    "id": "borani_esfanaaj",
+    "name": "Borani Esfanaaj",
+    "meal": "dinner",
+    "cost": 5.9,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "winter",
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 69,
+      "protein_g": 4.8,
+      "fat_g": 2.2,
+      "carbs_g": 10.1,
+      "fiber_g": 4.0,
+      "calcium_mg": 145.6,
+      "iron_mg": 1.8,
+      "vitamin_c_mg": 100.6
+    }
+  },
+  {
+    "id": "quinoa_tomato_green_onion_side_salad",
+    "name": "Quinoa, Tomato, Green Onion Side Salad",
+    "meal": "lunch",
+    "cost": 3.2,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "summer",
+      "spring",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 396,
+      "protein_g": 10.8,
+      "fat_g": 18.2,
+      "carbs_g": 50.0,
+      "fiber_g": 7.3,
+      "calcium_mg": 72.9,
+      "iron_mg": 3.9,
+      "vitamin_c_mg": 35.9
+    }
+  },
+  {
+    "id": "easy_tabouleh",
+    "name": "Easy Tabouleh",
+    "meal": "dinner",
+    "cost": 4.4,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "summer",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 716,
+      "protein_g": 14.4,
+      "fat_g": 44.4,
+      "carbs_g": 74.2,
+      "fiber_g": 19.9,
+      "calcium_mg": 173.4,
+      "iron_mg": 6.9,
+      "vitamin_c_mg": 125.4
+    }
+  },
+  {
+    "id": "winter_fattoush_salad",
+    "name": "Winter Fattoush Salad",
+    "meal": "lunch",
+    "cost": 4.2,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "winter",
+      "spring",
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 345,
+      "protein_g": 17.4,
+      "fat_g": 9.4,
+      "carbs_g": 49.7,
+      "fiber_g": 18.6,
+      "calcium_mg": 149.6,
+      "iron_mg": 5.7,
+      "vitamin_c_mg": 45.2
+    }
+  },
+  {
+    "id": "cauliflower_chickpea_stew",
+    "name": "Cauliflower Chickpea Stew",
+    "meal": "dinner",
+    "cost": 5.0,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "summer",
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 455,
+      "protein_g": 13.6,
+      "fat_g": 7.8,
+      "carbs_g": 86.3,
+      "fiber_g": 12.3,
+      "calcium_mg": 146.6,
+      "iron_mg": 4.8,
+      "vitamin_c_mg": 40.4
+    }
+  },
+  {
+    "id": "how_to_make_the_perfect_sweet_potato_sloppy_joes",
+    "name": "How to Make the Perfect Sweet Potato Sloppy Joes",
+    "meal": "dinner",
+    "cost": 4.0,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "autumn",
+      "spring",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 679,
+      "protein_g": 48.9,
+      "fat_g": 18.1,
+      "carbs_g": 85.0,
+      "fiber_g": 14.2,
+      "calcium_mg": 145.6,
+      "iron_mg": 5.8,
+      "vitamin_c_mg": 50.0
+    }
+  },
+  {
+    "id": "winter_kimchi",
+    "name": "Winter Kimchi",
+    "meal": "dinner",
+    "cost": 5.7,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "summer",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 365,
+      "protein_g": 23.0,
+      "fat_g": 3.4,
+      "carbs_g": 73.2,
+      "fiber_g": 16.2,
+      "calcium_mg": 1700.5,
+      "iron_mg": 17.5,
+      "vitamin_c_mg": 281.5
+    }
+  },
+  {
+    "id": "chicken_suya",
+    "name": "Chicken Suya",
+    "meal": "dinner",
+    "cost": 2.4,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 564,
+      "protein_g": 43.5,
+      "fat_g": 35.1,
+      "carbs_g": 21.4,
+      "fiber_g": 11.1,
+      "calcium_mg": 397.5,
+      "iron_mg": 10.6,
+      "vitamin_c_mg": 8.1
+    }
+  },
+  {
+    "id": "pasta_with_tuna",
+    "name": "Pasta With Tuna",
+    "meal": "dinner",
+    "cost": 6.0,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "winter",
+      "summer",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 422,
+      "protein_g": 24.3,
+      "fat_g": 10.3,
+      "carbs_g": 57.7,
+      "fiber_g": 5.2,
+      "calcium_mg": 244.8,
+      "iron_mg": 3.6,
+      "vitamin_c_mg": 39.7
+    }
+  },
+  {
+    "id": "skinny_veggie_fried_rice",
+    "name": "Skinny Veggie Fried Rice",
+    "meal": "breakfast",
+    "cost": 5.4,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "summer",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 156,
+      "protein_g": 5.0,
+      "fat_g": 8.6,
+      "carbs_g": 18.9,
+      "fiber_g": 4.0,
+      "calcium_mg": 44.1,
+      "iron_mg": 1.3,
+      "vitamin_c_mg": 84.4
+    }
+  },
+  {
+    "id": "indian_style_dill_and_turmeric_potato_salad",
+    "name": "Indian-Style Dill and Turmeric Potato Salad",
+    "meal": "lunch",
+    "cost": 6.0,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 416,
+      "protein_g": 8.0,
+      "fat_g": 14.5,
+      "carbs_g": 66.0,
+      "fiber_g": 8.5,
+      "calcium_mg": 72.2,
+      "iron_mg": 3.9,
+      "vitamin_c_mg": 83.2
+    }
+  },
+  {
+    "id": "vegan_colcannon_soup",
+    "name": "Vegan Colcannon Soup",
+    "meal": "dinner",
+    "cost": 3.8,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 186,
+      "protein_g": 5.6,
+      "fat_g": 4.0,
+      "carbs_g": 34.5,
+      "fiber_g": 5.0,
+      "calcium_mg": 98.7,
+      "iron_mg": 2.2,
+      "vitamin_c_mg": 40.1
+    }
+  },
+  {
+    "id": "crab_stacks",
+    "name": "Crab Stacks",
+    "meal": "dinner",
+    "cost": 3.1,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 729,
+      "protein_g": 56.4,
+      "fat_g": 26.1,
+      "carbs_g": 69.2,
+      "fiber_g": 10.9,
+      "calcium_mg": 114.0,
+      "iron_mg": 5.4,
+      "vitamin_c_mg": 106.8
+    }
+  },
+  {
+    "id": "butternut_squash_tofu_salad_with_toasted_hazelnuts",
+    "name": "Butternut Squash Tofu Salad With Toasted Hazelnuts",
+    "meal": "breakfast",
+    "cost": 3.0,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "summer",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 260,
+      "protein_g": 12.8,
+      "fat_g": 11.5,
+      "carbs_g": 31.9,
+      "fiber_g": 6.5,
+      "calcium_mg": 144.6,
+      "iron_mg": 3.4,
+      "vitamin_c_mg": 78.8
+    }
+  },
+  {
+    "id": "turkey_and_rice_stuffed_acorn_squash",
+    "name": "Turkey and Rice Stuffed Acorn Squash",
+    "meal": "dinner",
+    "cost": 3.5,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "winter",
+      "summer",
+      "spring",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 411,
+      "protein_g": 28.6,
+      "fat_g": 9.8,
+      "carbs_g": 57.5,
+      "fiber_g": 5.8,
+      "calcium_mg": 134.2,
+      "iron_mg": 4.5,
+      "vitamin_c_mg": 40.5
+    }
+  },
+  {
+    "id": "seasonal_autumn_stew",
+    "name": "Seasonal Autumn Stew",
+    "meal": "dinner",
+    "cost": 4.2,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "summer",
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 231,
+      "protein_g": 7.2,
+      "fat_g": 4.8,
+      "carbs_g": 47.6,
+      "fiber_g": 11.6,
+      "calcium_mg": 230.4,
+      "iron_mg": 4.2,
+      "vitamin_c_mg": 81.5
+    }
+  },
+  {
+    "id": "stuffed_artichoke_main_dish",
+    "name": "Stuffed Artichoke Main Dish",
+    "meal": "dinner",
+    "cost": 3.2,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "winter",
+      "spring",
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 500,
+      "protein_g": 55.6,
+      "fat_g": 8.8,
+      "carbs_g": 51.9,
+      "fiber_g": 10.7,
+      "calcium_mg": 99.3,
+      "iron_mg": 3.8,
+      "vitamin_c_mg": 171.5
+    }
+  },
+  {
+    "id": "garlicky_roasted_kale",
+    "name": "Garlicky Roasted Kale",
+    "meal": "dinner",
+    "cost": 5.4,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 165,
+      "protein_g": 2.3,
+      "fat_g": 15.2,
+      "carbs_g": 6.0,
+      "fiber_g": 3.1,
+      "calcium_mg": 147.4,
+      "iron_mg": 1.4,
+      "vitamin_c_mg": 52.9
+    }
+  },
+  {
+    "id": "instant_pot_chicken_taco_soup",
+    "name": "Instant Pot Chicken Taco Soup",
+    "meal": "dinner",
+    "cost": 3.4,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 345,
+      "protein_g": 25.4,
+      "fat_g": 7.8,
+      "carbs_g": 49.5,
+      "fiber_g": 12.3,
+      "calcium_mg": 311.0,
+      "iron_mg": 11.4,
+      "vitamin_c_mg": 142.7
+    }
+  },
+  {
+    "id": "minted_pea_spinach_soup",
+    "name": "Minted Pea & Spinach Soup",
+    "meal": "dinner",
+    "cost": 3.2,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "winter",
+      "autumn",
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 184,
+      "protein_g": 7.5,
+      "fat_g": 4.7,
+      "carbs_g": 29.8,
+      "fiber_g": 6.8,
+      "calcium_mg": 95.8,
+      "iron_mg": 2.9,
+      "vitamin_c_mg": 54.9
+    }
+  },
+  {
+    "id": "spinach_tomato_onion_couscous",
+    "name": "Spinach, Tomato & Onion Couscous",
+    "meal": "dinner",
+    "cost": 5.4,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "summer",
+      "winter",
+      "spring",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 565,
+      "protein_g": 18.5,
+      "fat_g": 24.2,
+      "carbs_g": 78.5,
+      "fiber_g": 10.6,
+      "calcium_mg": 226.4,
+      "iron_mg": 5.1,
+      "vitamin_c_mg": 61.3
+    }
+  },
+  {
+    "id": "curried_chickpeas_and_vegetables",
+    "name": "Curried Chickpeas and Vegetables",
+    "meal": "dinner",
+    "cost": 3.0,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "winter",
+      "spring",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 447,
+      "protein_g": 15.4,
+      "fat_g": 11.2,
+      "carbs_g": 76.8,
+      "fiber_g": 16.1,
+      "calcium_mg": 168.4,
+      "iron_mg": 8.6,
+      "vitamin_c_mg": 56.8
+    }
+  },
+  {
+    "id": "homemade_broccoli_cheddar_soup",
+    "name": "Homemade Broccoli Cheddar Soup",
+    "meal": "dinner",
+    "cost": 4.8,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 495,
+      "protein_g": 21.8,
+      "fat_g": 23.6,
+      "carbs_g": 54.5,
+      "fiber_g": 10.0,
+      "calcium_mg": 585.3,
+      "iron_mg": 3.9,
+      "vitamin_c_mg": 217.7
+    }
+  },
+  {
+    "id": "italian_tuna_pasta",
+    "name": "Italian Tuna Pasta",
+    "meal": "dinner",
+    "cost": 4.8,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 463,
+      "protein_g": 37.7,
+      "fat_g": 2.9,
+      "carbs_g": 70.3,
+      "fiber_g": 4.4,
+      "calcium_mg": 68.8,
+      "iron_mg": 4.5,
+      "vitamin_c_mg": 115.8
+    }
+  },
+  {
+    "id": "soy_ginger_glazed_halibut_with_ginger_peach_relish",
+    "name": "Soy Ginger Glazed Halibut with Ginger Peach Relish",
+    "meal": "dinner",
+    "cost": 3.0,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "spring",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 381,
+      "protein_g": 49.5,
+      "fat_g": 10.4,
+      "carbs_g": 16.7,
+      "fiber_g": 2.7,
+      "calcium_mg": 40.7,
+      "iron_mg": 2.3,
+      "vitamin_c_mg": 17.5
+    }
+  },
+  {
+    "id": "baked_ratatouille",
+    "name": "Baked Ratatouille",
+    "meal": "dinner",
+    "cost": 4.0,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "summer",
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 1029,
+      "protein_g": 32.3,
+      "fat_g": 69.6,
+      "carbs_g": 82.2,
+      "fiber_g": 27.8,
+      "calcium_mg": 788.1,
+      "iron_mg": 6.0,
+      "vitamin_c_mg": 324.2
+    }
+  },
+  {
+    "id": "spicy_cauliflower",
+    "name": "Spicy Cauliflower",
+    "meal": "dinner",
+    "cost": 2.3,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "summer",
+      "winter",
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 111,
+      "protein_g": 7.6,
+      "fat_g": 1.5,
+      "carbs_g": 22.5,
+      "fiber_g": 8.5,
+      "calcium_mg": 97.3,
+      "iron_mg": 3.0,
+      "vitamin_c_mg": 150.5
+    }
+  },
+  {
+    "id": "baked_rigatoni",
+    "name": "Baked Rigatoni",
+    "meal": "dinner",
+    "cost": 4.7,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "summer",
+      "spring",
+      "winter",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 480,
+      "protein_g": 24.6,
+      "fat_g": 10.0,
+      "carbs_g": 74.8,
+      "fiber_g": 8.3,
+      "calcium_mg": 257.5,
+      "iron_mg": 3.8,
+      "vitamin_c_mg": 78.3
+    }
+  },
+  {
+    "id": "north_by_northwest_couscous_salad",
+    "name": "North by Northwest Couscous Salad",
+    "meal": "lunch",
+    "cost": 3.6,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 635,
+      "protein_g": 17.4,
+      "fat_g": 31.7,
+      "carbs_g": 76.7,
+      "fiber_g": 13.7,
+      "calcium_mg": 129.2,
+      "iron_mg": 4.5,
+      "vitamin_c_mg": 23.6
+    }
+  },
+  {
+    "id": "carolina_caviar_black_bean_salsa",
+    "name": "Carolina Caviar - Black Bean Salsa",
+    "meal": "dinner",
+    "cost": 4.4,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "summer",
+      "spring",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 432,
+      "protein_g": 15.2,
+      "fat_g": 17.2,
+      "carbs_g": 65.6,
+      "fiber_g": 20.6,
+      "calcium_mg": 148.1,
+      "iron_mg": 5.7,
+      "vitamin_c_mg": 160.2
+    }
+  },
+  {
+    "id": "green_tomato_salad",
+    "name": "Green Tomato Salad",
+    "meal": "lunch",
+    "cost": 2.3,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 180,
+      "protein_g": 2.6,
+      "fat_g": 14.9,
+      "carbs_g": 11.0,
+      "fiber_g": 2.7,
+      "calcium_mg": 90.3,
+      "iron_mg": 2.1,
+      "vitamin_c_mg": 42.6
+    }
+  },
+  {
+    "id": "basil_infused_balsamic_oven_baked_chicken",
+    "name": "Basil Infused Balsamic Oven Baked Chicken",
+    "meal": "dinner",
+    "cost": 2.4,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "winter",
+      "autumn",
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 543,
+      "protein_g": 56.2,
+      "fat_g": 29.9,
+      "carbs_g": 10.4,
+      "fiber_g": 2.2,
+      "calcium_mg": 234.2,
+      "iron_mg": 1.6,
+      "vitamin_c_mg": 27.4
+    }
+  },
+  {
+    "id": "farro_salad_with_parsley_pesto",
+    "name": "Farro salad with parsley pesto",
+    "meal": "lunch",
+    "cost": 5.3,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "winter",
+      "spring",
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 411,
+      "protein_g": 12.0,
+      "fat_g": 19.7,
+      "carbs_g": 52.3,
+      "fiber_g": 12.5,
+      "calcium_mg": 167.8,
+      "iron_mg": 4.6,
+      "vitamin_c_mg": 77.2
+    }
+  },
+  {
+    "id": "yellow_squash_noodles_with_tomato_basil_sauce",
+    "name": "Yellow Squash Noodles with Tomato Basil Sauce",
+    "meal": "dinner",
+    "cost": 3.4,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "summer",
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 219,
+      "protein_g": 6.9,
+      "fat_g": 12.8,
+      "carbs_g": 25.2,
+      "fiber_g": 8.3,
+      "calcium_mg": 119.8,
+      "iron_mg": 2.6,
+      "vitamin_c_mg": 88.8
+    }
+  },
+  {
+    "id": "lentil_rice_soup",
+    "name": "Lentil Rice Soup",
+    "meal": "dinner",
+    "cost": 4.8,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "summer",
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 204,
+      "protein_g": 12.6,
+      "fat_g": 0.8,
+      "carbs_g": 36.8,
+      "fiber_g": 14.6,
+      "calcium_mg": 40.4,
+      "iron_mg": 3.7,
+      "vitamin_c_mg": 3.2
+    }
+  },
+  {
+    "id": "one_pot_veggie_quinoa",
+    "name": "One Pot Veggie Quinoa",
+    "meal": "breakfast",
+    "cost": 2.3,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "summer",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 440,
+      "protein_g": 17.8,
+      "fat_g": 18.8,
+      "carbs_g": 56.1,
+      "fiber_g": 8.7,
+      "calcium_mg": 254.0,
+      "iron_mg": 4.3,
+      "vitamin_c_mg": 74.1
+    }
+  },
+  {
+    "id": "roasted_vegetables",
+    "name": "Roasted Vegetables",
+    "meal": "dinner",
+    "cost": 3.8,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 273,
+      "protein_g": 8.7,
+      "fat_g": 7.8,
+      "carbs_g": 47.2,
+      "fiber_g": 10.8,
+      "calcium_mg": 195.8,
+      "iron_mg": 2.1,
+      "vitamin_c_mg": 82.4
+    }
+  },
+  {
+    "id": "avocado_and_cannellini_bean_salad",
+    "name": "Avocado and Cannellini Bean Salad",
+    "meal": "lunch",
+    "cost": 4.6,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "summer",
+      "spring",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 437,
+      "protein_g": 8.0,
+      "fat_g": 35.4,
+      "carbs_g": 31.2,
+      "fiber_g": 18.5,
+      "calcium_mg": 108.4,
+      "iron_mg": 3.5,
+      "vitamin_c_mg": 33.7
+    }
+  },
+  {
+    "id": "quinoa_tabouli_salad",
+    "name": "Quinoa Tabouli Salad",
+    "meal": "lunch",
+    "cost": 3.8,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "summer",
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 244,
+      "protein_g": 8.1,
+      "fat_g": 8.5,
+      "carbs_g": 35.6,
+      "fiber_g": 5.6,
+      "calcium_mg": 69.1,
+      "iron_mg": 3.5,
+      "vitamin_c_mg": 42.7
+    }
+  },
+  {
+    "id": "slow_cooker_lamb_curry",
+    "name": "Slow Cooker Lamb Curry",
+    "meal": "dinner",
+    "cost": 2.7,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 566,
+      "protein_g": 67.5,
+      "fat_g": 24.0,
+      "carbs_g": 18.1,
+      "fiber_g": 3.1,
+      "calcium_mg": 103.9,
+      "iron_mg": 7.7,
+      "vitamin_c_mg": 10.3
+    }
+  },
+  {
+    "id": "quinoa_vegetable_salad",
+    "name": "Quinoa Vegetable Salad",
+    "meal": "lunch",
+    "cost": 6.0,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "winter",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 494,
+      "protein_g": 15.2,
+      "fat_g": 19.5,
+      "carbs_g": 67.6,
+      "fiber_g": 12.1,
+      "calcium_mg": 128.2,
+      "iron_mg": 5.4,
+      "vitamin_c_mg": 70.4
+    }
+  },
+  {
+    "id": "creamy_healthy_asparagus_soup_with_avocado_and_fennel",
+    "name": "Creamy, Healthy Asparagus Soup with Avocado and Fennel",
+    "meal": "dinner",
+    "cost": 3.3,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "winter",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 238,
+      "protein_g": 9.0,
+      "fat_g": 15.0,
+      "carbs_g": 24.1,
+      "fiber_g": 11.4,
+      "calcium_mg": 133.6,
+      "iron_mg": 6.5,
+      "vitamin_c_mg": 44.5
+    }
+  },
+  {
+    "id": "zucchini_salad_pita_pockets",
+    "name": "Zucchini Salad Pita Pockets",
+    "meal": "lunch",
+    "cost": 5.9,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "autumn",
+      "winter",
+      "summer",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 601,
+      "protein_g": 20.3,
+      "fat_g": 22.4,
+      "carbs_g": 85.6,
+      "fiber_g": 16.9,
+      "calcium_mg": 209.7,
+      "iron_mg": 6.0,
+      "vitamin_c_mg": 32.4
+    }
+  },
+  {
+    "id": "egyptain_cauliflower_side_salad",
+    "name": "Egyptain Cauliflower Side Salad",
+    "meal": "lunch",
+    "cost": 5.4,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 183,
+      "protein_g": 3.6,
+      "fat_g": 14.9,
+      "carbs_g": 12.3,
+      "fiber_g": 4.5,
+      "calcium_mg": 49.9,
+      "iron_mg": 1.9,
+      "vitamin_c_mg": 167.5
+    }
+  },
+  {
+    "id": "smoked_salmon_eggs_benedict_with_lemon_dill_hollandaise",
+    "name": "Smoked Salmon Eggs Benedict With Lemon Dill Hollandaise",
+    "meal": "breakfast",
+    "cost": 5.2,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 539,
+      "protein_g": 41.0,
+      "fat_g": 32.7,
+      "carbs_g": 21.0,
+      "fiber_g": 3.9,
+      "calcium_mg": 219.1,
+      "iron_mg": 5.7,
+      "vitamin_c_mg": 35.5
+    }
+  },
+  {
+    "id": "armenian_stew",
+    "name": "Armenian Stew",
+    "meal": "dinner",
+    "cost": 3.7,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 327,
+      "protein_g": 16.0,
+      "fat_g": 2.5,
+      "carbs_g": 63.1,
+      "fiber_g": 18.1,
+      "calcium_mg": 105.3,
+      "iron_mg": 5.5,
+      "vitamin_c_mg": 7.0
+    }
+  },
+  {
+    "id": "colorful_tomato_and_spinach_seafood_pasta",
+    "name": "Colorful Tomato and Spinach Seafood Pasta",
+    "meal": "dinner",
+    "cost": 3.3,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "summer",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 469,
+      "protein_g": 34.4,
+      "fat_g": 10.5,
+      "carbs_g": 58.3,
+      "fiber_g": 2.8,
+      "calcium_mg": 188.2,
+      "iron_mg": 5.1,
+      "vitamin_c_mg": 34.8
+    }
+  },
+  {
+    "id": "beet_salad_with_peppers_and_lettuce",
+    "name": "Beet Salad With Peppers and Lettuce",
+    "meal": "lunch",
+    "cost": 2.7,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 209,
+      "protein_g": 5.1,
+      "fat_g": 5.6,
+      "carbs_g": 39.5,
+      "fiber_g": 8.9,
+      "calcium_mg": 77.4,
+      "iron_mg": 2.3,
+      "vitamin_c_mg": 312.4
+    }
+  },
+  {
+    "id": "chapchae_korean_stir_fried_noodles",
+    "name": "Chapchae (Korean Stir-Fried Noodles)",
+    "meal": "dinner",
+    "cost": 3.3,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "summer",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 396,
+      "protein_g": 5.2,
+      "fat_g": 14.5,
+      "carbs_g": 63.9,
+      "fiber_g": 4.7,
+      "calcium_mg": 109.4,
+      "iron_mg": 2.5,
+      "vitamin_c_mg": 27.2
+    }
+  },
+  {
+    "id": "chipotle_black_bean_soup_with_avocado_cream",
+    "name": "Chipotle Black Bean Soup with Avocado Cream",
+    "meal": "dinner",
+    "cost": 2.8,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 283,
+      "protein_g": 11.8,
+      "fat_g": 9.4,
+      "carbs_g": 40.5,
+      "fiber_g": 16.8,
+      "calcium_mg": 90.8,
+      "iron_mg": 4.0,
+      "vitamin_c_mg": 12.5
+    }
+  },
+  {
+    "id": "spice_rubbed_lemon_barbecue_salmon",
+    "name": "Spice-Rubbed Lemon Barbecue Salmon",
+    "meal": "dinner",
+    "cost": 2.1,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 336,
+      "protein_g": 35.9,
+      "fat_g": 12.2,
+      "carbs_g": 23.4,
+      "fiber_g": 3.3,
+      "calcium_mg": 184.6,
+      "iron_mg": 7.0,
+      "vitamin_c_mg": 30.5
+    }
+  },
+  {
+    "id": "mushroom_cabbage_brown_rice_congee",
+    "name": "Mushroom & Cabbage Brown Rice Congee",
+    "meal": "dinner",
+    "cost": 2.1,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 226,
+      "protein_g": 6.7,
+      "fat_g": 10.0,
+      "carbs_g": 30.1,
+      "fiber_g": 5.3,
+      "calcium_mg": 118.5,
+      "iron_mg": 2.2,
+      "vitamin_c_mg": 46.8
+    }
+  },
+  {
+    "id": "mung_bean_sprout_and_quinoa_salad",
+    "name": "Mung Bean Sprout and Quinoa Salad",
+    "meal": "lunch",
+    "cost": 3.0,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "summer",
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 355,
+      "protein_g": 16.6,
+      "fat_g": 11.3,
+      "carbs_g": 50.2,
+      "fiber_g": 11.9,
+      "calcium_mg": 127.2,
+      "iron_mg": 5.8,
+      "vitamin_c_mg": 34.0
+    }
+  },
+  {
+    "id": "falafel_burgers",
+    "name": "Falafel Burgers",
+    "meal": "dinner",
+    "cost": 2.7,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 709,
+      "protein_g": 23.3,
+      "fat_g": 35.5,
+      "carbs_g": 80.2,
+      "fiber_g": 14.4,
+      "calcium_mg": 204.6,
+      "iron_mg": 7.1,
+      "vitamin_c_mg": 11.5
+    }
+  },
+  {
+    "id": "autumn_in_a_bowl_soup",
+    "name": "Autumn In A Bowl Soup",
+    "meal": "lunch",
+    "cost": 5.3,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "summer",
+      "spring",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 130,
+      "protein_g": 3.0,
+      "fat_g": 4.3,
+      "carbs_g": 23.3,
+      "fiber_g": 5.0,
+      "calcium_mg": 123.2,
+      "iron_mg": 1.5,
+      "vitamin_c_mg": 59.7
+    }
+  },
+  {
+    "id": "thai_style_mussels",
+    "name": "Thai-Style Mussels",
+    "meal": "dinner",
+    "cost": 5.5,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "summer",
+      "spring",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 207,
+      "protein_g": 21.0,
+      "fat_g": 8.6,
+      "carbs_g": 8.7,
+      "fiber_g": 0,
+      "calcium_mg": 56.5,
+      "iron_mg": 7.2,
+      "vitamin_c_mg": 20.1
+    }
+  },
+  {
+    "id": "feta_encrusted_salmon",
+    "name": "Feta Encrusted Salmon",
+    "meal": "dinner",
+    "cost": 2.2,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 388,
+      "protein_g": 43.6,
+      "fat_g": 15.3,
+      "carbs_g": 17.8,
+      "fiber_g": 2.3,
+      "calcium_mg": 53.7,
+      "iron_mg": 2.4,
+      "vitamin_c_mg": 98.3
+    }
+  },
+  {
+    "id": "creamy_vegan_coleslaw_dressed_with_avocado",
+    "name": "Creamy Vegan Coleslaw Dressed with Avocado",
+    "meal": "dinner",
+    "cost": 4.2,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "summer",
+      "spring",
+      "winter",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 87,
+      "protein_g": 2.2,
+      "fat_g": 5.2,
+      "carbs_g": 10.0,
+      "fiber_g": 4.3,
+      "calcium_mg": 31.8,
+      "iron_mg": 0.8,
+      "vitamin_c_mg": 39.2
+    }
+  },
+  {
+    "id": "miso_soup_with_thin_noodles",
+    "name": "Miso Soup With Thin Noodles",
+    "meal": "dinner",
+    "cost": 2.3,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "winter",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 114,
+      "protein_g": 5.3,
+      "fat_g": 1.6,
+      "carbs_g": 20.9,
+      "fiber_g": 3.2,
+      "calcium_mg": 94.8,
+      "iron_mg": 2.0,
+      "vitamin_c_mg": 21.4
+    }
+  },
+  {
+    "id": "red_quinoa_and_roasted_cauliflower_salad",
+    "name": "Red Quinoa and Roasted Cauliflower Salad",
+    "meal": "lunch",
+    "cost": 2.2,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 444,
+      "protein_g": 12.8,
+      "fat_g": 26.2,
+      "carbs_g": 44.7,
+      "fiber_g": 8.2,
+      "calcium_mg": 144.9,
+      "iron_mg": 3.7,
+      "vitamin_c_mg": 89.3
+    }
+  },
+  {
+    "id": "easy_slow_cooker_chicken_tortilla_soup",
+    "name": "Easy Slow Cooker Chicken Tortilla Soup",
+    "meal": "dinner",
+    "cost": 5.0,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 282,
+      "protein_g": 32.4,
+      "fat_g": 4.4,
+      "carbs_g": 30.3,
+      "fiber_g": 8.5,
+      "calcium_mg": 63.9,
+      "iron_mg": 3.1,
+      "vitamin_c_mg": 14.2
+    }
+  },
+  {
+    "id": "cracked_wheat_salad_with_dates_tahini_yogurt",
+    "name": "Cracked Wheat Salad with Dates & Tahini Yogurt",
+    "meal": "lunch",
+    "cost": 2.7,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "winter",
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 890,
+      "protein_g": 32.0,
+      "fat_g": 47.9,
+      "carbs_g": 101.0,
+      "fiber_g": 21.0,
+      "calcium_mg": 299.3,
+      "iron_mg": 10.4,
+      "vitamin_c_mg": 56.2
+    }
+  },
+  {
+    "id": "pesto_yogurt_pasta",
+    "name": "Pesto & Yogurt Pasta",
+    "meal": "dinner",
+    "cost": 4.1,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 373,
+      "protein_g": 12.4,
+      "fat_g": 14.7,
+      "carbs_g": 48.6,
+      "fiber_g": 3.4,
+      "calcium_mg": 136.8,
+      "iron_mg": 2.6,
+      "vitamin_c_mg": 30.8
+    }
+  },
+  {
+    "id": "okra_tomato_salad",
+    "name": "Okra Tomato Salad",
+    "meal": "lunch",
+    "cost": 5.9,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 100,
+      "protein_g": 4.1,
+      "fat_g": 0.6,
+      "carbs_g": 21.5,
+      "fiber_g": 6.0,
+      "calcium_mg": 128.0,
+      "iron_mg": 1.5,
+      "vitamin_c_mg": 52.8
+    }
+  },
+  {
+    "id": "sockeye_salmon_on_kiwi_lemon_puree",
+    "name": "Sockeye Salmon on Kiwi & Lemon Puree",
+    "meal": "dinner",
+    "cost": 3.8,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "winter",
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 432,
+      "protein_g": 45.8,
+      "fat_g": 21.7,
+      "carbs_g": 12.3,
+      "fiber_g": 2.0,
+      "calcium_mg": 54.0,
+      "iron_mg": 2.2,
+      "vitamin_c_mg": 44.4
+    }
+  },
+  {
+    "id": "chicken_and_roasted_broccoli_salad_with_goat_cheese",
+    "name": "Chicken and Roasted Broccoli Salad With Goat Cheese",
+    "meal": "breakfast",
+    "cost": 3.6,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "winter",
+      "summer",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 337,
+      "protein_g": 28.9,
+      "fat_g": 18.5,
+      "carbs_g": 17.0,
+      "fiber_g": 6.1,
+      "calcium_mg": 167.4,
+      "iron_mg": 3.4,
+      "vitamin_c_mg": 198.7
+    }
+  },
+  {
+    "id": "peanut_butter_and_chocolate_oatmeal",
+    "name": "Peanut Butter And Chocolate Oatmeal",
+    "meal": "breakfast",
+    "cost": 4.9,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "spring",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 469,
+      "protein_g": 19.4,
+      "fat_g": 13.8,
+      "carbs_g": 72.9,
+      "fiber_g": 9.3,
+      "calcium_mg": 208.4,
+      "iron_mg": 4.2,
+      "vitamin_c_mg": 1.7
+    }
+  },
+  {
+    "id": "quinoa_salad_with_avocado_asparagus_and_sun_dried_tomatoes",
+    "name": "Quinoa Salad With Avocado, Asparagus and Sun Dried Tomatoes",
+    "meal": "lunch",
+    "cost": 4.6,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 717,
+      "protein_g": 20.3,
+      "fat_g": 35.0,
+      "carbs_g": 89.9,
+      "fiber_g": 19.4,
+      "calcium_mg": 150.6,
+      "iron_mg": 9.7,
+      "vitamin_c_mg": 30.4
+    }
+  },
+  {
+    "id": "sweet_n_smoky_salmon_with_ginger_mahogany_rice",
+    "name": "Sweet-N-Smoky Salmon With Ginger Mahogany Rice",
+    "meal": "dinner",
+    "cost": 4.0,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "summer",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 731,
+      "protein_g": 41.2,
+      "fat_g": 19.3,
+      "carbs_g": 96.6,
+      "fiber_g": 0.8,
+      "calcium_mg": 85.4,
+      "iron_mg": 2.6,
+      "vitamin_c_mg": 0
+    }
+  },
+  {
+    "id": "veggie_quinoa_stuffed_chilis",
+    "name": "Veggie-Quinoa Stuffed Chilis",
+    "meal": "breakfast",
+    "cost": 3.4,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "autumn",
+      "summer",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 259,
+      "protein_g": 7.8,
+      "fat_g": 7.8,
+      "carbs_g": 44.0,
+      "fiber_g": 7.1,
+      "calcium_mg": 82.7,
+      "iron_mg": 3.0,
+      "vitamin_c_mg": 163.4
+    }
+  },
+  {
+    "id": "baked_fried_chicken_with_cauliflower_mash",
+    "name": "Baked Fried Chicken With Cauliflower Mash",
+    "meal": "dinner",
+    "cost": 3.0,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 662,
+      "protein_g": 65.6,
+      "fat_g": 29.2,
+      "carbs_g": 33.4,
+      "fiber_g": 5.5,
+      "calcium_mg": 294.4,
+      "iron_mg": 4.0,
+      "vitamin_c_mg": 101.7
+    }
+  },
+  {
+    "id": "salmon_confit_with_lemongrass_sauce",
+    "name": "Salmon Confit with Lemongrass Sauce",
+    "meal": "dinner",
+    "cost": 5.8,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "autumn",
+      "spring",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 865,
+      "protein_g": 46.3,
+      "fat_g": 67.5,
+      "carbs_g": 24.2,
+      "fiber_g": 5.8,
+      "calcium_mg": 210.2,
+      "iron_mg": 5.9,
+      "vitamin_c_mg": 86.0
+    }
+  },
+  {
+    "id": "juicy_tender_pork_loin_roast",
+    "name": "Juicy & Tender ~ Pork Loin Roast",
+    "meal": "dinner",
+    "cost": 2.1,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 584,
+      "protein_g": 77.1,
+      "fat_g": 27.5,
+      "carbs_g": 3.2,
+      "fiber_g": 0.8,
+      "calcium_mg": 38.8,
+      "iron_mg": 2.6,
+      "vitamin_c_mg": 15.5
+    }
+  },
+  {
+    "id": "knock_your_socks_off_stuffed_potatoes_with_broccoli_and_mushrooms",
+    "name": "Knock Your Socks Off Stuffed Potatoes With Broccoli and Mushrooms",
+    "meal": "dinner",
+    "cost": 3.0,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 246,
+      "protein_g": 9.9,
+      "fat_g": 6.5,
+      "carbs_g": 39.4,
+      "fiber_g": 5.5,
+      "calcium_mg": 195.2,
+      "iron_mg": 2.2,
+      "vitamin_c_mg": 79.1
+    }
+  },
+  {
+    "id": "mushroom_hummus_crostini",
+    "name": "Mushroom Hummus Crostini",
+    "meal": "dinner",
+    "cost": 3.9,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "summer",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 450,
+      "protein_g": 20.5,
+      "fat_g": 10.3,
+      "carbs_g": 72.4,
+      "fiber_g": 8.4,
+      "calcium_mg": 114.8,
+      "iron_mg": 6.5,
+      "vitamin_c_mg": 9.8
+    }
+  },
+  {
+    "id": "summer_kale_orange_pomegranate_salad_with_moscato_dressing",
+    "name": "Summer Kale, Orange & Pomegranate Salad with Moscato Dressing",
+    "meal": "lunch",
+    "cost": 5.3,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 164,
+      "protein_g": 3.7,
+      "fat_g": 10.2,
+      "carbs_g": 13.9,
+      "fiber_g": 3.6,
+      "calcium_mg": 90.4,
+      "iron_mg": 1.6,
+      "vitamin_c_mg": 77.6
+    }
+  },
+  {
+    "id": "mussels_with_tomatoes_and_fennel",
+    "name": "Mussels With Tomatoes and Fennel",
+    "meal": "dinner",
+    "cost": 4.5,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "winter",
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 685,
+      "protein_g": 38.3,
+      "fat_g": 28.5,
+      "carbs_g": 52.8,
+      "fiber_g": 12.4,
+      "calcium_mg": 257.0,
+      "iron_mg": 15.0,
+      "vitamin_c_mg": 146.5
+    }
+  },
+  {
+    "id": "spanish_style_salmon_fillets",
+    "name": "Spanish style salmon fillets",
+    "meal": "dinner",
+    "cost": 3.4,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "winter",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 944,
+      "protein_g": 52.9,
+      "fat_g": 59.9,
+      "carbs_g": 51.4,
+      "fiber_g": 10.3,
+      "calcium_mg": 136.0,
+      "iron_mg": 4.9,
+      "vitamin_c_mg": 240.7
+    }
+  },
+  {
+    "id": "rigatoni_with_sweet_sausages_in_creamy_tomato_sauce",
+    "name": "Rigatoni With Sweet Sausages In Creamy Tomato Sauce",
+    "meal": "dinner",
+    "cost": 3.4,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 921,
+      "protein_g": 33.5,
+      "fat_g": 39.5,
+      "carbs_g": 109.3,
+      "fiber_g": 8.2,
+      "calcium_mg": 202.2,
+      "iron_mg": 5.9,
+      "vitamin_c_mg": 23.3
+    }
+  },
+  {
+    "id": "fusilli_with_zucchini_flowers_ricotta_and_saffron",
+    "name": "Fusilli With Zucchini Flowers, Ricotta and Saffron",
+    "meal": "dinner",
+    "cost": 5.5,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "autumn",
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 459,
+      "protein_g": 21.5,
+      "fat_g": 25.1,
+      "carbs_g": 48.3,
+      "fiber_g": 14.4,
+      "calcium_mg": 312.9,
+      "iron_mg": 5.1,
+      "vitamin_c_mg": 310.3
+    }
+  },
+  {
+    "id": "broccoli_rabe_with_tomatoes_anchovies_spaghetti",
+    "name": "Broccoli Rabe with Tomatoes, Anchovies & Spaghetti",
+    "meal": "dinner",
+    "cost": 2.9,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 595,
+      "protein_g": 31.0,
+      "fat_g": 11.6,
+      "carbs_g": 91.2,
+      "fiber_g": 6.1,
+      "calcium_mg": 452.3,
+      "iron_mg": 3.9,
+      "vitamin_c_mg": 24.1
+    }
+  },
+  {
+    "id": "black_bean_and_cheese_stuffed_bell_peppers",
+    "name": "Black Bean and Cheese Stuffed Bell Peppers",
+    "meal": "dinner",
+    "cost": 4.8,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 631,
+      "protein_g": 27.5,
+      "fat_g": 31.4,
+      "carbs_g": 80.6,
+      "fiber_g": 24.8,
+      "calcium_mg": 530.5,
+      "iron_mg": 6.8,
+      "vitamin_c_mg": 262.7
+    }
+  },
+  {
+    "id": "cider_braised_pork_shoulder_with_caramelized_onion_and_apple_confit",
+    "name": "Cider-Braised Pork Shoulder With Caramelized Onion and Apple Confit",
+    "meal": "dinner",
+    "cost": 2.5,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "spring",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 467,
+      "protein_g": 37.3,
+      "fat_g": 20.4,
+      "carbs_g": 23.8,
+      "fiber_g": 3.0,
+      "calcium_mg": 75.6,
+      "iron_mg": 3.1,
+      "vitamin_c_mg": 13.8
+    }
+  },
+  {
+    "id": "fennel_peppers_lettuce_salad",
+    "name": "fennel, Peppers, Lettuce Salad",
+    "meal": "lunch",
+    "cost": 2.8,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "autumn",
+      "winter",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 565,
+      "protein_g": 23.6,
+      "fat_g": 24.5,
+      "carbs_g": 76.4,
+      "fiber_g": 29.7,
+      "calcium_mg": 587.9,
+      "iron_mg": 11.9,
+      "vitamin_c_mg": 301.8
+    }
+  },
+  {
+    "id": "boudin",
+    "name": "Boudin",
+    "meal": "dinner",
+    "cost": 2.3,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "winter",
+      "autumn",
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 568,
+      "protein_g": 62.2,
+      "fat_g": 9.1,
+      "carbs_g": 55.3,
+      "fiber_g": 3.1,
+      "calcium_mg": 64.7,
+      "iron_mg": 28.4,
+      "vitamin_c_mg": 141.9
+    }
+  },
+  {
+    "id": "instant_pot_pressure_cooker_pot_roast",
+    "name": "Instant Pot Pressure Cooker Pot Roast",
+    "meal": "dinner",
+    "cost": 2.8,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "summer",
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 483,
+      "protein_g": 50.9,
+      "fat_g": 9.2,
+      "carbs_g": 54.0,
+      "fiber_g": 12.3,
+      "calcium_mg": 286.7,
+      "iron_mg": 12.6,
+      "vitamin_c_mg": 45.1
+    }
+  },
+  {
+    "id": "the_secret_to_the_best_ever_instant_pot_lamb_stew",
+    "name": "The Secret to the Best Ever Instant Pot Lamb Stew",
+    "meal": "dinner",
+    "cost": 2.6,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 353,
+      "protein_g": 34.6,
+      "fat_g": 9.7,
+      "carbs_g": 30.2,
+      "fiber_g": 4.8,
+      "calcium_mg": 64.1,
+      "iron_mg": 4.4,
+      "vitamin_c_mg": 110.0
+    }
+  },
+  {
+    "id": "lentil_sweet_potato_and_spinach_soup",
+    "name": "Lentil, Sweet Potato and Spinach Soup",
+    "meal": "dinner",
+    "cost": 4.4,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "summer",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 303,
+      "protein_g": 19.5,
+      "fat_g": 1.1,
+      "carbs_g": 55.6,
+      "fiber_g": 23.9,
+      "calcium_mg": 131.6,
+      "iron_mg": 6.9,
+      "vitamin_c_mg": 24.6
+    }
+  },
+  {
+    "id": "asian_coleslaw_with_baked_salmon",
+    "name": "Asian Coleslaw with Baked Salmon",
+    "meal": "dinner",
+    "cost": 3.4,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "winter",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 687,
+      "protein_g": 46.2,
+      "fat_g": 32.9,
+      "carbs_g": 58.6,
+      "fiber_g": 15.7,
+      "calcium_mg": 93.0,
+      "iron_mg": 4.7,
+      "vitamin_c_mg": 38.4
+    }
+  },
+  {
+    "id": "roma_tomato_bruschetta",
+    "name": "Roma Tomato Bruschetta",
+    "meal": "dinner",
+    "cost": 5.7,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 445,
+      "protein_g": 12.8,
+      "fat_g": 16.9,
+      "carbs_g": 62.8,
+      "fiber_g": 5.3,
+      "calcium_mg": 75.5,
+      "iron_mg": 4.8,
+      "vitamin_c_mg": 112.7
+    }
+  },
+  {
+    "id": "stuffed_salmon_with_tomato_olive_tapenade",
+    "name": "Stuffed Salmon With Tomato-Olive Tapenade",
+    "meal": "dinner",
+    "cost": 3.2,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "spring",
+      "winter",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 634,
+      "protein_g": 43.9,
+      "fat_g": 43.9,
+      "carbs_g": 18.5,
+      "fiber_g": 5.9,
+      "calcium_mg": 173.2,
+      "iron_mg": 3.1,
+      "vitamin_c_mg": 36.1
+    }
+  },
+  {
+    "id": "goldilocks_chia_seed_porridge",
+    "name": "Goldilocks Chia Seed Porridge",
+    "meal": "dinner",
+    "cost": 4.8,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 421,
+      "protein_g": 14.3,
+      "fat_g": 26.4,
+      "carbs_g": 34.6,
+      "fiber_g": 18.8,
+      "calcium_mg": 463.4,
+      "iron_mg": 5.8,
+      "vitamin_c_mg": 22.4
+    }
+  },
+  {
+    "id": "grilled_salmon_salad_with_blood_orange_cilantro_vinaigrette",
+    "name": "Grilled Salmon Salad With Blood Orange Cilantro Vinaigrette",
+    "meal": "lunch",
+    "cost": 2.1,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 251,
+      "protein_g": 34.3,
+      "fat_g": 10.8,
+      "carbs_g": 2.3,
+      "fiber_g": 0,
+      "calcium_mg": 29.0,
+      "iron_mg": 1.6,
+      "vitamin_c_mg": 13.6
+    }
+  },
+  {
+    "id": "easy_cheesy_pizza_casserole",
+    "name": "Easy Cheesy Pizza Casserole",
+    "meal": "dinner",
+    "cost": 4.5,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "summer",
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 902,
+      "protein_g": 56.7,
+      "fat_g": 54.6,
+      "carbs_g": 46.8,
+      "fiber_g": 4.6,
+      "calcium_mg": 1235.2,
+      "iron_mg": 5.9,
+      "vitamin_c_mg": 16.7
+    }
+  },
+  {
+    "id": "chock_full_of_broccoli_soup",
+    "name": "Chock Full Of Broccoli Soup",
+    "meal": "dinner",
+    "cost": 5.5,
+    "tags": [
+      "vegetarian"
+    ],
+    "seasons": [
+      "winter",
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 249,
+      "protein_g": 17.6,
+      "fat_g": 8.1,
+      "carbs_g": 33.8,
+      "fiber_g": 9.3,
+      "calcium_mg": 192.9,
+      "iron_mg": 3.6,
+      "vitamin_c_mg": 259.5
+    }
+  },
+  {
+    "id": "vegan_taco_bowls_with_cilantro_lime_cauliflower_rice",
+    "name": "Vegan Taco bowls with Cilantro Lime Cauliflower Rice",
+    "meal": "lunch",
+    "cost": 5.3,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "winter",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 529,
+      "protein_g": 12.6,
+      "fat_g": 48.2,
+      "carbs_g": 22.1,
+      "fiber_g": 10.5,
+      "calcium_mg": 98.9,
+      "iron_mg": 2.7,
+      "vitamin_c_mg": 67.9
+    }
+  },
+  {
+    "id": "venison_sliders",
+    "name": "Venison Sliders",
+    "meal": "dinner",
+    "cost": 5.9,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "autumn",
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 550,
+      "protein_g": 58.0,
+      "fat_g": 10.0,
+      "carbs_g": 57.5,
+      "fiber_g": 5.7,
+      "calcium_mg": 186.8,
+      "iron_mg": 10.1,
+      "vitamin_c_mg": 10.6
+    }
+  },
+  {
+    "id": "whole_wheat_spaghetti_with_basil_avocado_pesto",
+    "name": "Whole Wheat Spaghetti with Basil Avocado Pesto",
+    "meal": "dinner",
+    "cost": 4.1,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "spring",
+      "winter",
+      "summer",
+      "autumn"
+    ],
+    "nutrients": {
+      "calories": 285,
+      "protein_g": 10.6,
+      "fat_g": 8.1,
+      "carbs_g": 47.8,
+      "fiber_g": 2.1,
+      "calcium_mg": 42.4,
+      "iron_mg": 3.0,
+      "vitamin_c_mg": 4.1
+    }
+  },
+  {
+    "id": "roast_cauliflower_salad_with_green_beans_and_cherry_tomatoes",
+    "name": "Roast Cauliflower Salad with Green Beans and Cherry Tomatoes",
+    "meal": "lunch",
+    "cost": 3.4,
+    "tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "seasons": [
+      "summer",
+      "autumn",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 188,
+      "protein_g": 6.5,
+      "fat_g": 11.3,
+      "carbs_g": 20.4,
+      "fiber_g": 7.3,
+      "calcium_mg": 91.7,
+      "iron_mg": 2.5,
+      "vitamin_c_mg": 170.2
+    }
+  },
+  {
+    "id": "plantain_pizza",
+    "name": "Plantain Pizza",
+    "meal": "dinner",
+    "cost": 5.2,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "winter",
+      "spring",
+      "autumn",
+      "summer"
+    ],
+    "nutrients": {
+      "calories": 642,
+      "protein_g": 25.0,
+      "fat_g": 22.9,
+      "carbs_g": 84.8,
+      "fiber_g": 4.8,
+      "calcium_mg": 39.2,
+      "iron_mg": 2.9,
+      "vitamin_c_mg": 67.8
+    }
+  },
+  {
+    "id": "guinness_braised_corned_beef_and_cabbage",
+    "name": "Guinness Braised Corned Beef and Cabbage",
+    "meal": "dinner",
+    "cost": 5.6,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "autumn",
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 584,
+      "protein_g": 29.2,
+      "fat_g": 23.5,
+      "carbs_g": 61.4,
+      "fiber_g": 12.0,
+      "calcium_mg": 172.0,
+      "iron_mg": 6.7,
+      "vitamin_c_mg": 94.9
+    }
+  },
+  {
+    "id": "crab_cakes_eggs_benedict",
+    "name": "Crab Cakes Eggs Benedict",
+    "meal": "breakfast",
+    "cost": 3.9,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "summer",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 899,
+      "protein_g": 42.2,
+      "fat_g": 58.9,
+      "carbs_g": 41.5,
+      "fiber_g": 2.9,
+      "calcium_mg": 184.7,
+      "iron_mg": 3.5,
+      "vitamin_c_mg": 17.6
+    }
+  },
+  {
+    "id": "lebanese_lentil_soup",
+    "name": "Lebanese Lentil Soup",
+    "meal": "dinner",
+    "cost": 2.2,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "autumn",
+      "winter",
+      "spring"
+    ],
+    "nutrients": {
+      "calories": 1157,
+      "protein_g": 26.6,
+      "fat_g": 87.7,
+      "carbs_g": 69.8,
+      "fiber_g": 30.6,
+      "calcium_mg": 94.3,
+      "iron_mg": 8.4,
+      "vitamin_c_mg": 18.4
+    }
+  },
+  {
+    "id": "chicken_piccata_with_angel_hair_pasta",
+    "name": "Chicken Piccata With Angel Hair Pasta",
+    "meal": "dinner",
+    "cost": 3.3,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 815,
+      "protein_g": 40.1,
+      "fat_g": 31.9,
+      "carbs_g": 94.9,
+      "fiber_g": 7.5,
+      "calcium_mg": 81.2,
+      "iron_mg": 4.2,
+      "vitamin_c_mg": 69.6
+    }
+  }
+]

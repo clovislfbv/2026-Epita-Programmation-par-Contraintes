@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drone Delivery — CP-SAT</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; display: flex; height: 100vh; background: #f0f2f5; color: #1a1a2e; }
+
+    #sidebar {
+      width: 340px; min-width: 280px; background: #ffffff;
+      display: flex; flex-direction: column; overflow-y: auto;
+      border-right: 1px solid #dde1ea;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.06);
+    }
+
+    #sidebar header {
+      padding: 18px 20px 12px;
+      background: #f7f8fc;
+      border-bottom: 1px solid #dde1ea;
+    }
+    #sidebar header h1 { font-size: 1.1rem; color: #5c63d8; letter-spacing: 0.5px; }
+    #sidebar header p { font-size: 0.75rem; color: #888; margin-top: 3px; }
+
+    .section { padding: 14px 16px; border-bottom: 1px solid #dde1ea; }
+    .section h2 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: #5c63d8; margin-bottom: 10px; }
+
+    .row { display: flex; gap: 8px; margin-bottom: 8px; align-items: center; }
+    label { font-size: 0.78rem; color: #666; width: 120px; flex-shrink: 0; }
+    input[type=number], input[type=range] {
+      flex: 1; background: #f7f8fc; border: 1px solid #d0d5e0;
+      border-radius: 6px; color: #1a1a2e; padding: 5px 8px; font-size: 0.82rem;
+    }
+    input[type=range] { padding: 0; cursor: pointer; }
+    .val { font-size: 0.8rem; color: #5c63d8; width: 36px; text-align: right; }
+
+    .mode-btns { display: flex; gap: 6px; margin-bottom: 8px; }
+    .mode-btn {
+      flex: 1; padding: 7px 4px; border: 1px solid #d0d5e0; border-radius: 6px;
+      background: #f7f8fc; color: #555; cursor: pointer; font-size: 0.78rem; text-align: center;
+      transition: all 0.15s;
+    }
+    .mode-btn.active { background: #5c63d8; border-color: #5c63d8; color: #fff; }
+    .mode-btn:hover:not(.active) { border-color: #5c63d8; color: #5c63d8; }
+
+    #btn-solve {
+      margin: 14px 16px; padding: 12px;
+      background: #5c63d8; border: none; border-radius: 8px;
+      color: #fff; font-size: 0.95rem; font-weight: 600; cursor: pointer;
+      transition: background 0.2s;
+    }
+    #btn-solve:hover { background: #4850c4; }
+    #btn-solve:disabled { background: #b0b5d8; cursor: not-allowed; }
+
+    #btn-clear {
+      margin: 0 16px 14px; padding: 8px;
+      background: transparent; border: 1px solid #d0d5e0; border-radius: 8px;
+      color: #888; font-size: 0.82rem; cursor: pointer; transition: all 0.2s;
+    }
+    #btn-clear:hover { border-color: #e05c5c; color: #e05c5c; }
+
+    #status-box {
+      margin: 0 16px 14px; padding: 10px 12px;
+      background: #f7f8fc; border-radius: 8px; font-size: 0.8rem;
+      border: 1px solid #dde1ea;
+      display: none;
+    }
+    #status-box.ok { border-left: 3px solid #22c55e; }
+    #status-box.warn { border-left: 3px solid #f59e0b; }
+    #status-box.err { border-left: 3px solid #e05c5c; }
+    #status-box .stat-line { display: flex; justify-content: space-between; margin-bottom: 4px; }
+    #status-box .stat-val { color: #5c63d8; font-weight: 600; }
+
+    .route-item {
+      padding: 8px 10px; border-radius: 6px; margin-bottom: 6px;
+      background: #f7f8fc; border: 1px solid #dde1ea; font-size: 0.78rem;
+    }
+    .route-item .route-header { display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .route-item .drone-label { font-weight: 600; }
+    .route-badge {
+      display: inline-block; padding: 1px 7px; border-radius: 10px;
+      font-size: 0.7rem; font-weight: 600;
+    }
+    .route-item .stops { color: #666; line-height: 1.6; }
+
+    #map { flex: 1; }
+
+    .leaflet-draw-toolbar a { background-color: #ffffff !important; color: #555 !important; }
+
+    #mode-hint {
+      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: rgba(255,255,255,0.95); border: 1px solid #dde1ea;
+      padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; color: #444;
+      pointer-events: none; z-index: 1000; display: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+<div id="sidebar">
+  <header>
+    <h1>Drone Delivery — CP-SAT</h1>
+    <p>Routing par programmation par contraintes</p>
+  </header>
+
+  <div class="section">
+    <h2>Mode édition</h2>
+    <div class="mode-btns">
+      <div class="mode-btn active" data-mode="depot">📍 Dépôt</div>
+      <div class="mode-btn" data-mode="client">📦 Client</div>
+      <div class="mode-btn" data-mode="zone">🚫 Zone</div>
+    </div>
+    <div class="row" style="font-size:0.75rem;color:#aaa;">Cliquer sur la carte pour placer</div>
+  </div>
+
+  <div class="section">
+    <h2>Paramètres client</h2>
+    <div class="row">
+      <label>Poids (kg)</label>
+      <input type="range" id="client-weight" min="0.5" max="10" step="0.1" value="2" />
+      <span class="val" id="client-weight-val">2.0</span>
+    </div>
+    <div class="row">
+      <label>Volume (L)</label>
+      <input type="range" id="client-volume" min="0.1" max="20" step="0.1" value="5" />
+      <span class="val" id="client-volume-val">5.0</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Drones</h2>
+    <div class="row">
+      <label>Nombre</label>
+      <input type="number" id="drone-count" value="3" min="1" max="10" />
+    </div>
+    <div class="row">
+      <label>Autonomie (km)</label>
+      <input type="number" id="drone-range" value="30" min="5" max="100" />
+    </div>
+    <div class="row">
+      <label>Charge max (kg)</label>
+      <input type="number" id="drone-weight" value="10" min="1" max="50" />
+    </div>
+    <div class="row">
+      <label>Volume max (L)</label>
+      <input type="number" id="drone-volume" value="20" min="1" max="100" />
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Météo</h2>
+    <div class="row">
+      <label>Facteur vent</label>
+      <input type="range" id="wind-factor" min="0.5" max="1.0" step="0.05" value="1.0" />
+      <span class="val" id="wind-factor-val">1.00</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Navigation</h2>
+    <div class="row">
+      <label>Précision (Gros - Fin)</label>
+      <input type="range" id="grid-res" min="10" max="60" step="5" value="30" />
+      <span class="val" id="grid-res-val">30</span>
+    </div>
+  </div>
+
+  <button id="btn-clear">🗑 Tout effacer</button>
+  <button id="btn-solve">Résoudre</button>
+  <button id="btn-animate" style="display:none; background:#22c55e; margin: 0 16px 14px; padding: 12px; border: none; border-radius: 8px; color: #fff; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: background 0.2s;">▶ Lancer l'animation</button>
+
+  <div id="status-box"></div>
+
+  <div class="section" id="routes-section" style="display:none;">
+    <h2>Routes</h2>
+    <div id="routes-list"></div>
+  </div>
+</div>
+
+<div id="map"></div>
+<div id="mode-hint"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+<script>
+const API = '';  // même origine
+
+// --- Map init ---
+const map = L.map('map', { center: [48.8566, 2.3522], zoom: 12 });
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; OpenStreetMap &copy; Carto', maxZoom: 19
+}).addTo(map);
+
+// --- State ---
+let mode = 'depot';
+let depotMarker = null;
+let clientMarkers = [];
+let zonePolygons = [];
+let routeLayers = [];
+let zonePoints = [];
+let zoneTempMarkers = [];
+let clientIdCounter = 1;
+
+const DRONE_COLORS = ['#5c63d8', '#22c55e', '#f59e0b', '#e05c5c', '#06b6d4',
+                      '#f472b6', '#a78bfa', '#34d399', '#fbbf24', '#60a5fa'];
+
+// --- Coordinate helpers ---
+// Convert lat/lng to km offsets from a reference point (for Nathan's solver)
+function latLngToXY(lat, lng, refLat, refLng) {
+  const R = 111.32;
+  const x = (lng - refLng) * Math.cos(refLat * Math.PI / 180) * R;
+  const y = (lat - refLat) * R;
+  return [x, y, 10.0];
+}
+
+// Convert km offsets back to lat/lng for Leaflet rendering
+function xyToLatLng(x, y, refLat, refLng) {
+  const R = 111.32;
+  const lat = refLat + y / R;
+  const lng = refLng + x / (R * Math.cos(refLat * Math.PI / 180));
+  return [lat, lng];
+}
+
+// --- Icons ---
+function depotIcon() {
+  return L.divIcon({ html: '🏠', className: '', iconSize: [28, 28], iconAnchor: [14, 14] });
+}
+function clientIcon() {
+  return L.divIcon({
+    html: `<div style="width:14px;height:14px;border-radius:50%;background:#888;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></div>`,
+    className: '', iconSize: [14, 14], iconAnchor: [7, 7]
+  });
+}
+
+// --- Mode buttons ---
+document.querySelectorAll('.mode-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    mode = btn.dataset.mode;
+    if (mode !== 'zone') finishZone();
+    showHint();
+  });
+});
+
+function showHint() {
+  const hints = {
+    depot: 'Cliquer pour placer le dépôt',
+    client: 'Cliquer pour ajouter un client',
+    zone: 'Cliquer pour dessiner une zone interdite (double-clic pour finir)',
+  };
+  const el = document.getElementById('mode-hint');
+  el.textContent = hints[mode] || '';
+  el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 2500);
+}
+
+// --- Sliders ---
+function bindSlider(id, valId) {
+  const input = document.getElementById(id);
+  const val = document.getElementById(valId);
+  val.textContent = parseFloat(input.value).toFixed(1);
+  input.addEventListener('input', () => {
+    const v = parseFloat(input.value);
+    val.textContent = v.toFixed(id === 'wind-factor' ? 2 : 1);
+  });
+}
+bindSlider('client-weight', 'client-weight-val');
+bindSlider('client-volume', 'client-volume-val');
+bindSlider('wind-factor', 'wind-factor-val');
+bindSlider('grid-res', 'grid-res-val');
+
+// --- Map click ---
+map.on('click', e => {
+  const { lat, lng } = e.latlng;
+
+  if (mode === 'depot') {
+    if (depotMarker) map.removeLayer(depotMarker);
+    depotMarker = L.marker([lat, lng], { icon: depotIcon(), draggable: true }).addTo(map);
+    depotMarker.bindTooltip('Dépôt', { permanent: false });
+
+  } else if (mode === 'client') {
+    const weight = parseFloat(document.getElementById('client-weight').value);
+    const volume = parseFloat(document.getElementById('client-volume').value);
+    const id = clientIdCounter++;
+    const m = L.marker([lat, lng], { icon: clientIcon(), draggable: true }).addTo(map);
+    m.bindTooltip(`#${id} — ${weight.toFixed(1)}kg ${volume.toFixed(1)}L`, { permanent: false });
+    m._clientData = { id, lat, lng, weight, volume };
+    clientMarkers.push(m);
+
+  } else if (mode === 'zone') {
+    zonePoints.push([lat, lng]);
+    const tm = L.circleMarker([lat, lng], { radius: 5, color: '#e05c5c', fillOpacity: 0.8 }).addTo(map);
+    zoneTempMarkers.push(tm);
+  }
+});
+
+map.on('dblclick', e => {
+  if (mode === 'zone' && zonePoints.length >= 3) {
+    finishZone();
+  }
+});
+
+function finishZone() {
+  if (zonePoints.length >= 3) {
+    const poly = L.polygon(zonePoints, {
+      color: '#e05c5c', fillColor: '#e05c5c', fillOpacity: 0.15,
+      dashArray: '6 4',
+    }).addTo(map);
+    poly.bindTooltip('Zone interdite (NOTAM)', { permanent: false });
+    poly._zoneData = { points: [...zonePoints] };
+    zonePolygons.push(poly);
+  }
+  zonePoints = [];
+  zoneTempMarkers.forEach(m => map.removeLayer(m));
+  zoneTempMarkers = [];
+}
+
+// --- Clear ---
+document.getElementById('btn-clear').addEventListener('click', () => {
+  if (depotMarker) { map.removeLayer(depotMarker); depotMarker = null; }
+  clientMarkers.forEach(m => map.removeLayer(m)); clientMarkers = [];
+  zonePolygons.forEach(p => map.removeLayer(p)); zonePolygons = [];
+  routeLayers.forEach(l => map.removeLayer(l)); routeLayers = [];
+  clientIdCounter = 1;
+  document.getElementById('status-box').style.display = 'none';
+  document.getElementById('routes-section').style.display = 'none';
+});
+
+// --- Solve ---
+document.getElementById('btn-solve').addEventListener('click', async () => {
+  if (!depotMarker) return alert('Placez le dépôt d\'abord.');
+  if (clientMarkers.length === 0) return alert('Ajoutez au moins un client.');
+
+  const btn = document.getElementById('btn-solve');
+  btn.disabled = true;
+  btn.textContent = 'Résolution…';
+
+  routeLayers.forEach(l => map.removeLayer(l));
+  routeLayers = [];
+
+  const dp = depotMarker.getLatLng();
+  const refLat = dp.lat, refLng = dp.lng;
+
+  const nDrones = parseInt(document.getElementById('drone-count').value);
+  const dRange = parseFloat(document.getElementById('drone-range').value);
+  const dWeight = parseFloat(document.getElementById('drone-weight').value);
+  const wind = parseFloat(document.getElementById('wind-factor').value);
+
+  // Build payload in Nathan's format
+  // Coordinates are km offsets from depot (depot = origin [0,0,10])
+  // battery_capacity = drone range in km * 100 (matches solver's int(dist*100) scale)
+  // demands/max_load in units of kg * 10 (integer approximation)
+  const payload = {
+    depot: [0.0, 0.0, 10.0],
+    clients: clientMarkers.map(m => {
+      const pos = m.getLatLng();
+      return latLngToXY(pos.lat, pos.lng, refLat, refLng);
+    }),
+    demands: clientMarkers.map(m => Math.round(m._clientData.weight * 10)),
+    volumes: clientMarkers.map(m => Math.round(m._clientData.volume * 10)),
+    notam_zones: zonePolygons.map(p =>
+      p._zoneData.points.map(pt => {
+        const arr = Array.isArray(pt) ? pt : [pt.lat, pt.lng];
+        const xy = latLngToXY(arr[0], arr[1], refLat, refLng);
+        return [xy[0], xy[1]];
+      })
+    ),
+    num_drones: nDrones,
+    battery_capacity: Math.round(dRange * 100 / wind),
+    max_load: Math.round(dWeight * 10),
+    max_volume: Math.round(parseFloat(document.getElementById('drone-volume').value) * 10),
+    grid_res: parseInt(document.getElementById('grid-res').value),
+  };
+
+  try {
+    const res = await fetch(`${API}/solve`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    renderResult(data, refLat, refLng);
+  } catch (e) {
+    showStatus('Erreur réseau : ' + e.message, 'err');
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Résoudre';
+});
+
+let lastResults = null;
+let animating = false;
+let animatedMarkers = [];
+
+document.getElementById('btn-animate').addEventListener('click', () => {
+  if (animating) return;
+  animateDrones();
+});
+
+function animateDrones() {
+  if (!lastResults || !lastResults.routes) return;
+  animating = true;
+  document.getElementById('btn-animate').disabled = true;
+  document.getElementById('btn-animate').textContent = 'Animation en cours…';
+
+  animatedMarkers.forEach(m => map.removeLayer(m));
+  animatedMarkers = [];
+
+  const dp = depotMarker.getLatLng();
+  const refLat = dp.lat, refLng = dp.lng;
+
+  // Préparation des drones avec calcul de distance
+  const drones = lastResults.routes.map((route, idx) => {
+    const color = DRONE_COLORS[idx % DRONE_COLORS.length];
+    
+    let points = [];
+    let cumulativeDistances = [0];
+    let totalD = 0;
+
+    route.trips.forEach(trip => {
+      trip.geometry.forEach((p, i) => {
+        const latLng = xyToLatLng(p[0], p[1], refLat, refLng);
+        if (points.length > 0) {
+          const prevXY = points[points.length - 1].xy;
+          const d = Math.sqrt((p[0] - prevXY[0]) ** 2 + (p[1] - prevXY[1]) ** 2);
+          totalD += d;
+          cumulativeDistances.push(totalD);
+        }
+        points.push({ latLng, xy: p });
+      });
+    });
+
+    const marker = L.circleMarker(points[0].latLng, {
+      radius: 8, color: '#fff', fillColor: color, fillOpacity: 1, weight: 2, zIndexOffset: 1000
+    }).addTo(map);
+    marker.bindTooltip(`Drone ${route.drone_id}`, { permanent: true, direction: 'top', className: 'drone-tooltip' });
+    animatedMarkers.push(marker);
+
+    return { marker, points, cumulativeDistances, totalD, finished: false };
+  });
+
+  const speedKmPerSec = 1; // Vitesse de l'animation (km "réels" par seconde d'animation)
+  const startTime = performance.now();
+
+  function frame(now) {
+    const elapsedSec = (now - startTime) / 1000;
+    const distanceToCover = elapsedSec * speedKmPerSec;
+    
+    let allFinished = true;
+
+    drones.forEach(drone => {
+      if (distanceToCover >= drone.totalD) {
+        if (!drone.finished) {
+          drone.marker.setLatLng(drone.points[drone.points.length - 1].latLng);
+          drone.finished = true;
+        }
+        return;
+      }
+
+      allFinished = false;
+
+      // Trouver le segment correspondant à la distance actuelle
+      let i = 0;
+      while (i < drone.cumulativeDistances.length - 1 && drone.cumulativeDistances[i+1] < distanceToCover) {
+        i++;
+      }
+
+      const d1 = drone.cumulativeDistances[i];
+      const d2 = drone.cumulativeDistances[i+1];
+      const p1 = drone.points[i].latLng;
+      const p2 = drone.points[i+1].latLng;
+
+      const segmentProgress = (distanceToCover - d1) / (d2 - d1);
+      const lat = p1[0] + (p2[0] - p1[0]) * segmentProgress;
+      const lng = p1[1] + (p2[1] - p1[1]) * segmentProgress;
+      
+      drone.marker.setLatLng([lat, lng]);
+    });
+
+    if (allFinished) {
+      animating = false;
+      document.getElementById('btn-animate').disabled = false;
+      document.getElementById('btn-animate').textContent = '▶ Lancer l\'animation';
+    } else {
+      requestAnimationFrame(frame);
+    }
+  }
+
+  requestAnimationFrame(frame);
+}
+
+// Dans renderResult, on affiche le bouton et on stocke les résultats
+function renderResult(data, refLat, refLng) {
+  lastResults = data;
+  const box = document.getElementById('status-box');
+  box.style.display = 'block';
+
+  const success = data.status === 'success' && data.routes.length > 0;
+  box.className = success ? 'ok' : 'err';
+  
+  document.getElementById('btn-animate').style.display = success ? 'block' : 'none';
+
+  const routesList = document.getElementById('routes-list');
+  routesList.innerHTML = '';
+
+  if (!data.routes || data.routes.length === 0) {
+    document.getElementById('routes-section').style.display = 'none';
+    return;
+  }
+  document.getElementById('routes-section').style.display = 'block';
+
+  data.routes.forEach((route, idx) => {
+    const color = DRONE_COLORS[idx % DRONE_COLORS.length];
+
+    const item = document.createElement('div');
+    item.className = 'route-item';
+    item.style.borderLeft = `3px solid ${color}`;
+    
+    let tripsHtml = '';
+    route.trips.forEach((trip, tIdx) => {
+      // Render geometry
+      const pts = trip.geometry.map(p => xyToLatLng(p[0], p[1], refLat, refLng));
+      const line = L.polyline(pts, { color, weight: 3, opacity: 0.85 }).addTo(map);
+      routeLayers.push(line);
+
+      // Mark start
+      const startMarker = L.circleMarker(pts[0], {
+        radius: 5, color, fillColor: '#fff', fillOpacity: 1, weight: 2
+      }).addTo(map);
+      routeLayers.push(startMarker);
+
+      const tWeight = (trip.weight / 10).toFixed(1);
+      const tVolume = (trip.volume / 10).toFixed(1);
+      
+      tripsHtml += `
+        <div style="margin-top:8px; border-top:1px dashed #dde1ea; padding-top:4px;">
+          <div style="font-weight:600; font-size:0.7rem; color:#888;">PARCOURS #${tIdx + 1}</div>
+          <div class="stops">
+            📏 ${trip.distance} km | ⚖️ ${tWeight} kg | 📦 ${tVolume} L
+          </div>
+        </div>
+      `;
+    });
+
+    item.innerHTML = `
+      <div class="route-header">
+        <span class="drone-label" style="color:${color}">Drone ${route.drone_id}</span>
+        <span style="font-size:0.75rem; color:#888;">${route.trips.length} parcours</span>
+      </div>
+      <div style="font-size:0.75rem; margin-top:4px; font-weight:600;">
+        Total: ${route.total_distance} km
+      </div>
+      ${tripsHtml}
+    `;
+    routesList.appendChild(item);
+  });
+}
+
+function showStatus(msg, cls) {
+  const box = document.getElementById('status-box');
+  box.style.display = 'block';
+  box.className = cls;
+  box.textContent = msg;
+}
+</script>
+</body>
+</html>

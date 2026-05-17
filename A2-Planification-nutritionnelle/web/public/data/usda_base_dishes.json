@@ -1,0 +1,1947 @@
+[
+  {
+    "id": "usda_1995469_oatmeal",
+    "name": "Oatmeal",
+    "meal": "breakfast",
+    "cost": 8.5,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 3950.0,
+      "protein_g": 0.0,
+      "fat_g": 16.68,
+      "carbs_g": 166.75,
+      "fiber_g": 22.25,
+      "calcium_mg": 832.5,
+      "iron_mg": 60.0,
+      "vitamin_c_mg": 166.75
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 1995469,
+      "portion_grams": 250.0,
+      "query_term": "oatmeal"
+    }
+  },
+  {
+    "id": "usda_2110080_oatmeal_bread_oatmeal",
+    "name": "Oatmeal Bread, Oatmeal",
+    "meal": "breakfast",
+    "cost": 3.17,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 650.0,
+      "protein_g": 25.0,
+      "fat_g": 10.0,
+      "carbs_g": 120.0,
+      "fiber_g": 10.0,
+      "calcium_mg": 150.0,
+      "iron_mg": 6.5,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2110080,
+      "portion_grams": 250.0,
+      "query_term": "oatmeal"
+    }
+  },
+  {
+    "id": "usda_463067_yogurt",
+    "name": "Yogurt",
+    "meal": "breakfast",
+    "cost": 1.79,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 235.0,
+      "protein_g": 7.35,
+      "fat_g": 7.35,
+      "carbs_g": 39.75,
+      "fiber_g": 0.0,
+      "calcium_mg": 295.0,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 1.75
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 463067,
+      "portion_grams": 250.0,
+      "query_term": "yogurt"
+    }
+  },
+  {
+    "id": "usda_1996127_yogurt_raisins_yogurt",
+    "name": "Yogurt Raisins, Yogurt",
+    "meal": "breakfast",
+    "cost": 2.5,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 625.0,
+      "protein_g": 3.12,
+      "fat_g": 34.5,
+      "carbs_g": 81.25,
+      "fiber_g": 0.0,
+      "calcium_mg": 125.0,
+      "iron_mg": 1.12,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 1996127,
+      "portion_grams": 250.0,
+      "query_term": "yogurt"
+    }
+  },
+  {
+    "id": "usda_2581636_yogurt_pretzels_yogurt",
+    "name": "Yogurt  Pretzels, Yogurt",
+    "meal": "breakfast",
+    "cost": 3.78,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 1187.5,
+      "protein_g": 12.5,
+      "fat_g": 43.75,
+      "carbs_g": 181.25,
+      "fiber_g": 0.0,
+      "calcium_mg": 250.0,
+      "iron_mg": 2.5,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2581636,
+      "portion_grams": 250.0,
+      "query_term": "yogurt"
+    }
+  },
+  {
+    "id": "usda_2161181_yogurt_almonds_yogurt",
+    "name": "Yogurt Almonds, Yogurt",
+    "meal": "breakfast",
+    "cost": 4.35,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 1332.5,
+      "protein_g": 16.68,
+      "fat_g": 91.75,
+      "carbs_g": 133.25,
+      "fiber_g": 8.25,
+      "calcium_mg": 417.5,
+      "iron_mg": 2.5,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2161181,
+      "portion_grams": 250.0,
+      "query_term": "yogurt"
+    }
+  },
+  {
+    "id": "usda_2575290_egg",
+    "name": "Egg",
+    "meal": "breakfast",
+    "cost": 4.23,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 1282.5,
+      "protein_g": 16.02,
+      "fat_g": 72.0,
+      "carbs_g": 144.25,
+      "fiber_g": 8.0,
+      "calcium_mg": 320.0,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2575290,
+      "portion_grams": 250.0,
+      "query_term": "egg"
+    }
+  },
+  {
+    "id": "usda_2441650_egg_bagel_egg",
+    "name": "Egg Bagel, Egg",
+    "meal": "breakfast",
+    "cost": 2.83,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 615.0,
+      "protein_g": 17.55,
+      "fat_g": 2.2,
+      "carbs_g": 127.25,
+      "fiber_g": 4.5,
+      "calcium_mg": 0.0,
+      "iron_mg": 7.9,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2441650,
+      "portion_grams": 250.0,
+      "query_term": "egg"
+    }
+  },
+  {
+    "id": "usda_2421434_egg_bagels_egg",
+    "name": "Egg Bagels, Egg",
+    "meal": "breakfast",
+    "cost": 3.05,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 680.0,
+      "protein_g": 24.7,
+      "fat_g": 3.08,
+      "carbs_g": 135.75,
+      "fiber_g": 3.0,
+      "calcium_mg": 140.0,
+      "iron_mg": 7.1,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2421434,
+      "portion_grams": 250.0,
+      "query_term": "egg"
+    }
+  },
+  {
+    "id": "usda_2012128_banana",
+    "name": "Banana",
+    "meal": "breakfast",
+    "cost": 3.67,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 780.0,
+      "protein_g": 31.25,
+      "fat_g": 15.62,
+      "carbs_g": 101.5,
+      "fiber_g": 15.5,
+      "calcium_mg": 312.5,
+      "iron_mg": 2.8,
+      "vitamin_c_mg": 37.5
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2012128,
+      "portion_grams": 250.0,
+      "query_term": "banana"
+    }
+  },
+  {
+    "id": "usda_2667078_margie_s_banana_syrup_banana_banana",
+    "name": "Margie'S, Banana Syrup, Banana, Banana",
+    "meal": "breakfast",
+    "cost": 2.36,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 507.5,
+      "protein_g": 3.38,
+      "fat_g": 0.0,
+      "carbs_g": 118.25,
+      "fiber_g": 3.5,
+      "calcium_mg": 67.5,
+      "iron_mg": 2.42,
+      "vitamin_c_mg": 4.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2667078,
+      "portion_grams": 250.0,
+      "query_term": "banana"
+    }
+  },
+  {
+    "id": "usda_1998798_banana_chips_banana",
+    "name": "Banana Chips, Banana",
+    "meal": "breakfast",
+    "cost": 4.12,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 1250.0,
+      "protein_g": 6.25,
+      "fat_g": 62.5,
+      "carbs_g": 162.5,
+      "fiber_g": 12.5,
+      "calcium_mg": 37.5,
+      "iron_mg": 6.25,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 1998798,
+      "portion_grams": 250.0,
+      "query_term": "banana"
+    }
+  },
+  {
+    "id": "usda_2563761_whole_wheat_bread",
+    "name": "Whole Wheat Bread",
+    "meal": "lunch",
+    "cost": 3.14,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 580.0,
+      "protein_g": 16.55,
+      "fat_g": 4.15,
+      "carbs_g": 107.5,
+      "fiber_g": 8.25,
+      "calcium_mg": 50.0,
+      "iron_mg": 8.28,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2563761,
+      "portion_grams": 250.0,
+      "query_term": "whole wheat bread"
+    }
+  },
+  {
+    "id": "usda_360294_brown_rice",
+    "name": "Brown Rice",
+    "meal": "dinner",
+    "cost": 4.23,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 872.5,
+      "protein_g": 23.25,
+      "fat_g": 5.83,
+      "carbs_g": 191.75,
+      "fiber_g": 11.75,
+      "calcium_mg": 117.5,
+      "iron_mg": 4.17,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 360294,
+      "portion_grams": 250.0,
+      "query_term": "brown rice"
+    }
+  },
+  {
+    "id": "usda_386410_quinoa",
+    "name": "Quinoa",
+    "meal": "breakfast",
+    "cost": 3.79,
+    "tags": [
+      "protein",
+      "vegetarian"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 900.0,
+      "protein_g": 25.0,
+      "fat_g": 10.0,
+      "carbs_g": 175.0,
+      "fiber_g": 15.0,
+      "calcium_mg": 100.0,
+      "iron_mg": 7.2,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 386410,
+      "portion_grams": 250.0,
+      "query_term": "quinoa"
+    }
+  },
+  {
+    "id": "usda_2187885_chicken_breast",
+    "name": "Chicken Breast",
+    "meal": "lunch",
+    "cost": 3.17,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 412.5,
+      "protein_g": 51.0,
+      "fat_g": 20.25,
+      "carbs_g": 2.65,
+      "fiber_g": 0.0,
+      "calcium_mg": 395.0,
+      "iron_mg": 0.95,
+      "vitamin_c_mg": 4.25
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2187885,
+      "portion_grams": 250.0,
+      "query_term": "chicken breast"
+    }
+  },
+  {
+    "id": "usda_1857258_turkey",
+    "name": "Turkey",
+    "meal": "dinner",
+    "cost": 2.69,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 202.5,
+      "protein_g": 24.38,
+      "fat_g": 3.17,
+      "carbs_g": 16.95,
+      "fiber_g": 3.25,
+      "calcium_mg": 105.0,
+      "iron_mg": 2.85,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 1857258,
+      "portion_grams": 250.0,
+      "query_term": "turkey"
+    }
+  },
+  {
+    "id": "usda_2314103_turkey_patties_turkey",
+    "name": "Turkey Patties, Turkey",
+    "meal": "breakfast",
+    "cost": 2.77,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 295.0,
+      "protein_g": 58.75,
+      "fat_g": 4.4,
+      "carbs_g": 0.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 27.5,
+      "iron_mg": 2.95,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2314103,
+      "portion_grams": 250.0,
+      "query_term": "turkey"
+    }
+  },
+  {
+    "id": "usda_2016166_salmon",
+    "name": "Salmon",
+    "meal": "breakfast",
+    "cost": 2.57,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 347.5,
+      "protein_g": 38.0,
+      "fat_g": 19.88,
+      "carbs_g": 6.62,
+      "fiber_g": 1.75,
+      "calcium_mg": 32.5,
+      "iron_mg": 1.2,
+      "vitamin_c_mg": 2.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2016166,
+      "portion_grams": 250.0,
+      "query_term": "salmon"
+    }
+  },
+  {
+    "id": "usda_2482348_salmon_jerky_salmon",
+    "name": "Salmon Jerky, Salmon",
+    "meal": "lunch",
+    "cost": 4.89,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 802.5,
+      "protein_g": 107.25,
+      "fat_g": 17.85,
+      "carbs_g": 0.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 90.0,
+      "iron_mg": 2.68,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2482348,
+      "portion_grams": 250.0,
+      "query_term": "salmon"
+    }
+  },
+  {
+    "id": "usda_2068771_tuna",
+    "name": "Tuna",
+    "meal": "lunch",
+    "cost": 2.26,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 235.0,
+      "protein_g": 14.15,
+      "fat_g": 9.43,
+      "carbs_g": 26.0,
+      "fiber_g": 2.25,
+      "calcium_mg": 95.0,
+      "iron_mg": 1.7,
+      "vitamin_c_mg": 14.25
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2068771,
+      "portion_grams": 250.0,
+      "query_term": "tuna"
+    }
+  },
+  {
+    "id": "usda_2525486_tuna_poke_tuna",
+    "name": "Tuna Poke, Tuna",
+    "meal": "lunch",
+    "cost": 2.49,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 380.0,
+      "protein_g": 12.62,
+      "fat_g": 3.8,
+      "carbs_g": 72.5,
+      "fiber_g": 0.75,
+      "calcium_mg": 17.5,
+      "iron_mg": 3.02,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2525486,
+      "portion_grams": 250.0,
+      "query_term": "tuna"
+    }
+  },
+  {
+    "id": "usda_2196012_tuna_roll_tuna",
+    "name": "Tuna Roll, Tuna",
+    "meal": "lunch",
+    "cost": 2.27,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 352.5,
+      "protein_g": 0.0,
+      "fat_g": 8.5,
+      "carbs_g": 54.5,
+      "fiber_g": 2.5,
+      "calcium_mg": 25.0,
+      "iron_mg": 3.28,
+      "vitamin_c_mg": 3.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2196012,
+      "portion_grams": 250.0,
+      "query_term": "tuna"
+    }
+  },
+  {
+    "id": "usda_2656911_tuna_salad_tuna",
+    "name": "Tuna Salad, Tuna",
+    "meal": "lunch",
+    "cost": 3.99,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 975.0,
+      "protein_g": 25.0,
+      "fat_g": 92.5,
+      "carbs_g": 15.0,
+      "fiber_g": 5.0,
+      "calcium_mg": 0.0,
+      "iron_mg": 0.9,
+      "vitamin_c_mg": 6.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2656911,
+      "portion_grams": 250.0,
+      "query_term": "tuna"
+    }
+  },
+  {
+    "id": "usda_1605879_lean_beef",
+    "name": "Lean Beef",
+    "meal": "dinner",
+    "cost": 3.5,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 402.5,
+      "protein_g": 53.5,
+      "fat_g": 17.85,
+      "carbs_g": 0.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 0.0,
+      "iron_mg": 4.03,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 1605879,
+      "portion_grams": 250.0,
+      "query_term": "lean beef"
+    }
+  },
+  {
+    "id": "usda_1696109_lean_beef_uncured_franks_lean_beef",
+    "name": "Lean Beef Uncured Franks, Lean Beef",
+    "meal": "breakfast",
+    "cost": 2.3,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 300.0,
+      "protein_g": 30.0,
+      "fat_g": 17.5,
+      "carbs_g": 10.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 0.0,
+      "iron_mg": 3.6,
+      "vitamin_c_mg": 24.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 1696109,
+      "portion_grams": 250.0,
+      "query_term": "lean beef"
+    }
+  },
+  {
+    "id": "usda_2622385_beef_lean_franks_beef",
+    "name": "Beef Lean Franks, Beef",
+    "meal": "lunch",
+    "cost": 2.7,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 350.0,
+      "protein_g": 30.0,
+      "fat_g": 22.5,
+      "carbs_g": 15.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 0.0,
+      "iron_mg": 3.6,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2622385,
+      "portion_grams": 250.0,
+      "query_term": "lean beef"
+    }
+  },
+  {
+    "id": "usda_2381725_lean_beef_no_beans_chili_lean_beef_n",
+    "name": "Lean Beef No Beans Chili, Lean Beef No Beans",
+    "meal": "lunch",
+    "cost": 1.94,
+    "tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 112.5,
+      "protein_g": 11.17,
+      "fat_g": 2.35,
+      "carbs_g": 10.6,
+      "fiber_g": 1.25,
+      "calcium_mg": 17.5,
+      "iron_mg": 1.47,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2381725,
+      "portion_grams": 250.0,
+      "query_term": "lean beef"
+    }
+  },
+  {
+    "id": "usda_1888309_lean_ground_beef",
+    "name": "Lean Ground Beef",
+    "meal": "breakfast",
+    "cost": 2.81,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 380.0,
+      "protein_g": 51.25,
+      "fat_g": 17.85,
+      "carbs_g": 0.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 0.0,
+      "iron_mg": 6.03,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 1888309,
+      "portion_grams": 250.0,
+      "query_term": "lean beef"
+    }
+  },
+  {
+    "id": "usda_2431290_lentils",
+    "name": "Lentils",
+    "meal": "lunch",
+    "cost": 5.21,
+    "tags": [
+      "protein",
+      "vegan",
+      "vegetarian"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 730.0,
+      "protein_g": 57.25,
+      "fat_g": 5.2,
+      "carbs_g": 156.25,
+      "fiber_g": 52.0,
+      "calcium_mg": 52.5,
+      "iron_mg": 14.05,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2431290,
+      "portion_grams": 250.0,
+      "query_term": "lentils"
+    }
+  },
+  {
+    "id": "usda_2068232_chickpeas",
+    "name": "Chickpeas",
+    "meal": "lunch",
+    "cost": 2.72,
+    "tags": [
+      "protein",
+      "vegan",
+      "vegetarian"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 320.0,
+      "protein_g": 20.0,
+      "fat_g": 4.0,
+      "carbs_g": 52.0,
+      "fiber_g": 10.0,
+      "calcium_mg": 160.0,
+      "iron_mg": 2.88,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2068232,
+      "portion_grams": 250.0,
+      "query_term": "chickpeas"
+    }
+  },
+  {
+    "id": "usda_2290174_black_beans",
+    "name": "Black Beans",
+    "meal": "lunch",
+    "cost": 1.5,
+    "tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 0.0,
+      "protein_g": 0.0,
+      "fat_g": 0.0,
+      "carbs_g": 0.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 77.5,
+      "iron_mg": 3.45,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2290174,
+      "portion_grams": 250.0,
+      "query_term": "black beans"
+    }
+  },
+  {
+    "id": "usda_2294522_tofu",
+    "name": "Tofu",
+    "meal": "breakfast",
+    "cost": 1.2,
+    "tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 0.0,
+      "protein_g": 0.0,
+      "fat_g": 0.0,
+      "carbs_g": 0.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 0.0,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2294522,
+      "portion_grams": 250.0,
+      "query_term": "tofu"
+    }
+  },
+  {
+    "id": "usda_2549992_broccoli",
+    "name": "Broccoli",
+    "meal": "lunch",
+    "cost": 1.94,
+    "tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 60.0,
+      "protein_g": 5.88,
+      "fat_g": 0.0,
+      "carbs_g": 11.78,
+      "fiber_g": 8.75,
+      "calcium_mg": 147.5,
+      "iron_mg": 2.05,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2549992,
+      "portion_grams": 250.0,
+      "query_term": "broccoli"
+    }
+  },
+  {
+    "id": "usda_2617829_spinach",
+    "name": "Spinach",
+    "meal": "dinner",
+    "cost": 2.19,
+    "tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 72.5,
+      "protein_g": 5.88,
+      "fat_g": 0.0,
+      "carbs_g": 8.82,
+      "fiber_g": 6.0,
+      "calcium_mg": 235.0,
+      "iron_mg": 6.78,
+      "vitamin_c_mg": 70.5
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2617829,
+      "portion_grams": 250.0,
+      "query_term": "spinach"
+    }
+  },
+  {
+    "id": "usda_2636910_carrot_cake_carrot",
+    "name": "Carrot Cake, Carrot",
+    "meal": "breakfast",
+    "cost": 3.36,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 977.5,
+      "protein_g": 8.15,
+      "fat_g": 46.25,
+      "carbs_g": 136.0,
+      "fiber_g": 2.75,
+      "calcium_mg": 107.5,
+      "iron_mg": 3.25,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2636910,
+      "portion_grams": 250.0,
+      "query_term": "carrot"
+    }
+  },
+  {
+    "id": "usda_2293024_tomato",
+    "name": "Tomato",
+    "meal": "lunch",
+    "cost": 1.5,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 0.0,
+      "protein_g": 0.0,
+      "fat_g": 0.0,
+      "carbs_g": 0.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 0.0,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2293024,
+      "portion_grams": 250.0,
+      "query_term": "tomato"
+    }
+  },
+  {
+    "id": "usda_2390862_tomato_sauce_tomatoes_tomato",
+    "name": "Tomato Sauce Tomatoes, Tomato",
+    "meal": "breakfast",
+    "cost": 1.63,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 80.0,
+      "protein_g": 4.03,
+      "fat_g": 0.0,
+      "carbs_g": 16.12,
+      "fiber_g": 8.0,
+      "calcium_mg": 0.0,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2390862,
+      "portion_grams": 250.0,
+      "query_term": "tomato"
+    }
+  },
+  {
+    "id": "usda_2401594_whole_tomatoes_in_tomato_juice_tomat",
+    "name": "Whole Tomatoes In Tomato Juice, Tomato",
+    "meal": "lunch",
+    "cost": 1.69,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 52.5,
+      "protein_g": 2.07,
+      "fat_g": 0.0,
+      "carbs_g": 10.32,
+      "fiber_g": 2.0,
+      "calcium_mg": 0.0,
+      "iron_mg": 0.83,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2401594,
+      "portion_grams": 250.0,
+      "query_term": "tomato"
+    }
+  },
+  {
+    "id": "usda_2404786_tomato_basil_tomato",
+    "name": "Tomato Basil, Tomato",
+    "meal": "dinner",
+    "cost": 2.03,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 80.0,
+      "protein_g": 4.0,
+      "fat_g": 2.0,
+      "carbs_g": 16.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 77.5,
+      "iron_mg": 2.0,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2404786,
+      "portion_grams": 250.0,
+      "query_term": "tomato"
+    }
+  },
+  {
+    "id": "usda_1864680_orange",
+    "name": "Orange",
+    "meal": "dinner",
+    "cost": 3.9,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 952.5,
+      "protein_g": 11.9,
+      "fat_g": 0.0,
+      "carbs_g": 226.25,
+      "fiber_g": 0.0,
+      "calcium_mg": 0.0,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 1864680,
+      "portion_grams": 250.0,
+      "query_term": "orange"
+    }
+  },
+  {
+    "id": "usda_1976307_true_orange_crystallized_orange_oran",
+    "name": "True Orange, Crystallized Orange, Orange, Orange",
+    "meal": "breakfast",
+    "cost": 1.2,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 0.0,
+      "protein_g": 0.0,
+      "fat_g": 0.0,
+      "carbs_g": 312.5,
+      "fiber_g": 0.0,
+      "calcium_mg": 0.0,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 4700.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 1976307,
+      "portion_grams": 250.0,
+      "query_term": "orange"
+    }
+  },
+  {
+    "id": "usda_2027904_orange_peels_orange_orange",
+    "name": "Orange Peels, Orange, Orange",
+    "meal": "lunch",
+    "cost": 3.0,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 750.0,
+      "protein_g": 0.0,
+      "fat_g": 0.0,
+      "carbs_g": 200.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 500.0,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2027904,
+      "portion_grams": 250.0,
+      "query_term": "orange"
+    }
+  },
+  {
+    "id": "usda_1589882_orange_soda_orange_orange",
+    "name": "Orange Soda, Orange, Orange",
+    "meal": "dinner",
+    "cost": 2.01,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 105.0,
+      "protein_g": 0.0,
+      "fat_g": 0.0,
+      "carbs_g": 28.25,
+      "fiber_g": 0.0,
+      "calcium_mg": 0.0,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 1589882,
+      "portion_grams": 250.0,
+      "query_term": "orange"
+    }
+  },
+  {
+    "id": "usda_2117388_apple",
+    "name": "Apple",
+    "meal": "breakfast",
+    "cost": 1.43,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 115.0,
+      "protein_g": 0.0,
+      "fat_g": 0.0,
+      "carbs_g": 29.25,
+      "fiber_g": 0.0,
+      "calcium_mg": 0.0,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 81.25
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2117388,
+      "portion_grams": 250.0,
+      "query_term": "apple"
+    }
+  },
+  {
+    "id": "usda_1646831_barrilitos_apple_soda_apple_apple",
+    "name": "Barrilitos, Apple Soda, Apple, Apple",
+    "meal": "breakfast",
+    "cost": 1.41,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 105.0,
+      "protein_g": 0.0,
+      "fat_g": 0.0,
+      "carbs_g": 26.75,
+      "fiber_g": 0.0,
+      "calcium_mg": 0.0,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 1646831,
+      "portion_grams": 250.0,
+      "query_term": "apple"
+    }
+  },
+  {
+    "id": "usda_1895346_jumex_apple_nectar_apple_apple",
+    "name": "Jumex, Apple Nectar, Apple, Apple",
+    "meal": "lunch",
+    "cost": 1.82,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 142.5,
+      "protein_g": 0.0,
+      "fat_g": 0.0,
+      "carbs_g": 27.5,
+      "fiber_g": 1.5,
+      "calcium_mg": 0.0,
+      "iron_mg": 0.53,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 1895346,
+      "portion_grams": 250.0,
+      "query_term": "apple"
+    }
+  },
+  {
+    "id": "usda_2627030_kasia_s_potato_pancakes_potato_potat",
+    "name": "Kasia'S, Potato Pancakes, Potato, Potato",
+    "meal": "lunch",
+    "cost": 2.55,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 395.0,
+      "protein_g": 8.77,
+      "fat_g": 17.55,
+      "carbs_g": 65.75,
+      "fiber_g": 4.5,
+      "calcium_mg": 0.0,
+      "iron_mg": 1.57,
+      "vitamin_c_mg": 5.25
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2627030,
+      "portion_grams": 250.0,
+      "query_term": "potato"
+    }
+  },
+  {
+    "id": "usda_2397792_gnocchi_with_potato_potato",
+    "name": "Gnocchi With Potato, Potato",
+    "meal": "dinner",
+    "cost": 2.67,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 340.0,
+      "protein_g": 8.92,
+      "fat_g": 0.9,
+      "carbs_g": 73.25,
+      "fiber_g": 1.75,
+      "calcium_mg": 17.5,
+      "iron_mg": 0.53,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2397792,
+      "portion_grams": 250.0,
+      "query_term": "potato"
+    }
+  },
+  {
+    "id": "usda_2582418_potato_blintzes_potato",
+    "name": "Potato Blintzes, Potato",
+    "meal": "breakfast",
+    "cost": 2.3,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 485.0,
+      "protein_g": 8.07,
+      "fat_g": 28.25,
+      "carbs_g": 52.5,
+      "fiber_g": 0.0,
+      "calcium_mg": 32.5,
+      "iron_mg": 4.03,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2582418,
+      "portion_grams": 250.0,
+      "query_term": "potato"
+    }
+  },
+  {
+    "id": "usda_2170755_potato_bourekas_potato",
+    "name": "Potato Bourekas, Potato",
+    "meal": "lunch",
+    "cost": 3.07,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 677.5,
+      "protein_g": 12.7,
+      "fat_g": 38.0,
+      "carbs_g": 80.5,
+      "fiber_g": 0.0,
+      "calcium_mg": 17.5,
+      "iron_mg": 0.85,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2170755,
+      "portion_grams": 250.0,
+      "query_term": "potato"
+    }
+  },
+  {
+    "id": "usda_2491259_potato_bread_potato",
+    "name": "Potato Bread, Potato",
+    "meal": "dinner",
+    "cost": 3.51,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 640.0,
+      "protein_g": 17.45,
+      "fat_g": 5.83,
+      "carbs_g": 128.0,
+      "fiber_g": 5.75,
+      "calcium_mg": 232.5,
+      "iron_mg": 8.38,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2491259,
+      "portion_grams": 250.0,
+      "query_term": "potato"
+    }
+  },
+  {
+    "id": "usda_477475_sweet_potato",
+    "name": "Sweet Potato",
+    "meal": "dinner",
+    "cost": 2.68,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 265.0,
+      "protein_g": 13.62,
+      "fat_g": 3.2,
+      "carbs_g": 41.0,
+      "fiber_g": 4.75,
+      "calcium_mg": 65.0,
+      "iron_mg": 1.45,
+      "vitamin_c_mg": 12.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 477475,
+      "portion_grams": 250.0,
+      "query_term": "sweet potato"
+    }
+  },
+  {
+    "id": "usda_2426354_sweet_potato_gnocchi_sweet_potato",
+    "name": "Sweet Potato Gnocchi, Sweet Potato",
+    "meal": "lunch",
+    "cost": 2.2,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 257.5,
+      "protein_g": 5.53,
+      "fat_g": 0.93,
+      "carbs_g": 62.5,
+      "fiber_g": 3.75,
+      "calcium_mg": 72.5,
+      "iron_mg": 1.47,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2426354,
+      "portion_grams": 250.0,
+      "query_term": "sweet potato"
+    }
+  },
+  {
+    "id": "usda_2107704_fresh_sweet_potatoes_sweet_potatoes",
+    "name": "Fresh Sweet Potatoes, Sweet Potatoes",
+    "meal": "dinner",
+    "cost": 2.48,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 212.5,
+      "protein_g": 3.85,
+      "fat_g": 0.0,
+      "carbs_g": 50.0,
+      "fiber_g": 7.75,
+      "calcium_mg": 77.5,
+      "iron_mg": 1.38,
+      "vitamin_c_mg": 7.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2107704,
+      "portion_grams": 250.0,
+      "query_term": "sweet potato"
+    }
+  },
+  {
+    "id": "usda_2283460_sweet_potato_bun_sweet_potato",
+    "name": "Sweet Potato Bun, Sweet Potato",
+    "meal": "breakfast",
+    "cost": 2.9,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 772.5,
+      "protein_g": 0.0,
+      "fat_g": 0.0,
+      "carbs_g": 132.75,
+      "fiber_g": 6.25,
+      "calcium_mg": 0.0,
+      "iron_mg": 8.32,
+      "vitamin_c_mg": 14.75
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2283460,
+      "portion_grams": 250.0,
+      "query_term": "sweet potato"
+    }
+  },
+  {
+    "id": "usda_2074342_almonds",
+    "name": "Almonds",
+    "meal": "breakfast",
+    "cost": 5.96,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 1582.5,
+      "protein_g": 58.25,
+      "fat_g": 141.75,
+      "carbs_g": 33.25,
+      "fiber_g": 25.0,
+      "calcium_mg": 832.5,
+      "iron_mg": 9.0,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2074342,
+      "portion_grams": 250.0,
+      "query_term": "almonds"
+    }
+  },
+  {
+    "id": "usda_2031766_peanut_butter",
+    "name": "Peanut Butter",
+    "meal": "lunch",
+    "cost": 5.75,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 1500.0,
+      "protein_g": 50.0,
+      "fat_g": 125.0,
+      "carbs_g": 50.0,
+      "fiber_g": 16.75,
+      "calcium_mg": 167.5,
+      "iron_mg": 6.0,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2031766,
+      "portion_grams": 250.0,
+      "query_term": "peanut butter"
+    }
+  },
+  {
+    "id": "usda_2476573_milk",
+    "name": "Milk",
+    "meal": "breakfast",
+    "cost": 1.69,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 167.5,
+      "protein_g": 9.38,
+      "fat_g": 8.32,
+      "carbs_g": 13.55,
+      "fiber_g": 0.0,
+      "calcium_mg": 327.5,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2476573,
+      "portion_grams": 250.0,
+      "query_term": "milk"
+    }
+  },
+  {
+    "id": "usda_2433763_cottage_cheese",
+    "name": "Cottage Cheese",
+    "meal": "breakfast",
+    "cost": 2.2,
+    "tags": [
+      "protein"
+    ],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 262.5,
+      "protein_g": 28.5,
+      "fat_g": 10.97,
+      "carbs_g": 8.77,
+      "fiber_g": 0.0,
+      "calcium_mg": 285.0,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2433763,
+      "portion_grams": 250.0,
+      "query_term": "cottage cheese"
+    }
+  },
+  {
+    "id": "usda_2425060_avocado_chunks_avocado",
+    "name": "Avocado Chunks, Avocado",
+    "meal": "lunch",
+    "cost": 2.89,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 417.5,
+      "protein_g": 8.32,
+      "fat_g": 37.5,
+      "carbs_g": 25.0,
+      "fiber_g": 16.75,
+      "calcium_mg": 0.0,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2425060,
+      "portion_grams": 250.0,
+      "query_term": "avocado"
+    }
+  },
+  {
+    "id": "usda_2385996_avocado_crema_avocado",
+    "name": "Avocado Crema, Avocado",
+    "meal": "dinner",
+    "cost": 2.67,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 332.5,
+      "protein_g": 0.0,
+      "fat_g": 29.25,
+      "carbs_g": 16.68,
+      "fiber_g": 8.25,
+      "calcium_mg": 0.0,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2385996,
+      "portion_grams": 250.0,
+      "query_term": "avocado"
+    }
+  },
+  {
+    "id": "usda_2412706_avocado_dip_avocado",
+    "name": "Avocado Dip, Avocado",
+    "meal": "breakfast",
+    "cost": 2.1,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 447.5,
+      "protein_g": 0.0,
+      "fat_g": 40.25,
+      "carbs_g": 26.75,
+      "fiber_g": 0.0,
+      "calcium_mg": 0.0,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2412706,
+      "portion_grams": 250.0,
+      "query_term": "avocado"
+    }
+  },
+  {
+    "id": "usda_2680424_avocado_dressing_avocado",
+    "name": "Avocado Dressing, Avocado",
+    "meal": "dinner",
+    "cost": 3.3,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 750.0,
+      "protein_g": 0.0,
+      "fat_g": 75.0,
+      "carbs_g": 16.68,
+      "fiber_g": 0.0,
+      "calcium_mg": 0.0,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 30.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 2680424,
+      "portion_grams": 250.0,
+      "query_term": "avocado"
+    }
+  },
+  {
+    "id": "usda_1905976_olive_oil",
+    "name": "Olive Oil",
+    "meal": "dinner",
+    "cost": 5.8,
+    "tags": [],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "nutrients": {
+      "calories": 2000.0,
+      "protein_g": 0.0,
+      "fat_g": 233.25,
+      "carbs_g": 0.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 0.0,
+      "iron_mg": 0.0,
+      "vitamin_c_mg": 0.0
+    },
+    "meta": {
+      "source": "USDA FoodData Central",
+      "fdc_id": 1905976,
+      "portion_grams": 250.0,
+      "query_term": "olive oil"
+    }
+  }
+]
