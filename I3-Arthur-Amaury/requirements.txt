@@ -1,0 +1,7 @@
+mistralai>=2.4
+anthropic>=0.40.0
+ortools>=9.15
+pydantic>=2.5
+python-dotenv>=1.0
+streamlit>=1.30.0
+pandas>=2.0.0

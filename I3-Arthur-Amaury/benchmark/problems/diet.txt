@@ -1,0 +1,19 @@
+Compose un regime journalier de cout total minimal qui satisfasse les
+besoins nutritionnels suivants :
+
+- au moins 2000 kcal au total
+- au moins 50 g de proteines au total
+- au plus 70 g de matieres grasses au total
+
+Aliments disponibles (cout par portion, kcal, proteines en g, lipides en g) :
+
+  Pomme   : cout 1, 80 kcal,  0 g proteines,  0 g lipides
+  Pain    : cout 2, 250 kcal, 8 g proteines,  2 g lipides
+  Viande  : cout 5, 400 kcal, 30 g proteines, 20 g lipides
+  Lait    : cout 1, 150 kcal, 8 g proteines,  5 g lipides
+  Oeufs   : cout 2, 150 kcal, 12 g proteines, 10 g lipides
+  Poisson : cout 4, 300 kcal, 25 g proteines, 15 g lipides
+
+Le nombre de portions par aliment est un entier compris entre 0 et 10. Trouve
+les quantites a consommer pour minimiser le cout total tout en respectant les
+besoins.

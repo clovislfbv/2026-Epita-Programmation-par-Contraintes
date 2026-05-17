@@ -1,0 +1,3 @@
+Place N reines sur un echiquier N x N de telle sorte qu'aucune reine ne puisse en
+attaquer une autre. Une reine attaque toute case de sa ligne, de sa colonne, ou
+de l'une de ses deux diagonales. Trouve une disposition valide pour N = 8.

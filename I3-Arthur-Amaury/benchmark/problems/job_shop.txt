@@ -1,0 +1,16 @@
+Planifie 3 jobs sur 3 machines (M1, M2, M3). Chaque job est une sequence
+ordonnee d'operations qui doivent etre executees dans l'ordre indique,
+chacune sur une machine specifique pendant une duree donnee :
+
+  Job 1 : M1(10) -> M2(5)  -> M3(20)
+  Job 2 : M2(10) -> M1(10) -> M3(10)
+  Job 3 : M3(5)  -> M1(15) -> M2(10)
+
+Contraintes :
+- Une machine ne peut traiter qu'une seule operation a la fois (pas de
+  chevauchement sur une meme machine).
+- Au sein d'un meme job, l'operation suivante ne peut commencer qu'apres la
+  fin de la precedente (precedence).
+
+Minimise le makespan, c'est-a-dire la date de fin de la derniere operation
+terminee.

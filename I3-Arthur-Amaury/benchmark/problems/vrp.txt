@@ -1,0 +1,21 @@
+3 vehicules identiques de capacite 50 partent d'un depot D, livrent un sous-
+ensemble de clients C1..C5, puis rentrent au depot. Chaque client doit etre
+visite exactement une fois par un et un seul vehicule. La somme des demandes
+affectees a un vehicule ne doit pas depasser sa capacite.
+
+Demandes des clients :
+
+  C1 = 10, C2 = 20, C3 = 15, C4 = 30, C5 = 10
+
+Matrice de distances symetrique entre noeuds (D inclus) :
+
+         D    C1   C2   C3   C4   C5
+    D    0    10   12   20   25   18
+    C1   10   0    8    15   20   12
+    C2   12   8    0    10   18   15
+    C3   20   15   10   0    12   10
+    C4   25   20   18   12   0    8
+    C5   18   12   15   10   8    0
+
+Minimise la distance totale parcourue par l'ensemble des 3 vehicules. Un
+vehicule peut rester au depot (route vide).

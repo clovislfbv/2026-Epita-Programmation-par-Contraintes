@@ -1,0 +1,17 @@
+Resous la grille de Sudoku 9x9 suivante. Les cases vides sont representees par
+0. Chaque ligne, chaque colonne et chaque bloc 3x3 doit contenir les chiffres
+1 a 9 sans repetition. Les chiffres deja places ne doivent pas etre modifies.
+
+Grille (lignes du haut vers le bas) :
+
+  5 3 0 | 0 7 0 | 0 0 0
+  6 0 0 | 1 9 5 | 0 0 0
+  0 9 8 | 0 0 0 | 0 6 0
+  ------+-------+------
+  8 0 0 | 0 6 0 | 0 0 3
+  4 0 0 | 8 0 3 | 0 0 1
+  7 0 0 | 0 2 0 | 0 0 6
+  ------+-------+------
+  0 6 0 | 0 0 0 | 2 8 0
+  0 0 0 | 4 1 9 | 0 0 5
+  0 0 0 | 0 8 0 | 0 7 9

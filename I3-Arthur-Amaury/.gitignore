@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+benchmark_report.json
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.cache/

@@ -1,0 +1,5 @@
+Remplis une grille 3x3 avec les entiers de 1 a 9, chacun utilise exactement
+une fois, de telle sorte que la somme de chaque ligne, de chaque colonne et
+de chacune des deux diagonales principales soit identique.
+
+Pour N=3, cette somme commune vaut N*(N^2+1)/2 = 15.

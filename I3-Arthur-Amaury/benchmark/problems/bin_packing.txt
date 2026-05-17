@@ -1,0 +1,7 @@
+On dispose de 5 objets de tailles respectives 10, 20, 30, 40, 50.
+On souhaite les ranger dans des boites identiques de capacite 60.
+
+Chaque objet doit etre place dans exactement une boite. La somme des tailles
+des objets places dans une meme boite ne doit pas exceder 60.
+
+Minimise le nombre total de boites utilisees.
