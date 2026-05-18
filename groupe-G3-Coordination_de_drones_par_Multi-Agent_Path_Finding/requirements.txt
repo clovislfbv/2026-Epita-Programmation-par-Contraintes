@@ -1,0 +1,7 @@
+ortools>=9.8
+flask>=3.0
+flask-cors>=4.0
+pytest>=8.0
+matplotlib>=3.7
+jupyter>=1.0
+numpy>=1.24

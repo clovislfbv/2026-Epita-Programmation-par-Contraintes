@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>MAPF — City 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --panel-bg:    rgba(255, 255, 255, 0.96);
+    --border-base: rgba(15, 23, 42, 0.1);
+    --border-lit:  rgba(37, 99, 235, 0.4);
+    --text-dim:    #94a3b8;
+    --text-muted:  #64748b;
+    --text-base:   #334155;
+    --text-strong: #0f172a;
+    --accent:      #2563eb;
+    --accent-dim:  rgba(37, 99, 235, 0.07);
+    --danger:      #dc2626;
+    --danger-dim:  rgba(220, 38, 38, 0.08);
+    --warn:        #ea580c;
+    --warn-dim:    rgba(234, 88, 12, 0.08);
+    --shadow-panel: 0 2px 12px rgba(0,0,0,0.1), 0 1px 4px rgba(0,0,0,0.06);
+    --shadow-bar:   0 6px 28px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d4e8f8; overflow: hidden; }
+
+  /* ── HUD Panel ───────────────────────────────────────────────── */
+  #hud {
+    position: fixed;
+    top: 20px; left: 20px;
+    z-index: 10;
+    width: 214px;
+    background: var(--panel-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-base);
+    border-top: 2.5px solid var(--accent);
+    border-radius: 10px;
+    padding: 14px 16px 16px;
+    pointer-events: none;
+    box-shadow: var(--shadow-panel);
+  }
+
+  .hud-header {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-base);
+  }
+
+  .hud-badge {
+    font-family: 'Audiowide', sans-serif;
+    font-size: 8.5px;
+    letter-spacing: 0.05em;
+    color: white;
+    background: var(--accent);
+    border-radius: 3px;
+    padding: 2px 8px 3px;
+  }
+
+  .hud-title {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .hud-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 3px 0;
+  }
+
+  .hud-lbl {
+    font-family: 'Barlow', sans-serif;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  #hud .val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text-strong);
+    letter-spacing: 0.01em;
+  }
+
+  .hud-scenario {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-base);
+    pointer-events: all;
+  }
+
+  .hud-scenario-lbl {
+    font-family: 'Barlow', sans-serif;
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-dim);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  #sel-scenario {
+    width: 100%;
+    background: #f8fafc;
+    color: var(--text-strong);
+    border: 1px solid var(--border-base);
+    border-radius: 6px;
+    padding: 6px 26px 6px 9px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%232563eb' fill-opacity='.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 9px center;
+    transition: border-color 0.18s, box-shadow 0.18s;
+    outline: none;
+  }
+
+  #sel-scenario:hover, #sel-scenario:focus {
+    border-color: var(--border-lit);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+    background-color: white;
+  }
+
+  #sel-scenario option {
+    background: white;
+    color: var(--text-strong);
+  }
+
+  .solving {
+    animation: solving-pulse 1.1s ease-in-out infinite;
+    color: var(--accent) !important;
+  }
+  @keyframes solving-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+  }
+
+  /* ── Controls Bar ────────────────────────────────────────────── */
+  #controls {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    background: var(--panel-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-base);
+    border-radius: 14px;
+    padding: 9px 14px;
+    box-shadow: var(--shadow-bar);
+  }
+
+  .ctrl-divider {
+    width: 1px;
+    height: 26px;
+    background: var(--border-base);
+    margin: 0 12px;
+    flex-shrink: 0;
+  }
+
+  /* ── Playback group — segmented ──────────────────────────────── */
+  .ctrl-playback {
+    display: flex;
+    gap: 0;
+    background: #f1f5f9;
+    border: 1px solid var(--border-base);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .ctrl-playback button {
+    padding: 6px 12px;
+    background: transparent;
+    border: none;
+    border-right: 1px solid var(--border-base);
+    border-radius: 0;
+    color: var(--text-base);
+    font-family: 'Barlow', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: background 0.14s, color 0.14s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .ctrl-playback button:last-of-type { border-right: none; }
+
+  .ctrl-playback button:hover {
+    background: white;
+    color: var(--accent);
+  }
+
+  .ctrl-playback button:active {
+    background: var(--accent-dim);
+    transform: scale(0.97);
+  }
+
+  /* ── Actions group ───────────────────────────────────────────── */
+  .ctrl-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  button {
+    position: relative;
+    background: white;
+    border: 1px solid var(--border-base);
+    color: var(--text-base);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s, transform 0.08s;
+    padding: 7px 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  button:hover {
+    background: var(--accent-dim);
+    border-color: rgba(37, 99, 235, 0.35);
+    color: var(--accent);
+    box-shadow: 0 1px 6px rgba(37, 99, 235, 0.1);
+  }
+
+  button:active { transform: scale(0.96); }
+
+  #btn-solve {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    box-shadow: 0 1px 6px rgba(37, 99, 235, 0.28);
+  }
+
+  #btn-solve:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    color: white;
+    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.38);
+  }
+
+  select {
+    padding: 8px 12px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: #94a3b8;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  select:hover { border-color: #3b82f6; color: #fff; }
+
+  .ctrl-label {
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  #inp-timeout {
+    width: 68px;
+    padding: 7px 10px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: #94a3b8;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    text-align: center;
+  }
+  #inp-timeout:hover { border-color: #3b82f6; color: #fff; }
+  #inp-timeout:focus { outline: none; border-color: #3b82f6; color: #fff; }
+
+  #btn-smooth.is-active {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 1px 8px rgba(37, 99, 235, 0.18);
+  }
+
+  #sld-speed {
+    width: 90px;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div id="hud">
+  <div class="hud-header">
+    <span class="hud-badge">MAPF</span>
+    <span class="hud-title">Drone Coord.</span>
+  </div>
+  <div class="hud-row">
+    <span class="hud-lbl">Status</span>
+    <span class="val" id="h-status">—</span>
+  </div>
+  <div class="hud-row">
+    <span class="hud-lbl">Méthode</span>
+    <span class="val" id="h-method">—</span>
+  </div>
+  <div class="hud-row">
+    <span class="hud-lbl">Makespan</span>
+    <span class="val" id="h-makespan">—</span>
+  </div>
+  <div class="hud-row">
+    <span class="hud-lbl">Flowtime</span>
+    <span class="val" id="h-flowtime">—</span>
+  </div>
+  <div class="hud-row">
+    <span class="hud-lbl">Solve</span>
+    <span class="val" id="h-time">—</span>
+  </div>
+  <div class="hud-row">
+    <span class="hud-lbl">Conflicts</span>
+    <span class="val" id="h-conflicts">—</span>
+  </div>
+  <div class="hud-row">
+    <span class="hud-lbl">Frame</span>
+    <span class="val" id="h-frame">—</span>
+  </div>
+  <div class="hud-scenario">
+    <span class="hud-scenario-lbl">Scenario</span>
+    <select id="sel-scenario"></select>
+  </div>
+</div>
+
+<div id="controls">
+  <div class="ctrl-playback">
+    <button id="btn-play">&#9654; Play</button>
+    <button id="btn-pause">&#9646;&#9646; Pause</button>
+    <button id="btn-step">&#x23ED; Step</button>
+    <button id="btn-reset">&#x21BA; Reset</button>
+    <div class="ctrl-divider"></div>
+    <button id="btn-smooth" title="Animation lissée (lerp)">〜 Smooth</button>
+    <input type="range" id="sld-speed" min="80" max="1500" value="380" title="Vitesse (ms/step)">
+  </div>
+  <div class="ctrl-divider"></div>
+  <div class="ctrl-actions">
+    <select id="sel-method" title="Solving method">
+      <option value="cpsat">CP-SAT optimal</option>
+      <option value="cbs">CBS (optimal)</option>
+      <option value="ecbs">ECBS (rapide ×1.3)</option>
+      <option value="od_astar">A* OD (optimal, N≤5)</option>
+    </select>
+    <label class="ctrl-label" for="inp-timeout" title="Timeout solver (secondes)">⏱</label>
+    <input type="number" id="inp-timeout" min="1" max="300" step="1" value="30" title="Timeout (s)">
+    <button id="btn-solve">&#x26A1; Solve</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script type="module">
+import { CityScene }    from './scene.js';
+import { DroneManager } from './drones.js';
+import { UIManager }    from './ui.js';
+import { fetchScenarios, fetchSolve } from './api.js';
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+const cityScene = new CityScene(renderer);
+let droneManager = null, solution = null, currentScenario = null;
+let playing = false, frame = 0, lastTick = 0, lastFrameTime = 0;
+let smoothing = false;
+const sldSpeed = document.getElementById('sld-speed');
+
+// ── UIManager ─────────────────────────────────────────────────────────────────
+const ui = new UIManager({
+  onSolve:  () => { if (currentScenario) solve(currentScenario); },
+  onPlay:   () => { if (solution) { playing = true; lastFrameTime = performance.now(); lastTick = performance.now(); } },
+  onPause:  () => { playing = false; },
+  onReset:  () => {
+    playing = false; frame = 0; lastTick = 0; lastFrameTime = 0;
+    if (droneManager && solution) {
+      droneManager.resetForReplay(solution.paths);
+      ui.updateFrame(0, solution.makespan);
+    }
+  },
+  onStep:   () => {
+    if (solution && droneManager && frame < solution.makespan) {
+      frame++;
+      droneManager.updateFrame(solution.paths, frame);
+      ui.updateFrame(frame, solution.makespan);
+    }
+  },
+});
+
+document.getElementById('btn-smooth').onclick = () => {
+  smoothing = !smoothing;
+  lastFrameTime = performance.now();
+  document.getElementById('btn-smooth').classList.toggle('is-active', smoothing);
+};
+
+// ── Scenario loading ──────────────────────────────────────────────────────────
+async function init() {
+  const scenarios = await fetchScenarios();
+  const select = document.getElementById('sel-scenario');
+  for (const s of scenarios) {
+    const opt = document.createElement('option');
+    opt.value = s.name;
+    opt.textContent = s.description;
+    select.appendChild(opt);
+  }
+  select.onchange = () => {
+    const s = scenarios.find(s => s.name === select.value);
+    if (s) loadScenario(s);
+  };
+  if (scenarios.length > 0) loadScenario(scenarios[0]);
+}
+
+function loadScenario(scenario) {
+  playing = false; frame = 0; solution = null;
+  if (droneManager) { droneManager.dispose(cityScene.scene); droneManager = null; }
+  currentScenario = scenario;
+  const { rows, cols, alts } = scenario.grid;
+  cityScene.resetGrid(rows, cols, alts);
+  cityScene.clearBuildings();
+  cityScene.addBuildings(scenario.buildings || []);
+}
+
+// ── Solve ─────────────────────────────────────────────────────────────────────
+async function solve(scenario) {
+  playing = false; frame = 0; solution = null;
+
+  const statusEl = document.getElementById('h-status');
+  statusEl.textContent = 'Solving…';
+  statusEl.classList.add('solving');
+  ['h-makespan', 'h-flowtime', 'h-time', 'h-conflicts', 'h-frame', 'h-method'].forEach(id => {
+    document.getElementById(id).textContent = '—';
+  });
+
+  if (droneManager) { droneManager.dispose(cityScene.scene); droneManager = null; }
+
+  const method = document.getElementById('sel-method').value;
+
+  solution = await fetchSolve({
+    grid:      scenario.grid,
+    drones:    scenario.drones,
+    buildings: scenario.buildings || [],
+    method,
+    time_limit_s: (() => { const v = Number(document.getElementById('inp-timeout').value); return Number.isFinite(v) && v >= 1 ? v : 30; })(),
+  });
+
+  statusEl.classList.remove('solving');
+  statusEl.textContent                               = solution.status;
+  document.getElementById('h-makespan').textContent  = solution.makespan;
+  document.getElementById('h-flowtime').textContent  = solution.flowtime ?? '—';
+  document.getElementById('h-time').textContent      = solution.solve_time_ms + 'ms';
+  document.getElementById('h-conflicts').textContent = solution.conflicts_avoided;
+  document.getElementById('h-method').textContent    = solution.method ?? method;
+
+  if (solution.status !== 'optimal' && solution.status !== 'feasible') return;
+
+  droneManager = new DroneManager(scenario.drones, cityScene.scene);
+  droneManager.updateFrame(solution.paths, 0, true);
+  ui.updateFrame(0, solution.makespan);
+}
+
+// ── Render loop ───────────────────────────────────────────────────────────────
+function loop(ts) {
+  requestAnimationFrame(loop);
+  if (playing && solution && droneManager) {
+    const speedMs = Math.max(1, Number(sldSpeed.value));
+    if (!smoothing) {
+      if (ts - lastTick > speedMs) {
+        lastTick = ts;
+        if (frame < solution.makespan) {
+          frame++;
+          droneManager.updateFrame(solution.paths, frame);
+          ui.updateFrame(frame, solution.makespan);
+        } else { playing = false; }
+      }
+    } else {
+      const alpha = Math.min((ts - lastFrameTime) / speedMs, 1);
+      droneManager.updateFrameLerp(solution.paths, frame, alpha);
+      if (alpha >= 1) {
+        lastFrameTime = ts;
+        if (frame < solution.makespan) {
+          frame++;
+          droneManager.updateFrame(solution.paths, frame);
+          ui.updateFrame(frame, solution.makespan);
+        } else { playing = false; }
+      }
+    }
+  }
+  droneManager?.animateTrails();
+  cityScene.update();
+  cityScene.render();
+}
+requestAnimationFrame(loop);
+window.addEventListener('resize', () => cityScene.onResize());
+
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "medium_city",
+  "description": "8×6×3 grid, 6 drones — medium 3D city",
+  "grid": { "rows": 8, "cols": 6, "alts": 3 },
+  "drones": [
+    { "id": 0, "start": [0, 0, 0], "goal": [7, 5, 2] },
+    { "id": 1, "start": [7, 0, 0], "goal": [0, 5, 2] },
+    { "id": 2, "start": [0, 5, 1], "goal": [7, 0, 1] },
+    { "id": 3, "start": [7, 5, 0], "goal": [0, 0, 2] },
+    { "id": 4, "start": [3, 0, 0], "goal": [4, 5, 2] },
+    { "id": 5, "start": [4, 5, 0], "goal": [3, 0, 2] }
+  ],
+  "buildings": [
+    { "row": 2, "col": 2, "height": 2 },
+    { "row": 5, "col": 3, "height": 2 },
+    { "row": 3, "col": 4, "height": 1 }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "micro_3d",
+  "description": "4×4×3 grid, 4 drones — minimal 3D",
+  "grid": { "rows": 4, "cols": 4, "alts": 3 },
+  "drones": [
+    { "id": 0, "start": [0, 0, 0], "goal": [3, 3, 2] },
+    { "id": 1, "start": [3, 0, 0], "goal": [0, 3, 2] },
+    { "id": 2, "start": [0, 3, 1], "goal": [3, 0, 1] },
+    { "id": 3, "start": [3, 3, 0], "goal": [0, 0, 2] }
+  ],
+  "buildings": [
+    { "row": 1, "col": 1, "height": 2 },
+    { "row": 2, "col": 2, "height": 2 }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "big_city",
+  "description": "10×10×3 grid, 8 drones — full city 3D",
+  "grid": { "rows": 10, "cols": 10, "alts": 3 },
+  "drones": [
+    { "id": 0, "start": [0, 0, 0], "goal": [9, 9, 2] },
+    { "id": 1, "start": [9, 0, 0], "goal": [0, 9, 2] },
+    { "id": 2, "start": [0, 9, 1], "goal": [9, 0, 1] },
+    { "id": 3, "start": [9, 9, 0], "goal": [0, 0, 2] },
+    { "id": 4, "start": [0, 4, 0], "goal": [9, 5, 2] },
+    { "id": 5, "start": [9, 5, 0], "goal": [0, 4, 2] },
+    { "id": 6, "start": [4, 0, 0], "goal": [5, 9, 1] },
+    { "id": 7, "start": [5, 9, 0], "goal": [4, 0, 2] }
+  ],
+  "buildings": [
+    { "row": 2, "col": 2, "height": 2 },
+    { "row": 2, "col": 3, "height": 2 },
+    { "row": 5, "col": 5, "height": 3 },
+    { "row": 7, "col": 2, "height": 2 },
+    { "row": 3, "col": 7, "height": 2 },
+    { "row": 7, "col": 7, "height": 2 }
+  ]
+}
