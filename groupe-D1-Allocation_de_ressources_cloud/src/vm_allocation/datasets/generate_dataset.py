@@ -119,7 +119,8 @@ def generate_n_vms_with_context(
         for friend in list_vm:
             if friend.id != vm.id:
                 if random.random() < affinity_chance:
-                    print("Affinity added with vm :", friend.id)
+                    if verbose:
+                        print("Affinity added with vm :", friend.id)
                     vm.add_affinity(friend)
 
         for j in range(nb_server):
@@ -129,7 +130,10 @@ def generate_n_vms_with_context(
             ):
                 for not_friend in servers[j].get_vms():
                     if random.random() < anti_affinity_chance:
-                        print("antiffinity added with vm :", not_friend.id)
+                        if verbose:
+                            print(
+                                "Anti-affinity added with vm :", not_friend.id
+                            )
                         vm.add_anti_affinity(not_friend)
                         not_friend.add_anti_affinity(vm)
 

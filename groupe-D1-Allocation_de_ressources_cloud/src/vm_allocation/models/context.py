@@ -6,6 +6,7 @@ from typing import List
 
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+import numpy as np
 
 from .server import Server
 
@@ -206,3 +207,142 @@ class Context[ID_T]:
             lines.append("")
         lines.append(len(header) * "=")
         return "\n".join(lines)
+
+    def context_usage(self) -> float:
+        """Compute context usage.
+
+        The method computes the proportion of servers currently hosting at
+        least one VM.
+
+        Returns
+        -------
+        float
+            Used server proportion
+        """
+        if not self.servers:
+            return 0.0
+
+        return sum(
+            1 for server in self.servers.values() if len(server.vms) > 0
+        ) / len(self.servers.values())
+
+    def fragmentation(self) -> float:
+        """Compute datacenter fragmentation.
+
+        The fragmentation score measures how imbalanced the remaining
+        resources are across all used servers. A server is considered not
+        fragmented when one of its resources becomes saturated. Fragmentation
+        is computed independently for each server using the minimal remaining
+        space ratio (CPU, RAM, storage, bandwidth), then the average of all but
+        the maximum ratio is used.
+
+        Returns
+        -------
+        float
+            Fragmentation proportion
+        """
+
+        if not self.servers:
+            return 0.0
+
+        fragmentations = []
+
+        for server in self.servers.values():
+            # Skipping empty servers
+            if len(server.vms) == 0:
+                continue
+
+            # Remaining CPU percentage
+            remaining_cpu = (
+                server.cpu_capacity - server.cpu_usage
+            ) / server.cpu_capacity
+
+            # Remaining RAM percentage
+            remaining_ram = (
+                server.ram_capacity - server.ram_usage
+            ) / server.ram_capacity
+
+            # Remaining storage percentage
+            remaining_storage = (
+                server.storage_capacity - server.storage_usage
+            ) / server.storage_capacity
+
+            # Remaining bandwidth percentage
+            remaining_bw = (
+                server.bw_capacity - server.bw_usage
+            ) / server.bw_capacity
+
+            # Group all remaining resource ratios together
+            free_ratios = [
+                remaining_cpu,
+                remaining_ram,
+                remaining_storage,
+                remaining_bw,
+            ]
+
+            fragmentations.append(min(free_ratios))
+
+        return np.mean(np.sort(np.array(fragmentations))[:-1])
+
+    def usage_disparity(self) -> float:
+        """Compute average usage disparity.
+
+        To compute a score for usage disparity, we assess the remaining
+        resources in the various capacities. We want to evaluate how uneven the
+        usages are, with 0. for perfect equilibrium and 1. for complete
+        disparity. We use the formula 1 - min ratio / max ratio for this.
+
+        Returns
+        -------
+        float
+            The usage disparity score.
+        """
+        if not self.servers:
+            return 1.0
+
+        disparities = []
+
+        for server in self.servers.values():
+            # Skipping empty servers
+            if len(server.vms) == 0:
+                continue
+
+            # Remaining CPU percentage
+            remaining_cpu = (
+                server.cpu_capacity - server.cpu_usage
+            ) / server.cpu_capacity
+
+            # Remaining RAM percentage
+            remaining_ram = (
+                server.ram_capacity - server.ram_usage
+            ) / server.ram_capacity
+
+            # Remaining storage percentage
+            remaining_storage = (
+                server.storage_capacity - server.storage_usage
+            ) / server.storage_capacity
+
+            # Remaining bandwidth percentage
+            remaining_bw = (
+                server.bw_capacity - server.bw_usage
+            ) / server.bw_capacity
+
+            # Group all remaining resource ratios together
+            free_ratios = [
+                remaining_cpu,
+                remaining_ram,
+                remaining_storage,
+                remaining_bw,
+            ]
+
+            min_ratio = min(free_ratios)
+            max_ratio = max(free_ratios)
+
+            if max_ratio == 0:
+                disparity = 0
+            else:
+                disparity = 1 - min_ratio / max_ratio
+
+            disparities.append(disparity)
+
+        return np.mean(np.array(disparities))

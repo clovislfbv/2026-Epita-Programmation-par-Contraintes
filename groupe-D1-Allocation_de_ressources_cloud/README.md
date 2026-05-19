@@ -47,6 +47,19 @@ Pour installer la bibliothèque, un appel à pip à la racine suffit
 pip install .
 ```
 
+## Usage type
+
+Cette bibliothèque permet une abstraction de la gestion de l'allocation de
+VM sur des serveurs. Pour l'utiliser, il faut utiliser les classes `VM`,
+`Server` et `Context` pour monter une abstraction des infrasructures techniques
+du Datacenter et des VMs qu'elle accueille. Le positionnement optimal des VMs
+peut être calculée grâce à un `Solver`, les opérations de déplacement relevant
+de l'architecture spécifique de l'utilisateur, celui-ci devra appliqué les
+déplacements conseillés sur son architecture. Pour une utilisation en temps
+réel, la manipulation en continu d'un `Context` créé, avec appel à un solver
+lors d'ajouts ou mises à jour des VMs, est la méthode prévue (les suppressions
+peuvent s'effectuer sans appel à un solver).
+
 ## Diaporama de présentation
 
 Le lien pour le diaporama de présentation est disponible en consultation
@@ -167,3 +180,12 @@ emplacements déjà utilisés, ce qui est ce que l'on veut.
  positif avec la contrainte de capacités, le terme de droite est soit la valeur
  maximale possible de la marge, soit 0. Avec la minimisation de la somme des
  $f_j$, le $f_j$ sera à 0 seulement si la marge l'est.
+
+ Sachant que si $f_j = 1$, $y_j = 1$, on a l'expression qui devient
+ $$\text{SERVER\_CPU}_j - \sum_i \text{VM\_CPU}_i \; x_{i,j} \le
+ \text{SERVER\_CPU}_j$$
+ Ce qui est trivialement vrai (un serveur aura toujours plus ou exactement sa
+ capacité avec les contraintes de capacités), on peut contraindre uniquement le
+ cas où $f_j = 0$, ce qui donne
+$$\text{SERVER\_CPU}_j y_j - \sum_i \text{VM\_CPU}_i \; x_{i,j} \le 0 \\
+\iff \text{SERVER\_CPU}_j y_j  \le \sum_i \text{VM\_CPU}_i \; x_{i,j}$$
