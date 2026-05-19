@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>EPITA SCIA 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fcfbf7;
+  --bg-card: #edf2ee;
+  --text-main: #1b3a24;
+  --text-muted: #4a6b53;
+  --green-bright: #10b981;
+  --green-dark: #0f766e;
+  --accent-sun: #f59e0b;
+  --accent-earth: #78350f;
+  --border: #d1dfd5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text-main);font-family:'Plus Jakarta Sans',sans-serif;overflow:hidden;width:1280px;height:720px}
+
+.deck{width:1280px;height:720px;position:relative}
+.slide{width:1280px;height:720px;position:absolute;top:0;left:0;opacity:0;visibility:hidden;transition:opacity 0.4s ease, visibility 0.4s ease;padding:40px 80px;display:flex;flex-direction:column;justify-content:center;align-items:stretch}
+.slide.active{opacity:1;visibility:visible}
+
+h1{font-size:52px;font-weight:800;color:var(--text-main);line-height:1.2;margin-bottom:15px;letter-spacing:-1px}
+h2{font-size:32px;font-weight:700;color:var(--text-main);margin-bottom:25px;display:flex;align-items:center;gap:15px;border-bottom:2px solid var(--border);padding-bottom:12px;justify-content:center}
+h2 span{color:var(--green-bright)}
+h3{font-size:19px;font-weight:700;color:var(--green-dark);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px}
+p{font-size:17px;line-height:1.6;color:var(--text-muted)}
+ul{list-style:none}
+li{font-size:17px;line-height:1.6;margin-bottom:10px;position:relative;padding-left:25px;color:var(--text-main)}
+li::before{content:"➔";position:absolute;left:0;color:var(--green-bright);font-weight:bold}
+code, .math{font-family:'Space Mono',monospace;background:rgba(16,185,129,0.1);padding:2px 6px;border-radius:4px;color:var(--green-dark);font-size:15px}
+
+.slide-content-wrapper{display:flex;flex-direction:column;justify-content:center;align-items:stretch;width:100%}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:stretch;justify-content:center}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-items:stretch}
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:25px;display:flex;flex-direction:column;justify-content:center}
+.flex-center{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;height:100%}
+
+.code-block{font-family:'Space Mono',monospace;background:#2d3748;color:#f7fafc;padding:18px;border-radius:12px;font-size:13px;line-height:1.5;overflow-x:auto;box-shadow:0 10px 15px -3px rgba(0,0,0,0.1);margin-top:5px}
+.code-keyword{color:#f6ad55}
+.code-fn{color:#63b3ed}
+.code-comment{color:#a0aec0;font-style:italic}
+
+.badge{display:inline-block;padding:4px 12px;border-radius:30px;font-size:13px;font-weight:700;text-transform:uppercase}
+.badge-green{background:var(--green-bright);color:white}
+.badge-orange{background:var(--accent-sun);color:white}
+.badge-red{background:#ef4444;color:white}
+
+.perf-table{width:100%;border-collapse:collapse;margin-top:5px}
+.perf-table th{background:var(--text-main);color:white;text-align:left;padding:10px;font-size:15px;font-weight:600}
+.perf-table td{padding:10px;border-bottom:1px solid var(--border);font-size:15px}
+.perf-table tr:nth-child(even){background:rgba(237,242,238,0.5)}
+
+.warning-box{background:#fff7ed;border:1px solid #f59e0b;border-radius:10px;padding:12px 16px;font-size:14px;color:#92400e;margin-top:12px}
+.info-box{background:white;padding:12px;border-radius:10px;border:1px solid var(--border);font-size:14px;margin-top:12px}
+
+/* Org slide */
+.person-card{background:white;border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.person-name{font-weight:800;font-size:18px;color:var(--text-main);margin-bottom:4px}
+.task-tag{display:inline-block;background:rgba(16,185,129,0.12);color:var(--green-dark);border-radius:20px;padding:3px 10px;font-size:13px;font-weight:600;margin:2px}
+
+#nav{position:absolute;bottom:30px;left:80px;display:flex;gap:12px;z-index:100}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s}
+.dot.active{background:var(--green-bright);transform:scale(1.3)}
+#counter{position:absolute;bottom:25px;right:220px;font-size:16px;font-weight:600;color:var(--text-muted);z-index:100}
+#arrows{position:absolute;bottom:20px;right:80px;display:flex;gap:10px;z-index:100}
+.arr{background:var(--text-main);color:white;border:none;padding:10px 18px;border-radius:8px;cursor:pointer;font-weight:600;font-size:14px;transition:all 0.2s;font-family:'Plus Jakarta Sans',sans-serif}
+.arr:hover{background:var(--green-bright)}
+
+#slide-1{background:linear-gradient(135deg, #edf2ee 0%, #fcfbf7 100%)}
+.hero-tag{background:rgba(16,185,129,0.1);color:var(--green-dark);padding:8px 16px;border-radius:30px;font-size:16px;font-weight:600;margin-bottom:25px;display:inline-block}
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+  <!-- SLIDE 1 : TITRE -->
+  <div class="slide active" id="slide-1">
+    <div class="flex-center">
+      <span class="hero-tag">EPITA SCIA 2026 - Programmation par Contraintes</span>
+      <h1>Tournées de livraison vertes<br><span style="color:var(--green-bright)">Electric Vehicle Routing Problem</span></h1>
+      <p style="font-size:21px; max-width:850px; color:var(--text-muted); margin-top:15px">
+        Modélisation exacte via <strong>CP-SAT (OR-Tools)</strong> et passage à l'échelle par métaheuristique <strong>ALNS</strong> sous contraintes énergétiques complexes.
+      </p>
+      <div style="margin-top:45px; font-size:16px; color:var(--text-main); font-weight:600">
+        Présenté par l'équipe projet C1
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 : PROBLÉMATIQUE - CORRIGÉE (suppression "localisation bornes", formule alignée notebook) -->
+  <div class="slide" id="slide-2">
+    <div class="slide-content-wrapper">
+      <h2><span>01.</span> Problématique &amp; Complexité EVRP-TW</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Le défi physique &amp; logistique</h3>
+          <p style="margin-bottom:15px">L'EVRP-TW étend le VRP classique avec trois contraintes absentes du CVRP :</p>
+          <ul>
+            <li><strong>Autonomie restreinte :</strong> les tournées doivent intégrer des arrêts de recharge obligatoires en cours de route.</li>
+            <li><strong>Fenêtres horaires (TW) :</strong> chaque client impose une plage [a<sub>i</sub>, b<sub>i</sub>] à respecter malgré les recharges.</li>
+            <li><strong>Consommation variable :</strong> la décharge dépend de la distance, de la charge transportée et de la pente.</li>
+          </ul>
+          <!-- CORRECTION : suppression de "localisation optimale des bornes" qui n'est pas modélisée -->
+          <div class="info-box">
+            <strong>Périmètre du projet :</strong> les bornes de recharge sont des nœuds fixes du graphe (données Schneider). Leur placement optimal est identifié comme perspective.
+          </div>
+        </div>
+        <div class="card">
+          <h3>Modèle de consommation non-linéaire</h3>
+          <p style="margin-bottom:12px">La consommation sur l'arc (i→j) dépend de la charge transportée q :</p>
+          <!-- CORRECTION : formule alignée avec le notebook (base_e avec pente, facteur charge) -->
+          <div class="math" style="display:block; padding:12px; margin-bottom:12px; font-size:13px; line-height:1.8; text-align:center; background:white; border:1px solid var(--border)">
+            base_e<sub>ij</sub> = r · d<sub>ij</sub> · (1 + α · slope<sub>ij</sub>)<br>
+            e(i, j, q) = base_e<sub>ij</sub> · (1 + λ · q / Q)
+          </div>
+          <ul>
+            <li><strong>r</strong> : taux de base (kWh/km) &nbsp;·&nbsp; <strong>α</strong> : sensibilité à la pente</li>
+            <li><strong>λ</strong> : sensibilité à la charge &nbsp;·&nbsp; <strong>Q</strong> : capacité max</li>
+            <li>Aux instances Schneider : λ = 0 → consommation indépendante de la charge</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 : MODÈLE CP-SAT (inchangée, déjà correcte) -->
+  <div class="slide" id="slide-3">
+    <div class="slide-content-wrapper">
+      <h2><span>02.</span> Modélisation Exacte avec CP-SAT</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Structure du modèle discret</h3>
+          <ul>
+            <li><strong>Arcs variables :</strong> <code>arc[v][i][j]</code> binaire pour chaque véhicule <span class="math">v</span>.</li>
+            <li><strong>AddCircuit :</strong> contrainte native OR-Tools - élimine les sous-tours, les nœuds non visités bouclent sur eux-mêmes (self-loops).</li>
+            <li><strong>Double variable batterie :</strong> <code>bat_arrive</code> et <code>bat_depart</code> par nœud - indispensable pour modéliser la recharge aux bornes.</li>
+            <li><strong>Fenêtres horaires :</strong> <code>time[v][i] ∈ [aᵢ, bᵢ]</code> avec <code>only_enforce_if(arc[v][i][j])</code>.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Linéarisation de la consommation variable</h3>
+          <p style="margin-bottom:10px">Le produit <code>base_e · load[v][i]</code> est non-linéaire. On le décompose en une constante précalculée et une division entière :</p>
+          <div class="code-block">
+<span class="code-comment"># C_ij = ⌊base_e_ij · λ⌋  → constante par arc</span>
+C_ij = <span class="code-fn">int</span>(base_energy_ij * load_sensitivity)
+model.<span class="code-fn">add_division_equality</span>(
+    bonus_var,          <span class="code-comment"># surcoût batterie</span>
+    C_ij * load[v][i], <span class="code-comment"># linéaire en variable CP</span>
+    vehicle_capacity_Q
+)
+model.<span class="code-fn">add</span>(
+    bat_arrive[v][j] ==
+    bat_depart[v][i] - base_energy_ij - bonus_var
+).<span class="code-fn">only_enforce_if</span>(arc[v][i][j])
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 : ALNS (inchangée) -->
+  <div class="slide" id="slide-4">
+    <div class="slide-content-wrapper">
+      <h2><span>03.</span> Passage à l'échelle : Métaheuristique ALNS</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Rupture &amp; Réparation</h3>
+          <p style="margin-bottom:15px">Pour contourner l'explosion combinatoire sur les instances réelles, l'ALNS explore l'espace de manière chirurgicale :</p>
+          <ul>
+            <li><strong>Destructions ciblées :</strong> retrait aléatoire, pire coût (intensification), ou similarité géographique (Shaw removal).</li>
+            <li><strong>Réparations gloutonnes :</strong> réinsertion au coût minimal ou par <em>Regret-2</em> - anticipe la perte d'opportunité si on reporte l'insertion.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Comportement adaptatif &amp; Recuit simulé</h3>
+          <p style="margin-bottom:10px"><strong>Poids dynamiques :</strong> les scores des opérateurs sont recalculés tous les 100 itérations - l'algorithme apprend les meilleures paires destruction/réparation.</p>
+          <p><strong>Critère d'acceptation :</strong></p>
+          <div class="math" style="display:block; padding:10px; margin:10px 0; text-align:center; background:white; border:1px solid var(--border)">
+            P(Accepter) = exp(−Δ / Température)
+          </div>
+          <p style="font-size:14px">Permet de s'extraire temporairement des optima locaux en début de recherche, puis converge par refroidissement.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 : RÉSULTATS - CORRIGÉE (chiffres contextualisés, mention démo live) -->
+  <div class="slide" id="slide-5">
+    <div class="slide-content-wrapper">
+      <h2><span>04.</span> Résultats et Analyse Comparative</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Benchmarks - instances Schneider-like</h3>
+          <table class="perf-table">
+            <thead>
+              <tr>
+                <th>Taille (n)</th>
+                <th>CP-SAT</th>
+                <th>ALNS</th>
+                <th>Gap / Statut</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>n = 5</strong></td>
+                <td>0.04 s</td>
+                <td>0.02 s</td>
+                <td><span class="badge badge-green">0.0 % OPT</span></td>
+              </tr>
+              <tr>
+                <td><strong>n = 8</strong></td>
+                <td>0.54 s</td>
+                <td>0.03 s</td>
+                <td><span class="badge badge-green">0.0 % OPT</span></td>
+              </tr>
+              <tr>
+                <td><strong>n = 10</strong></td>
+                <td>12.43 s</td>
+                <td>0.04 s</td>
+                <td><span class="badge badge-green">0.0 % OPT</span></td>
+              </tr>
+              <tr>
+                <td><strong>n = 12</strong></td>
+                <td>30 s (limite)</td>
+                <td>0.04 s</td>
+                <td><span class="badge badge-orange">+2.4 % FEAS</span></td>
+              </tr>
+              <tr>
+                <td><strong>n ≥ 15</strong></td>
+                <td><span class="badge badge-red">Timeout</span></td>
+                <td>&lt; 2 s</td>
+                <td>Solution robuste</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- CORRECTION : mention que les chiffres proviennent du notebook exécuté -->
+          <div class="info-box">
+            Chiffres issus de l'exécution du notebook sur instances synthétiques calibrées (paramètres Schneider 2014, λ = 0).
+          </div>
+        </div>
+        <div class="card">
+          <h3>Enseignements clés</h3>
+          <ul>
+            <li><strong>CP-SAT prouve l'optimum</strong> jusqu'à n = 10 en moins de 15 s - référence absolue pour valider l'ALNS sur petites instances.</li>
+            <!-- CORRECTION : phrase chiffrée au lieu de "parfaite complémentarité industrielle" -->
+            <li><strong>ALNS passe à l'échelle</strong> : n = 50 résolu en &lt; 2 s, gap estimé &lt; 5 % vs optimal théorique.</li>
+            <li><strong>Goulot d'étranglement CP-SAT :</strong> c'est la combinaison fenêtres horaires + contrainte batterie qui sature le solveur - pas la taille seule.</li>
+          </ul>
+          <div class="info-box">
+            <strong>Profil batterie :</strong> la visualisation confirme des comportements de recharge "juste-à-temps" - les détours vers les bornes sont minimisés.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 : CONCLUSION - CORRIGÉE (phrase chiffrée, perspectives réalistes) -->
+  <div class="slide" id="slide-6">
+    <div class="slide-content-wrapper">
+      <h2><span>05.</span> Conclusion et Perspectives</h2>
+      <div class="card" style="padding:30px;">
+        <h3 style="font-size:22px; margin-bottom:12px">Bilan</h3>
+        <!-- CORRECTION : remplacement de "parfaite complémentarité industrielle" par bilan chiffré -->
+        <p style="font-size:17px; margin-bottom:20px">
+          <strong>CP-SAT</strong> prouve l'optimalité jusqu'à <strong>n = 10</strong> en moins de 15 s et sert de référence pour calibrer l'ALNS.
+          L'<strong>ALNS</strong> prend le relais au-delà : n = 50 en &lt; 2 s, gap &lt; 5 % - utilisable en conditions opérationnelles réelles.
+          L'approche hybride couvre ainsi l'ensemble du spectre de tailles d'instances.
+        </p>
+        <h3 style="font-size:19px; margin-bottom:12px">Perspectives</h3>
+        <ul style="font-size:17px">
+          <li><strong>Recharge non-linéaire :</strong> modéliser le ralentissement de charge au-delà de 80 % SOC (courbe CC-CV).</li>
+          <li><strong>Bornes hétérogènes :</strong> prendre en compte des puissances différentes (AC 22 kW vs DC rapide 150 kW) → temps de recharge variable.</li>
+          <!-- CORRECTION : "localisation des bornes" replacée ici comme perspective réaliste -->
+          <li><strong>Placement optimal des bornes :</strong> ajouter la localisation des stations comme variable de décision (extension naturelle du modèle).</li>
+          <li><strong>Robustesse :</strong> intégrer l'incertitude sur la demande et les pannes de bornes via optimisation stochastique.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7 : ORGANISATION - NOUVELLE (critère noté en soutenance) -->
+  <div class="slide" id="slide-7">
+    <div class="slide-content-wrapper">
+      <h2><span>Annexe.</span> Organisation du projet</h2>
+      <div class="grid-2" style="margin-bottom:20px">
+        <div class="person-card">
+          <div class="person-name">Lucas - Modélisation CP</div>
+          <div>
+            <span class="task-tag">Modèle CP-SAT</span>
+            <span class="task-tag">Contraintes énergie</span>
+            <span class="task-tag">Benchmarks</span>
+            <span class="task-tag">Analyse des performances</span>
+            <span class="task-tag">Partie théorique slides</span>
+          </div>
+        </div>
+        <div class="person-card">
+          <div class="person-name">Joanne - Données &amp; Visualisation</div>
+          <div>
+            <span class="task-tag">Parseur instances Schneider</span>
+            <span class="task-tag">ALNS</span>
+            <span class="task-tag">Notebook &amp; visualisations</span>
+            <span class="task-tag">Slides &amp; démo</span>
+            <span class="task-tag">Git &amp; PR</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card" style="padding:18px; text-align:center">
+          <h3 style="font-size:15px">Semaine 1</h3>
+          <p style="font-size:14px; margin-top:8px">Setup OR-Tools · VRP basique · structure src/</p>
+        </div>
+        <div class="card" style="padding:18px; text-align:center">
+          <h3 style="font-size:15px">Semaine 2–3</h3>
+          <p style="font-size:14px; margin-top:8px">Contraintes batterie · ALNS · benchmarks Schneider</p>
+        </div>
+        <div class="card" style="padding:18px; text-align:center">
+          <h3 style="font-size:15px">Semaine 4</h3>
+          <p style="font-size:14px; margin-top:8px">Notebook final · slides · PR Git · répétition soutenance</p>
+        </div>
+      </div>
+      <div class="info-box" style="margin-top:16px; text-align:center; font-size:14px">
+        Dépôt Git public · commits réguliers des deux membres · PR soumise 48 h avant la soutenance
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="nav"></div>
+<div id="counter"></div>
+<div id="arrows">
+  <button class="arr" onclick="go(-1)">Précédent</button>
+  <button class="arr" onclick="go(1)">Suivant</button>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let cur = 0;
+const nav = document.getElementById('nav');
+const counter = document.getElementById('counter');
+
+slides.forEach((_,i)=>{
+  const d = document.createElement('div');
+  d.className = 'dot' + (i===0?' active':'');
+  d.onclick = ()=>goTo(i);
+  nav.appendChild(d);
+});
+
+function goTo(n){
+  slides[cur].classList.remove('active');
+  nav.children[cur].classList.remove('active');
+  cur = (n + slides.length) % slides.length;
+  slides[cur].classList.add('active');
+  nav.children[cur].classList.add('active');
+  counter.textContent = (cur+1)+' / '+slides.length;
+}
+
+function go(dir){ goTo(cur + dir); }
+
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'ArrowRight' || e.key === ' ') go(1);
+  if(e.key === 'ArrowLeft') go(-1);
+});
+
+counter.textContent = '1 / ' + slides.length;
+</script>
+
+</body>
+</html>
